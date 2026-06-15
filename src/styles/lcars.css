@@ -1,0 +1,144 @@
+.pill,
+.mode-button,
+.stack-button,
+.scene-grid button,
+.toggle-row,
+.command-line button {
+  cursor: pointer;
+  color: #000;
+  background: var(--gray-light);
+  text-transform: uppercase;
+  transition:
+    transform var(--fast) ease,
+    filter var(--fast) ease,
+    background var(--fast) ease,
+    color var(--fast) ease;
+}
+
+.pill:hover,
+.mode-button:hover,
+.stack-button:hover,
+.scene-grid button:hover,
+.toggle-row:hover,
+.command-line button:hover {
+  filter: brightness(1.18) saturate(1.1);
+}
+
+.pill:active,
+.mode-button:active,
+.stack-button:active,
+.scene-grid button:active,
+.toggle-row:active,
+.command-line button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.pill {
+  min-height: 34px;
+  padding: 0 18px;
+  border-radius: 22px;
+  font-weight: 800;
+}
+
+.pill.cyan {
+  background: var(--cyan-light);
+}
+
+.pill.gray {
+  color: var(--gray-white);
+  background: var(--gray-dark);
+}
+
+.pill.gray[data-active="true"] {
+  color: #000;
+  background: var(--gray-lighter);
+  animation: blink-soft 2.4s ease infinite;
+}
+
+.pill.red {
+  background: var(--orange);
+}
+
+.status-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 28px;
+  padding: 0 12px;
+  background: var(--panel);
+}
+
+.status-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gray-lighter);
+  animation: blink-soft 3.7s ease infinite;
+}
+
+.status-dots span:nth-child(3n) {
+  background: var(--gray);
+}
+
+.status-dots span:nth-child(5n) {
+  background: var(--gray-white);
+}
+
+.meter {
+  display: grid;
+  grid-template-columns: 76px 1fr 42px;
+  gap: 10px;
+  align-items: center;
+  color: var(--gray-lighter);
+  text-transform: uppercase;
+}
+
+.meter strong,
+.meter em {
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.meter div {
+  height: 15px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, #000 10px 14px),
+    var(--panel-2);
+}
+
+.meter div span {
+  display: block;
+  height: 100%;
+  background: var(--cyan);
+  transition: width var(--med) ease;
+}
+
+.meter[data-danger="true"] div span {
+  background: var(--orange-dark);
+}
+
+.readout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 108px;
+  padding: 18px;
+  background: color-mix(in srgb, var(--panel-2) 80%, transparent);
+  border-left: 9px solid var(--cyan);
+}
+
+.readout span {
+  color: var(--gray-lighter);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.readout strong {
+  color: var(--gray-white);
+  font-size: clamp(1.6rem, 5vw, 3.2rem);
+  line-height: 0.95;
+}
+

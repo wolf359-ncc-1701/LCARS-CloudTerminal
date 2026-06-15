@@ -1,0 +1,129 @@
+@media (max-width: 1120px) {
+  body {
+    overflow: auto;
+  }
+
+  .lcars-app {
+    grid-template-columns: 150px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .right-rail {
+    grid-column: 1 / 3;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .command-hints {
+    align-self: stretch;
+  }
+
+  .bridge-view {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .hero-readout,
+  .system-diagram,
+  .scene-grid {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .summary-grid,
+  .scene-grid,
+  .room-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .lcars-app {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .left-rail,
+  .right-rail,
+  .main-stage {
+    grid-column: auto;
+  }
+
+  .left-rail {
+    grid-template-rows: auto auto auto;
+  }
+
+  .rail-crook,
+  .vertical-meter {
+    display: none;
+  }
+
+  .rail-numbers {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rail-actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .main-stage {
+    grid-template-rows: auto auto minmax(620px, auto) auto;
+  }
+
+  .top-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-title {
+    grid-column: auto;
+    text-align: left;
+  }
+
+  .mode-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .display-window {
+    border-radius: 36px 0 36px 0;
+  }
+
+  .view {
+    padding: 18px;
+  }
+
+  .summary-grid,
+  .scene-grid,
+  .room-grid,
+  .bottom-telemetry,
+  .right-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-readout {
+    display: grid;
+    gap: 8px;
+  }
+
+  .system-diagram {
+    min-height: 280px;
+  }
+
+  .energy-view {
+    grid-template-columns: 1fr;
+  }
+
+  .warp-core {
+    min-height: 280px;
+  }
+
+  .event-log article {
+    grid-template-columns: 1fr;
+  }
+
+  .command-line {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,63 @@
+:root {
+  color-scheme: dark;
+  font-family: Antonio, "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  --black: #000;
+  --panel: #10141b;
+  --panel-2: #1e2229;
+  --gray-dark: #2f3749;
+  --gray: #52596e;
+  --gray-light: #6d748c;
+  --gray-lighter: #9ea5ba;
+  --gray-white: #dfe1e8;
+  --orange-dark: #e7442a;
+  --orange: #ff6753;
+  --orange-light: #ff977b;
+  --cyan-dark: #1c3c55;
+  --cyan: #2a7193;
+  --cyan-light: #37a6d1;
+  --cyan-bright: #67caf0;
+  --success: #7ee0a1;
+  --radius-xl: 72px;
+  --radius-lg: 36px;
+  --radius-md: 14px;
+  --gap: 14px;
+  --fast: 160ms;
+  --med: 420ms;
+  --slow: 1.6s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  background: #000;
+}
+
+body {
+  overflow: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--cyan-bright);
+  outline-offset: 3px;
+}
+
