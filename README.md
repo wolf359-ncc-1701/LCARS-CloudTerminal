@@ -11,6 +11,7 @@ This repository now contains the first runnable V0 frontend prototype.
 Existing documents:
 
 - `docs/dev-log.md` - chronological development notes.
+- `docs/frontend-agent-brief.md` - instructions for frontend-focused agents.
 - `docs/v0-plan.md` - V0 product and implementation plan.
 - `docs/titan-ds-style-analysis.md` - style and motion-language analysis based on user-provided references.
 - `docs/architecture.md` - target system architecture.
@@ -89,10 +90,11 @@ This repository should remain agent-friendly:
 ## Quick Start For Future Work
 
 1. Read `docs/agent-handoff.md`.
-2. Read `docs/v0-plan.md`.
-3. Run `npm install`.
-4. Run `npm run dev`.
-5. Continue from the V0 prototype and keep commits pushed to GitHub.
+2. Read `docs/frontend-agent-brief.md` if working on frontend implementation.
+3. Read `docs/v0-plan.md`.
+4. Run `npm install`.
+5. Run `npm run dev`.
+6. Continue from the V0 prototype and keep commits pushed to GitHub.
 
 ## Important Legal Note
 

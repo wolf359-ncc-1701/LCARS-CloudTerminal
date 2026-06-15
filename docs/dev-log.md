@@ -39,3 +39,13 @@ Included:
 Verification:
 
 - Build should be rerun after this pass.
+
+## 2026-06-15 - Frontend Agent Brief
+
+Added `docs/frontend-agent-brief.md` to define how a frontend-focused agent should continue the project.
+
+Purpose:
+
+- Codex remains responsible for architecture, product direction, and acceptance criteria.
+- A frontend agent can focus on React/CSS implementation.
+- The brief prevents drift into copyrighted asset cloning or generic dashboard design.

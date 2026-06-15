@@ -16,6 +16,7 @@ Key files:
 
 - `README.md`
 - `docs/v0-plan.md`
+- `docs/frontend-agent-brief.md`
 - `docs/titan-ds-style-analysis.md`
 - `docs/architecture.md`
 - `docs/dev-guide.md`
