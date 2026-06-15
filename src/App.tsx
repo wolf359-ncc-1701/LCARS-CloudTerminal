@@ -128,7 +128,11 @@ function App() {
 
       <section className="main-stage">
         <header className="top-rail">
-          <div className="top-bar" />
+          <div className="top-bar">
+            <span />
+            <span />
+            <span />
+          </div>
           <StatusDots count={18} />
           <div className="mission-title">
             {mode === "bridge" ? "LCARS CLOUD TERMINAL" : `${mode.toUpperCase()} MODULE`}
@@ -157,6 +161,7 @@ function App() {
               currentTime={currentTime}
               activeRoom={activeRoom.name}
               onlineDevices={onlineDevices}
+              events={events}
               telemetry={telemetry}
               onScene={executeScene}
             />
@@ -178,6 +183,13 @@ function App() {
           <Meter label="SIGMA" value={telemetry[4]} />
           <Meter label="PSI" value={telemetry[7]} danger />
           <Meter label="EPS" value={telemetry[14]} />
+          <div className="footer-blocks" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
           <div className="tiny-bars">
             {telemetry.slice(0, 16).map((value, index) => (
               <span key={`${value}-${index}`} style={{ width: `${Math.max(5, value / 2)}%` }} />
@@ -292,12 +304,14 @@ function BridgeView({
   currentTime,
   activeRoom,
   onlineDevices,
+  events,
   telemetry,
   onScene,
 }: {
   currentTime: string;
   activeRoom: string;
   onlineDevices: number;
+  events: EventLogItem[];
   telemetry: number[];
   onScene: (sceneId: string) => void;
 }) {
@@ -308,12 +322,21 @@ function BridgeView({
         <strong>{currentTime}</strong>
         <em>{activeRoom} ACTIVE</em>
       </div>
+      <TelemetryStack telemetry={telemetry} />
       <SystemDiagram telemetry={telemetry} />
       <div className="summary-grid">
         <Readout label="DEVICES ONLINE" value={`${onlineDevices}/7`} />
         <Readout label="CORE LOAD" value={`${telemetry[1]}%`} />
         <Readout label="ENV INDEX" value={`${telemetry[6]}%`} />
         <Readout label="AI WATCH" value="STANDBY" />
+      </div>
+      <div className="bridge-log">
+        {events.slice(0, 4).map((event) => (
+          <article key={event.id} data-tone={event.tone}>
+            <span>{event.time}</span>
+            <strong>{event.label}</strong>
+          </article>
+        ))}
       </div>
       <div className="scene-grid">
         {scenes.map((scene) => (
@@ -323,6 +346,21 @@ function BridgeView({
           </button>
         ))}
       </div>
+    </div>
+  );
+}
+
+function TelemetryStack({ telemetry }: { telemetry: number[] }) {
+  const labels = ["ODN", "EPS", "SIF", "LIFE", "AI", "MUX"];
+  return (
+    <div className="telemetry-stack">
+      {labels.map((label, index) => (
+        <div key={label} className="telemetry-row">
+          <span>{label}</span>
+          <i style={{ width: `${telemetry[index + 10]}%` }} />
+          <em>{telemetry[index + 10]}</em>
+        </div>
+      ))}
     </div>
   );
 }
@@ -427,12 +465,30 @@ function Readout({ label, value }: { label: string; value: string }) {
 function SystemDiagram({ telemetry }: { telemetry: number[] }) {
   return (
     <div className="system-diagram" aria-hidden="true">
+      <div className="system-grid">
+        {Array.from({ length: 7 }).map((_, index) => (
+          <span key={`v-${index}`} className="v" style={{ left: `${index * 16}%` }} />
+        ))}
+        {Array.from({ length: 5 }).map((_, index) => (
+          <span key={`h-${index}`} className="h" style={{ top: `${index * 22}%` }} />
+        ))}
+      </div>
+      <div className="nacelle nacelle-top">
+        {Array.from({ length: 16 }).map((_, index) => (
+          <span key={index} />
+        ))}
+      </div>
       <div className="home-outline">
         <span className="room room-a" />
         <span className="room room-b" />
         <span className="room room-c" />
         <span className="room room-d" />
         <span className="core" />
+      </div>
+      <div className="nacelle nacelle-bottom">
+        {Array.from({ length: 16 }).map((_, index) => (
+          <span key={index} />
+        ))}
       </div>
       {telemetry.slice(0, 12).map((value, index) => (
         <i

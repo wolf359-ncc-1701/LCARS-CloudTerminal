@@ -25,3 +25,17 @@ Known issue:
 
 - In-app browser verification could not run in the current Windows sandbox because the browser runtime failed to start with a process permission error. Use `npm run dev` and open `http://127.0.0.1:5173` manually for visual inspection.
 
+## 2026-06-15 - V0.5 LCARS Grammar Pass
+
+Refined the first prototype toward a stricter LCARS element grammar.
+
+Included:
+
+- Studied the LCARS framework taxonomy from `joernweissenborn.github.io/lcars`.
+- Added a V0.5 grammar note in `docs/v0.5-lcars-grammar.md`.
+- Increased shell density with unit-like rail blocks, segmented top bars, bottom block strips, telemetry rows, bridge event log, and a framed system display.
+- Added nacelle/data-pipe visual primitives to the main Bridge diagram.
+
+Verification:
+
+- Build should be rerun after this pass.

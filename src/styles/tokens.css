@@ -22,6 +22,9 @@
   --radius-xl: 72px;
   --radius-lg: 36px;
   --radius-md: 14px;
+  --unit: 24px;
+  --bar: 30px;
+  --rail: 246px;
   --gap: 14px;
   --fast: 160ms;
   --med: 420ms;
@@ -60,4 +63,3 @@ input:focus-visible {
   outline: 2px solid var(--cyan-bright);
   outline-offset: 3px;
 }
-
