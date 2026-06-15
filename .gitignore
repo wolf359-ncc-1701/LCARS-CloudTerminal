@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+
+# build outputs
+dist/
+build/
+.vite/
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# local generated assets and private references
+local-assets/
+reference-assets/
+screenshots/private/
+
