@@ -6,10 +6,11 @@ The project goal is not to clone Titan.DS. It is to build an original, self-host
 
 ## Current Status
 
-This repository is currently in planning / V0 design stage.
+This repository now contains the first runnable V0 frontend prototype.
 
 Existing documents:
 
+- `docs/dev-log.md` - chronological development notes.
 - `docs/v0-plan.md` - V0 product and implementation plan.
 - `docs/titan-ds-style-analysis.md` - style and motion-language analysis based on user-provided references.
 - `docs/architecture.md` - target system architecture.
@@ -49,6 +50,32 @@ Later versions can connect to:
 - Web Audio API for original synthesized UI sounds
 - No backend for V0
 
+## Run Locally
+
+Install dependencies:
+
+```powershell
+npm install
+```
+
+Start the dev server:
+
+```powershell
+npm run dev
+```
+
+Build for production:
+
+```powershell
+npm run build
+```
+
+Then open the local URL printed by Vite, usually:
+
+```text
+http://127.0.0.1:5173
+```
+
 ## Repository Philosophy
 
 This repository should remain agent-friendly:
@@ -63,9 +90,9 @@ This repository should remain agent-friendly:
 
 1. Read `docs/agent-handoff.md`.
 2. Read `docs/v0-plan.md`.
-3. Scaffold Vite + React + TypeScript in the repo root.
-4. Implement V0 with mock data only.
-5. Verify desktop and mobile layout with screenshots.
+3. Run `npm install`.
+4. Run `npm run dev`.
+5. Continue from the V0 prototype and keep commits pushed to GitHub.
 
 ## Important Legal Note
 

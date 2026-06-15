@@ -4,17 +4,25 @@ This guide is written for future coding agents and contributors.
 
 ## Current Repo State
 
-The repo currently contains planning documents only. There is no application scaffold yet.
+The repo contains the first runnable V0 frontend prototype.
 
-Recommended first implementation step:
+Use:
 
 ```powershell
-npm create vite@latest . -- --template react-ts
 npm install
 npm run dev
+npm run build
 ```
 
-If the repo already has app files when you read this, inspect the package scripts first.
+If package scripts change later, inspect `package.json` first.
+
+Recommended next implementation steps:
+
+- Split the current `src/App.tsx` into the component structure below.
+- Improve visual QA on desktop and mobile.
+- Add persisted settings with `localStorage`.
+- Add a manual help overlay that highlights clickable regions.
+- Add route-free deep links through query params, e.g. `?mode=energy`.
 
 ## V0 Implementation Rules
 
