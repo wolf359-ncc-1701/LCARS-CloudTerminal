@@ -296,3 +296,19 @@ Verification:
 - Checked element visibility: no truncations or overlaps, two-column layout fully visible, and watermark positioned correctly inside gray material.
 - Local commit: `fix(ui): repair V0.77 left rail layout regression`.
 
+## 2026-06-16 - V0.77 Main Stage Left Clearance Fix
+
+Resolved display-window crowding and overlap sensation on the left by restoring clearance spacing between the left rail and the main stage.
+
+Included:
+- **Main Stage Padding**: Added `padding-left: 16px` to `.main-stage` in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) to shift the main stage content (including top-rail, mode-strip, display-window, and bottom-telemetry) to the right, creating a distinct vertical spacing channel of 30px (14px gap + 16px padding) from the left rail.
+- **Display Window Radius Reduction**: Reduced `.display-window` border-radius from `76px 0 0 0` to `54px 0 0 0` in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) to soften the curvature intrusion.
+- **Mobile Reset**: Added `padding-left: 0 !important` to `.main-stage` under the mobile media query (`max-width: 760px`) in [responsive.css](file:///C:/Users/user/Documents/LCARS/src/styles/responsive.css) since elements stack vertically on mobile.
+- **Stable Metrics Preserved**: Maintained stable `--rail: 246px` and left-rail children dimensions unchanged. Watermark text `DEV V.0.77` remains aligned in the gray elbow material.
+
+Verification:
+- `npm run build` completed successfully.
+- Visual inspection confirms clean vertical spacing and proper elbow visual connection.
+- Local commit: `fix(ui): restore V0.77 main stage left clearance`.
+
+

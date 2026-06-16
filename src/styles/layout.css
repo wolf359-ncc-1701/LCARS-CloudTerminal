@@ -157,6 +157,7 @@
   display: grid;
   grid-template-rows: 96px 52px minmax(0, 1fr) 118px;
   min-width: 0;
+  padding-left: 16px;
 }
 
 .top-rail {
@@ -288,7 +289,7 @@
   overflow: hidden;
   border: 7px solid var(--gray);
   border-top-width: 18px;
-  border-radius: 76px 0 0 0;
+  border-radius: 54px 0 0 0;
   background:
     radial-gradient(circle at 50% 45%, rgba(42, 113, 147, 0.22), transparent 45%),
     #000;
