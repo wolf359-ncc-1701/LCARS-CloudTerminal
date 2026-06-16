@@ -4,7 +4,7 @@
   }
 
   .lcars-app {
-    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-columns: 150px minmax(0, 1fr);
     grid-template-rows: auto auto;
     height: auto;
     min-height: 100vh;
@@ -60,10 +60,6 @@
   .primary-elbow {
     width: 100% !important;
     max-width: 100% !important;
-  }
-
-  .left-rail > *:not(.primary-elbow) {
-    width: auto !important;
   }
 
   .rail-crook,

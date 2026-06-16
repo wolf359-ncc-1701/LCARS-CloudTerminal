@@ -134,7 +134,7 @@ function AppContent() {
           color="gray"
           width={300}
           height={148}
-          railWidth={180}
+          railWidth={246}
           barHeight={34}
           outerRadius={120}
           innerRadius={40}

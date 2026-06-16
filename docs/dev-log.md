@@ -278,3 +278,21 @@ Included:
 Verification:
 - `npm run build` completed successfully with no errors or warnings.
 - Local commit: `fix(ui): align V0.77 corner dev label with Titan reference`.
+
+## 2026-06-16 - V0.77 Left Rail Layout Regression Fix
+
+Fixed a layout regression where narrow main rail width caused overlap and truncation of left rail elements (brand block, numbers, meter, action elements).
+
+Included:
+- **Restored Stable Rail Width**: Set `--rail` in [tokens.css](file:///C:/Users/user/Documents/LCARS/src/styles/tokens.css) back to its stable V0.76/V0.75 value of `246px`, restoring the layout column width and preventing layout clipping.
+- **Matched Elbow Width**: Set `railWidth={246}` on `LcarsElbow` in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) and updated `.elbow-dev-label-group` width in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) to `246px` to keep it perfectly aligned with the column below.
+- **Preserved Asymmetric Curve**: Retained the `40px` smooth inner radius and PPT/Titan style corner structure without altering the stable left-rail width.
+- **Cleaned Up Custom Rules**: Removed `.left-rail > *:not(.primary-elbow)` width overrides from [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) and [responsive.css](file:///C:/Users/user/Documents/LCARS/src/styles/responsive.css), allowing left-rail elements to naturally stretch to the `246px` grid column.
+- **Restored Typography**: Returned brand-block and rail-numbers font-sizes back to their stable values.
+- **Responsive Tablet Column Fix**: Changed tablet responsive grid column width under the `@media (max-width: 1120px)` media query back to `150px` in [responsive.css](file:///C:/Users/user/Documents/LCARS/src/styles/responsive.css).
+
+Verification:
+- `npm run build` compiles with no errors.
+- Checked element visibility: no truncations or overlaps, two-column layout fully visible, and watermark positioned correctly inside gray material.
+- Local commit: `fix(ui): repair V0.77 left rail layout regression`.
+
