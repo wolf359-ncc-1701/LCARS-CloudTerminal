@@ -136,4 +136,25 @@ Verification:
 - No TypeScript compiler errors.
 - Checked desktop (1440px/1920px) and mobile (390px) responsive scaling.
 
+## 2026-06-16 - V0.7 Style System Architecture
+
+Prepared the next style-system cleanup pass based on user feedback, current V0.6 screenshots, the user's PPT reference, exported PPT animation videos, and user-provided response audio.
+
+Included:
+
+- Added `docs/v0.7-reference-analysis.md`.
+- Added `docs/style-roadmap-v05-v09.md`.
+- Added `docs/ai-tasks/TASK-003-v07-style-system-redesign.md`.
+- Added `docs/gemini-prompts/v07-style-system.md`.
+- Copied user-provided response audio files into `src/assets/audio/`.
+- Updated `ASSETS.md` and `docs/resource-policy.md` with audio provenance and usage notes.
+
+Implementation target:
+
+- Replace user-facing Command mode with a direct Actions matrix.
+- Refine typography roles and Microgramma coverage.
+- Redesign square tabs/cards into rounded LCARS capsule/elbow forms.
+- Fix top-right title overflow and color contrast.
+- Wire user-provided audio through the existing audio setting.
+- Expand animation primitives based on the PPT videos.
 

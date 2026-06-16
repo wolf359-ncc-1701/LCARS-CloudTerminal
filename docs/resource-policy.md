@@ -20,6 +20,7 @@ It should not redistribute meWho/Titan.DS assets or Star Trek copyrighted/tradem
 - Web Audio API synthesized beeps and alerts.
 - Open-license fonts and assets with attribution as required.
 - User-provided fonts may be committed only when tracked in `ASSETS.md`; confirm redistribution rights before public release packaging.
+- User-provided audio may be committed only when tracked in `ASSETS.md`; app playback must respect the user audio setting.
 - User-owned screenshots or notes kept outside release assets.
 
 ## If External Assets Are Needed
