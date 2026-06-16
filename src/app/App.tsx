@@ -1,0 +1,420 @@
+import { useCallback, useMemo, useState, useEffect } from "react";
+import type React from "react";
+
+import { commandHints, devices, initialEvents, rooms, scenes } from "../data/mock";
+import { useAutoMode } from "../hooks/useAutoMode";
+import { useMockTelemetry } from "../hooks/useMockTelemetry";
+import type { AlertLevel, EventLogItem, Mode } from "../types";
+
+import { MODES } from "./modes";
+import {
+  LcarsBar,
+  LcarsElement,
+  LcarsElbow,
+  LcarsBracket,
+  LcarsMeter,
+  LcarsStatusDots,
+  LcarsReadout,
+  LcarsOverlay,
+  LcarsProvider,
+  useLcars,
+} from "../components/lcars";
+import {
+  BridgeView,
+  HomeView,
+  EnergyView,
+  MemoryView,
+  CommandView,
+} from "../components/dashboard";
+
+const timeFormatter = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+});
+
+function AppContent() {
+  const { audioEnabled, setAudioEnabled, visual, setVisual, beep } = useLcars();
+
+  // Load initial mode from URL search param or fallback to "bridge"
+  const [mode, setMode] = useState<Mode>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlMode = params.get("mode") as Mode;
+    if (urlMode && ["bridge", "home", "energy", "memory", "command"].includes(urlMode)) {
+      return urlMode;
+    }
+    return "bridge";
+  });
+
+  const [alert, setAlert] = useState<AlertLevel>("normal");
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [events, setEvents] = useState<EventLogItem[]>(initialEvents);
+  const [command, setCommand] = useState("");
+
+  const telemetry = useMockTelemetry(34);
+
+  // Sync mode state to URL query parameter
+  const syncModeToUrl = useCallback((targetMode: Mode) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("mode", targetMode);
+    window.history.replaceState(null, "", url.pathname + url.search);
+  }, []);
+
+  const setModeWithAudio = useCallback(
+    (nextMode: Mode) => {
+      setMode(nextMode);
+      syncModeToUrl(nextMode);
+      beep("soft");
+    },
+    [beep, syncModeToUrl],
+  );
+
+  // Handle auto cycling of modes
+  const autoActive = useAutoMode(true, (nextMode) => {
+    setMode(nextMode);
+    syncModeToUrl(nextMode);
+  });
+
+  // Track the room status
+  const activeRoom = useMemo(() => rooms.find((room) => room.status === "active") ?? rooms[0], []);
+  const onlineDevices = devices.filter((device) => device.online).length;
+  const [currentTime, setCurrentTime] = useState(() => timeFormatter.format(new Date()));
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(timeFormatter.format(new Date()));
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const pushEvent = (tone: EventLogItem["tone"], label: string, detail: string) => {
+    setEvents((current) => [
+      {
+        id: crypto.randomUUID(),
+        time: timeFormatter.format(new Date()),
+        tone,
+        label,
+        detail,
+      },
+      ...current.slice(0, 9),
+    ]);
+  };
+
+  const executeScene = (sceneId: string) => {
+    const scene = scenes.find((item) => item.id === sceneId);
+    if (!scene) return;
+    beep("confirm");
+    pushEvent("success", `SCENE ${scene.name.toUpperCase()}`, `${scene.code} accepted by local mock core.`);
+  };
+
+  const runCommand = () => {
+    const normalized = command.trim().toLowerCase();
+    if (!normalized) return;
+
+    if (normalized.includes("red alert")) {
+      setAlert("red");
+      beep("alert");
+      pushEvent("danger", "RED ALERT", "Manual command elevated the console alert state.");
+    } else if (normalized.includes("normal") || normalized.includes("resume")) {
+      setAlert("normal");
+      beep("confirm");
+      pushEvent("success", "STATUS NORMAL", "Alert state returned to nominal operation.");
+    } else if (normalized.includes("cinema")) {
+      executeScene("cinema");
+    } else if (normalized.includes("sleep")) {
+      executeScene("sleep");
+    } else {
+      beep("soft");
+      pushEvent("info", "COMMAND PARSED", `"${command}" routed to V0.5 mock interpreter.`);
+    }
+
+    setCommand("");
+  };
+
+  return (
+    <main className="lcars-app" data-mode={mode} data-alert={alert} data-visual={visual}>
+      <div className="ambient-grid" aria-hidden="true" />
+
+      {/* Left Rail Layout */}
+      <aside className="left-rail" aria-label="Primary controls">
+        <LcarsElbow
+          direction="top-left"
+          color="gray"
+          width={246}
+          height={148}
+          railWidth={34}
+          barHeight={34}
+          outerRadius={72}
+        />
+        
+        <div className="brand-block">
+          <span>TITAN.LOCAL</span>
+          <button type="button" className="icon-dot" onClick={() => setInfoOpen(true)} aria-label="Open info">
+            i
+          </button>
+        </div>
+
+        <div className="rail-numbers">
+          {["44-600", "10-667", "82-464", "47-957", "50-409", "19-274", "66-766", "28-605", "83-260"].map((label, index) => (
+            <span key={label} data-accent={index % 5 === 0 ? "orange" : index % 3 === 0 ? "cyan" : "gray"}>
+              {label}
+            </span>
+          ))}
+        </div>
+
+        <div className="vertical-meter">
+          <LcarsMeter direction="vertical" value={telemetry[2] ?? 50} showValue={false} color="cyan" />
+          <LcarsMeter direction="vertical" value={telemetry[9] ?? 40} showValue={false} color="orange" />
+        </div>
+
+        <div className="rail-actions">
+          <LcarsElement color="cyan-light" onClick={() => setSettingsOpen(true)} beepType="confirm">
+            Settings
+          </LcarsElement>
+          <LcarsElement color="gray" active={autoActive} beepType="soft">
+            Auto Mode
+          </LcarsElement>
+          <LcarsElement
+            color="orange-dark"
+            active={alert === "red"}
+            onClick={() => {
+              setAlert((current) => (current === "red" ? "normal" : "red"));
+              beep("alert");
+            }}
+            beepType="alert"
+          >
+            Red Alert
+          </LcarsElement>
+        </div>
+      </aside>
+
+      {/* Main Content Stage */}
+      <section className="main-stage">
+        <header className="top-rail">
+          <div className="top-bar">
+            <LcarsBar color="gray-dark" style={{ height: "100%" }} />
+            <LcarsBar color="gray" style={{ height: "100%" }} />
+            <LcarsBar color="gray-dark" style={{ height: "100%" }} />
+          </div>
+          <LcarsStatusDots count={18} color="cyan-light" />
+          <div className="mission-title">
+            {mode === "bridge" ? "LCARS CLOUD TERMINAL" : `${mode.toUpperCase()} MODULE`}
+          </div>
+        </header>
+
+        <nav className="mode-strip" aria-label="Display modes">
+          {MODES.map((item) => (
+            <LcarsElement
+              key={item.id}
+              color={mode === item.id ? "cyan-bright" : "gray-dark"}
+              active={mode === item.id}
+              onClick={() => setModeWithAudio(item.id)}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr auto",
+                alignItems: "center",
+                padding: "0 12px",
+                minHeight: "44px",
+                width: "100%",
+                textAlign: "left",
+                borderRadius: 0,
+              }}
+            >
+              <strong>{item.label}</strong>
+              <span style={{ opacity: 0.75, fontSize: "0.8rem" }}>{item.code}</span>
+            </LcarsElement>
+          ))}
+        </nav>
+
+        {/* Outer Bracket wrapping the Active View */}
+        <section className="display-window">
+          <div className="scan-line" aria-hidden="true" />
+          {mode === "bridge" && (
+            <BridgeView
+              currentTime={currentTime}
+              activeRoom={activeRoom.name}
+              onlineDevices={onlineDevices}
+              events={events}
+              telemetry={telemetry}
+              onScene={executeScene}
+            />
+          )}
+          {mode === "home" && <HomeView telemetry={telemetry} />}
+          {mode === "energy" && <EnergyView telemetry={telemetry} />}
+          {mode === "memory" && <MemoryView events={events} />}
+          {mode === "command" && (
+            <CommandView
+              command={command}
+              setCommand={setCommand}
+              runCommand={runCommand}
+              events={events}
+            />
+          )}
+        </section>
+
+        {/* Bottom Status Telemetry Footer Bar */}
+        <footer className="bottom-telemetry">
+          <LcarsMeter label="SIGMA" value={telemetry[4] ?? 50} color="cyan" />
+          <LcarsMeter label="PSI" value={telemetry[7] ?? 30} color="orange" danger={telemetry[7] > 75} />
+          <LcarsMeter label="EPS" value={telemetry[14] ?? 60} color="cyan" />
+          <div className="footer-blocks" aria-hidden="true">
+            <LcarsBar color="gray" />
+            <LcarsBar color="cyan" />
+            <LcarsBar color="gray" />
+            <LcarsBar color="orange-light" />
+            <LcarsBar color="cyan" />
+          </div>
+          <div className="tiny-bars">
+            {telemetry.slice(0, 16).map((value, index) => (
+              <span key={`${value}-${index}`} style={{ width: `${Math.max(5, value / 2)}%` }} />
+            ))}
+          </div>
+        </footer>
+      </section>
+
+      {/* Right Rail Panel Controls */}
+      <aside className="right-rail" aria-label="Module controls">
+        <LcarsStatusDots count={24} />
+        <div className="module-title">SYSTEM INDEX / AL-52169</div>
+        <div className="right-stack">
+          {MODES.map((item) => (
+            <LcarsElement
+              key={item.id}
+              color={mode === item.id ? "orange-light" : "gray-dark"}
+              active={mode === item.id}
+              onClick={() => setModeWithAudio(item.id)}
+              style={{ minHeight: "36px", width: "100%", borderRadius: 0 }}
+            >
+              {item.label}
+            </LcarsElement>
+          ))}
+        </div>
+        <div className="command-hints">
+          <h2>COMMAND HINTS</h2>
+          {commandHints.map((hint) => (
+            <LcarsElement
+              key={hint}
+              color="cyan-dark"
+              onClick={() => {
+                setCommand(hint);
+                setMode("command");
+                syncModeToUrl("command");
+              }}
+              style={{ minHeight: "34px", width: "100%", borderRadius: 0, color: "var(--gray-white)" }}
+            >
+              {hint}
+            </LcarsElement>
+          ))}
+        </div>
+      </aside>
+
+      {/* Settings Overlay dialog */}
+      {settingsOpen && (
+        <LcarsOverlay title="Settings Panel" onClose={() => setSettingsOpen(false)}>
+          <button
+            type="button"
+            className="toggle-row"
+            data-active={audioEnabled}
+            onClick={() => {
+              setAudioEnabled((value) => !value);
+              beep("soft");
+            }}
+          >
+            <span>Audio Core synthesize beeps</span>
+            <strong>{audioEnabled ? "ON" : "OFF"}</strong>
+          </button>
+          
+          <button
+            type="button"
+            className="toggle-row"
+            data-active={visual === "soft-glow"}
+            onClick={() => {
+              setVisual((value) => (value === "soft-glow" ? "default" : "soft-glow"));
+              beep("soft");
+            }}
+          >
+            <span>Atmospheric Soft Glow shader</span>
+            <strong>{visual === "soft-glow" ? "ON" : "OFF"}</strong>
+          </button>
+
+          <button
+            type="button"
+            className="toggle-row"
+            data-active={visual === "grayscale"}
+            onClick={() => {
+              setVisual((value) => (value === "grayscale" ? "default" : "grayscale"));
+              beep("soft");
+            }}
+          >
+            <span>Console Grayscale monochromatic filters</span>
+            <strong>{visual === "grayscale" ? "ON" : "OFF"}</strong>
+          </button>
+
+          <button
+            type="button"
+            className="toggle-row"
+            data-active={visual === "dim"}
+            onClick={() => {
+              setVisual((value) => (value === "dim" ? "default" : "dim"));
+              beep("soft");
+            }}
+          >
+            <span>Night-mode Dimmer filters</span>
+            <strong>{visual === "dim" ? "ON" : "OFF"}</strong>
+          </button>
+        </LcarsOverlay>
+      )}
+
+      {/* Info/Taxonomy Overlay dialog */}
+      {infoOpen && (
+        <LcarsOverlay title="LCARS Core Grammar Taxonomy" onClose={() => setInfoOpen(false)}>
+          <div style={{ color: "var(--gray-white)", fontSize: "0.95rem", display: "flex", flexDirection: "column", gap: "12px" }}>
+            <p style={{ margin: 0, color: "var(--cyan-bright)", fontWeight: "bold" }}>
+              V0.5 Operations Console Specification:
+            </p>
+            <p style={{ margin: 0 }}>
+              This system is built using semantic primitives defined in the standard LCARS interface taxonomy.
+            </p>
+            
+            <div style={{ display: "grid", gap: "10px", marginTop: "8px" }}>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsBar:</strong> Horizontal or vertical boundary segments to block out UI areas.
+              </div>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsElement:</strong> Interactive buttons or status indicators emitting synthesized audio feedback.
+              </div>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsElbow:</strong> Classic curved bent-corner segments defining major rail crooks.
+              </div>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsBracket:</strong> Geometric grouping markers wrapping functional system panels.
+              </div>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsMeter:</strong> Analog metrics scales displaying real-time levels.
+              </div>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsStatusDots:</strong> Background micro-indicator arrays mimicking background activity.
+              </div>
+              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>LcarsReadout:</strong> High-visibility information panels with thick color bounds.
+              </div>
+            </div>
+            
+            <p style={{ margin: "10px 0 0 0", fontSize: "0.85rem", color: "var(--orange-light)" }}>
+              No Star Trek copyrighted symbols or external runtime assets are utilized. Auto Mode runs after 60s idle.
+            </p>
+          </div>
+        </LcarsOverlay>
+      )}
+    </main>
+  );
+}
+
+export default function App() {
+  return (
+    <LcarsProvider>
+      <AppContent />
+    </LcarsProvider>
+  );
+}

@@ -1,3 +1,23 @@
+/* ==========================================================================
+   LCARS Grammar & Reusable Components CSS Style Classes
+   ========================================================================== */
+
+/* Color Tokens mapping to backgrounds */
+.color-gray-dark { background-color: var(--gray-dark); }
+.color-gray { background-color: var(--gray); }
+.color-gray-light { background-color: var(--gray-light); }
+.color-gray-lighter { background-color: var(--gray-lighter); }
+.color-gray-white { background-color: var(--gray-white); }
+.color-orange-dark { background-color: var(--orange-dark); }
+.color-orange { background-color: var(--orange); }
+.color-orange-light { background-color: var(--orange-light); }
+.color-cyan-dark { background-color: var(--cyan-dark); }
+.color-cyan { background-color: var(--cyan); }
+.color-cyan-light { background-color: var(--cyan-light); }
+.color-cyan-bright { background-color: var(--cyan-bright); }
+.color-success { background-color: var(--success); }
+
+/* Old mappings for compatibility */
 .pill,
 .mode-button,
 .stack-button,
@@ -142,3 +162,308 @@
   line-height: 0.95;
 }
 
+/* ==========================================================================
+   New LCARS UI Primitives Refinements
+   ========================================================================== */
+
+/* LcarsBar shape & caps */
+.lcars-bar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.lcars-bar.direction-horizontal {
+  height: var(--bar);
+  width: 100%;
+}
+
+.lcars-bar.direction-vertical {
+  width: var(--bar);
+  height: 100%;
+}
+
+.lcars-bar.cap-left {
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.lcars-bar.cap-right {
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.lcars-bar.cap-both {
+  border-radius: var(--radius-lg);
+}
+
+.lcars-bar-label {
+  color: #000;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+/* LcarsElement base interaction styles */
+.lcars-element {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 0;
+  box-sizing: border-box;
+  text-align: center;
+  color: #000;
+}
+
+.lcars-element.element-clickable {
+  cursor: pointer;
+  transition:
+    transform var(--fast) ease,
+    filter var(--fast) ease,
+    background-color var(--fast) ease,
+    color var(--fast) ease;
+}
+
+.lcars-element.element-clickable:hover {
+  filter: brightness(1.24) saturate(1.15);
+}
+
+.lcars-element.element-clickable:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.lcars-element.state-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.lcars-element.state-active {
+  filter: brightness(1.12) saturate(1.15);
+}
+
+/* LcarsBracket structure */
+.lcars-bracket {
+  position: relative;
+  border-left: 3px solid var(--cyan);
+  border-right: 3px solid var(--cyan);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.lcars-bracket-header,
+.lcars-bracket-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lcars-bracket-header {
+  margin-bottom: 8px;
+}
+
+.lcars-bracket-footer {
+  margin-top: 8px;
+}
+
+.lcars-bracket-tick {
+  width: 12px;
+  height: 3px;
+  display: block;
+}
+
+.lcars-bracket-title,
+.lcars-bracket-footer-text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 8px;
+}
+
+/* LcarsMeter Layouts */
+.lcars-meter {
+  box-sizing: border-box;
+}
+
+.lcars-meter.direction-horizontal {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  color: var(--gray-white);
+  width: 100%;
+}
+
+.lcars-meter.direction-horizontal .meter-label-h {
+  width: 76px;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--gray-lighter);
+}
+
+.lcars-meter.direction-horizontal .meter-track-h {
+  height: 15px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, #000 10px 14px),
+    var(--panel-2);
+}
+
+.lcars-meter.direction-horizontal .meter-fill-h {
+  display: block;
+  height: 100%;
+  transition: width var(--med) ease;
+}
+
+.lcars-meter.direction-horizontal .meter-value-h {
+  width: 42px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 800;
+  color: var(--gray-lighter);
+}
+
+.lcars-meter.direction-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.lcars-meter.direction-vertical .meter-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--gray-lighter);
+  text-transform: uppercase;
+}
+
+.lcars-meter.direction-vertical .meter-track-v {
+  width: 18px;
+  flex: 1;
+  min-height: 100px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 10px, #000 10px 14px),
+    var(--panel-2);
+  display: flex;
+  align-items: flex-end;
+}
+
+.lcars-meter.direction-vertical .meter-fill-v {
+  display: block;
+  width: 100%;
+  transition: height var(--med) ease;
+}
+
+.lcars-meter.direction-vertical .meter-value-v {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gray-lighter);
+  font-style: normal;
+}
+
+/* LcarsStatusDots blinking grid */
+.lcars-status-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 28px;
+  padding: 0 12px;
+}
+
+.lcars-status-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  animation: blink-soft 3.7s ease infinite;
+}
+
+/* LcarsReadout high density card */
+.lcars-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 18px;
+  background: color-mix(in srgb, var(--panel-2) 80%, transparent);
+  border-left: 9px solid var(--cyan);
+  box-sizing: border-box;
+}
+
+.lcars-readout .readout-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.lcars-readout .readout-value {
+  color: var(--gray-white);
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.lcars-readout .readout-sub-label {
+  font-size: 0.72rem;
+  color: var(--orange-light);
+  font-style: normal;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* LcarsOverlay settings backdrop and panel */
+.lcars-overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+.lcars-overlay-panel {
+  width: min(680px, 100%);
+  color: var(--gray-white);
+  background: #000;
+  border: 6px solid var(--cyan);
+  box-shadow: 0 0 45px rgba(55, 166, 209, 0.25);
+  box-sizing: border-box;
+}
+
+.lcars-overlay-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 22px;
+  background: var(--gray-dark);
+}
+
+.lcars-overlay-panel header h2 {
+  margin: 0;
+  color: var(--orange-light);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.lcars-overlay-body {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}

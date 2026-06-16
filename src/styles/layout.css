@@ -429,11 +429,29 @@
   color: var(--gray-lighter);
 }
 
+.telemetry-bar-bg {
+  height: 12px;
+  background: var(--panel-2);
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
 .telemetry-row i {
   display: block;
-  height: 12px;
-  background: var(--cyan-light);
+  height: 100%;
   transition: width var(--med) ease;
+}
+
+.animated-flow-line {
+  stroke-dasharray: 6, 18;
+  animation: flow-dash 15s linear infinite;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -240;
+  }
 }
 
 .telemetry-row:nth-child(2n) i {

@@ -60,8 +60,43 @@ Included:
 - `docs/component-architecture.md`
 - `docs/ai-tasks/TASK-001-v05-frontend-redesign.md`
 
-The immediate recommended workflow is:
-
 - Codex defines architecture and task specs.
 - Gemini implements on `ai/gemini-v05-redesign`.
 - Codex reviews the diff before merge/push to `main`.
+
+## 2026-06-16 - V0.5 Frontend Redesign Implementation
+
+Completed the frontend redesign tasks under TASK-001-v05-frontend-redesign.md.
+
+Included:
+- Created settings persistence hook `usePersistentSettings.ts` using `localStorage` for visual mode and audio settings.
+- Extracted modes config to `src/app/modes.ts`.
+- Componentized LCARS Grammar elements:
+  - `LcarsBar`
+  - `LcarsElement`
+  - `LcarsElbow`
+  - `LcarsBracket`
+  - `LcarsMeter`
+  - `LcarsStatusDots`
+  - `LcarsReadout`
+  - `LcarsOverlay`
+  - `LcarsContext` (wrapping Web Audio beep and settings persistence).
+- Relocated and refactored core state and rendering:
+  - `src/App.tsx` -> `src/app/App.tsx`.
+  - Added URL parameter support (`?mode=bridge|home|energy|memory|command`).
+- Redesigned and modularized Dashboard Views:
+  - `SystemDiagram` (original SVG network topology diagram, hovering nodes shows custom tooltip overlay, animated dash-lines represent data flows).
+  - `TelemetryStack`
+  - `EventLog`
+  - `BridgeView` (reconstructed using Lcars elements and brackets for high interaction density).
+  - `HomeView`
+  - `EnergyView`
+  - `MemoryView`
+  - `CommandView`
+- Enhanced style rules in `src/styles/lcars.css` and `src/styles/layout.css` (added double-bar layout segments, blinking dash line animation, and layout refinements).
+
+Verification:
+- `npm run build` completed successfully.
+- No TypeScript compiler errors.
+- Visuals verified against 390px, 768px, and 1440px layouts.
+
