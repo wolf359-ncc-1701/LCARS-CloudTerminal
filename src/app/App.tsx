@@ -134,11 +134,13 @@ function AppContent() {
           color="gray"
           width={246}
           height={148}
-          railWidth={34}
+          railWidth={80}
           barHeight={34}
-          outerRadius={72}
+          outerRadius={120}
           className="primary-elbow"
-        />
+        >
+          <div className="elbow-dev-code">DEV V.0.77</div>
+        </LcarsElbow>
         
         <div className="brand-block">
           <span>TITAN.LOCAL</span>
@@ -275,45 +277,9 @@ function AppContent() {
               onClick={() => setModeWithAudio(item.id)}
               className="right-menu-button"
             >
-              {item.label}
+              <span className="right-menu-label">{item.label.toUpperCase()}</span>
             </LcarsElement>
           ))}
-        </div>
-        <div className="command-hints">
-          <h2 className="type-module-label">QUICK ACTIONS</h2>
-          <LcarsElement
-            color="orange-dark"
-            onClick={() => {
-              setAlert("red");
-              beep("alert");
-            }}
-            beepType="none"
-            className="quick-action-button"
-          >
-            RED ALERT
-          </LcarsElement>
-          <LcarsElement
-            color="cyan"
-            onClick={() => {
-              setAlert("normal");
-              beep("confirm");
-            }}
-            beepType="none"
-            className="quick-action-button"
-          >
-            RESUME NORMAL
-          </LcarsElement>
-          <LcarsElement
-            color="orange-light"
-            onClick={() => {
-              executeScene("cinema");
-              beep("action");
-            }}
-            beepType="none"
-            className="quick-action-button"
-          >
-            CINEMA MODE
-          </LcarsElement>
         </div>
       </aside>
 
@@ -404,41 +370,35 @@ function AppContent() {
 
       {/* Info/Taxonomy Overlay dialog */}
       {infoOpen && (
-        <LcarsOverlay title="LCARS Core Grammar Taxonomy" onClose={() => setInfoOpen(false)}>
+        <LcarsOverlay title="TITAN.LOCAL SYSTEM INFO" onClose={() => setInfoOpen(false)}>
           <div style={{ color: "var(--gray-white)", fontSize: "0.95rem", display: "flex", flexDirection: "column", gap: "12px" }}>
             <p style={{ margin: 0, color: "var(--cyan-bright)", fontWeight: "bold" }}>
-              V0.5 Operations Console Specification:
+              V0.77 LCARS Cloud Terminal Development Console
             </p>
             <p style={{ margin: 0 }}>
-              This system is built using semantic primitives defined in the standard LCARS interface taxonomy.
+              System console running active telemetry and environmental controls, polished according to standard LCARS specifications.
             </p>
             
             <div style={{ display: "grid", gap: "10px", marginTop: "8px" }}>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsBar:</strong> Horizontal or vertical boundary segments to block out UI areas.
+              <div style={{ borderLeft: "4px solid var(--orange-light)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--orange-light)" }}>Grammar & Taxonomy:</strong> Semantic primitives including LcarsBar, LcarsElement, LcarsElbow, LcarsBracket, and LcarsMeter.
               </div>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsElement:</strong> Interactive buttons or status indicators emitting synthesized audio feedback.
+              <div style={{ borderLeft: "4px solid var(--cyan-bright)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>V0.75 Readability Fixes:</strong> Clean desktop title rendering and stable right-rail layout overrides.
               </div>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsElbow:</strong> Classic curved bent-corner segments defining major rail crooks.
+              <div style={{ borderLeft: "4px solid var(--cyan-bright)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>V0.76 Structural Polish:</strong> Reconstructed left elbow curvature to eliminate visual gaps.
               </div>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsBracket:</strong> Geometric grouping markers wrapping functional system panels.
+              <div style={{ borderLeft: "4px solid var(--cyan-bright)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--cyan-bright)" }}>V0.77 Right Rail & Habitat:</strong> Quick Actions removed, mode button labels restored, Habitat card contrast and typography optimized.
               </div>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsMeter:</strong> Analog metrics scales displaying real-time levels.
-              </div>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsStatusDots:</strong> Background micro-indicator arrays mimicking background activity.
-              </div>
-              <div style={{ borderLeft: "4px solid var(--cyan)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>LcarsReadout:</strong> High-visibility information panels with thick color bounds.
+              <div style={{ borderLeft: "4px solid var(--orange)", paddingLeft: "10px" }}>
+                <strong style={{ color: "var(--orange)" }}>Agent Workflow:</strong> Local-first multi-agent workflow with Codex driving architecture/review and Gemini delivering frontend implementation.
               </div>
             </div>
             
-            <p style={{ margin: "10px 0 0 0", fontSize: "0.85rem", color: "var(--orange-light)" }}>
-              No Star Trek copyrighted symbols or external runtime assets are utilized. Auto Mode runs after 60s idle.
+            <p style={{ margin: "10px 0 0 0", fontSize: "0.85rem", color: "var(--gray-light)" }}>
+              System operating in local-only development mode. Automatic display mode cycling active after 60s idle.
             </p>
           </div>
         </LcarsOverlay>

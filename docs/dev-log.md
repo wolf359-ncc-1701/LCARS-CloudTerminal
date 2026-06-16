@@ -182,6 +182,29 @@ GitHub status:
 
 - Local-only task preparation. Do not push until the user asks.
 
+## 2026-06-16 - V0.77 Right Rail And Habitat Task
+
+Prepared a local-only corrective task after the user's screenshots showed remaining issues in the right rail and Habitat view.
+
+Included:
+
+- Added `docs/ai-tasks/TASK-006-v077-right-rail-and-habitat-polish.md`.
+- Added `docs/gemini-prompts/v077-right-rail-habitat.md`.
+
+Implementation target:
+
+- Remove the broken `QUICK ACTIONS` panel from the right rail.
+- Restore visible labels in the right-side mode selector.
+- Rework Habitat room card typography and contrast so cyan, orange, and gray cards remain readable.
+- Fix the black circular dial percentages and temperature mojibake.
+- Sync the `TITAN.LOCAL` info overlay with current V0.77 project development status.
+- Refine the top-left corner toward the user's PPT-style wider-body/narrower-extension LCARS shape and add `DEV V.0.77` in the new corner space.
+- Preserve V0.76 left elbow and V0.75 title/right-rail safeguards.
+
+GitHub status:
+
+- Local-only task preparation. Do not push until the user asks.
+
 ## 2026-06-16 - V0.75 Codex Review Blockers Fixes
 
 Completed the corrections addressing three key visual review blockers from Codex.
@@ -233,3 +256,25 @@ Verification:
 - No TypeScript compiler errors.
 - Visual check confirms continuous curves and seamless layout transitions.
 
+## 2026-06-16 - V0.77 Right Rail and Habitat Polish Implementation
+
+Successfully completed the V0.77 corrective visual polish pass.
+
+Included:
+- **Quick Actions Removal**: Removed the `QUICK ACTIONS` block from the right rail in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) and cleaned up corresponding HTML. Bottom-right controls are now dedicated to a clean, stable system index. Underlying helper/scene functions were kept intact.
+- **Right Rail Mode Labels**: Wrapped Mode button text inside a `.right-menu-label` element with forced uppercase conversion in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx). In [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css), updated `.right-menu-button` to use `justify-content: center` and specified explicit active/inactive font colors. Mode button sizes are kept constant between active and inactive states.
+- **Habitat Room Cards Polish**:
+  - Removed all inline formatting styles for room card typography and moved styling to dedicated CSS classes in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css).
+  - Defined explicit text colors for room title, sensor label, climate text, temp/humidity values, sparkline label, and meters.
+  - Applied high-contrast dark colors for bright card surfaces (`data-surface="bright"`) and light colors for dark gray card surfaces (`data-surface="dark"`).
+  - Maintained light text color (`color: var(--gray-white) !important`) on the percentage dial `.room-ring` to keep it legible against the black circle background, and added dynamic track color support based on room status.
+  - Displayed sleep quarters label as `SLEEP QTRS` and nominal code as `NOMINAL-0x` with nowrap constraint to prevent awkward wrapping.
+  - Fixed degree symbols to read `23.6 C` to eliminate mojibake characters.
+- **TITAN.LOCAL Info Panel Sync**: Updated the info modal in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) to describe the V0.77 operations console state, summarizing the grammar taxonomy, V0.75 readability changes, V0.76 left elbow corrections, V0.77 polish fixes, and the Codex/Gemini local-first agent workflow.
+- **Asymmetric Left Elbow & Dev Code**:
+  - Refined the top-left corner in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) using `railWidth={80}` (thicker lower/left body) and `barHeight={34}` (narrower top/right continuation) with a smooth transition using quadratic curves.
+  - Absolute-positioned `DEV V.0.77` text overlay inside the black cavity space of the elbow bend, formatted with the LCARS display font and orange-light accent.
+
+Verification:
+- `npm run build` completed successfully with no errors or warnings.
+- Local commit: `fix(ui): polish V0.77 right rail and habitat cards`.

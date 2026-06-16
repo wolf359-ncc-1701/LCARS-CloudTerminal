@@ -618,11 +618,10 @@
   place-items: center;
   justify-self: center;
   border-radius: 50%;
-  color: #000;
   background:
     radial-gradient(circle, #000 0 46%, transparent 47%),
-    conic-gradient(var(--cyan-bright) var(--value), var(--gray-dark) 0);
-  color: var(--gray-white);
+    conic-gradient(var(--track-color, var(--cyan-bright)) var(--value), var(--gray-dark) 0);
+  color: var(--gray-white) !important;
   font-size: 2rem;
   font-weight: 800;
 }
@@ -959,14 +958,14 @@
 .right-menu-button {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-end !important;
-  padding: 0 16px !important;
+  justify-content: center !important;
+  padding: 0 10px !important;
   height: 38px !important;
   min-height: 38px !important;
   width: 100% !important;
   border-radius: 0 !important;
   font-family: var(--font-lcars);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: bold;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -976,11 +975,19 @@
   white-space: nowrap;
 }
 
+.right-menu-label {
+  display: inline-block;
+  font-family: var(--font-lcars);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: inherit !important;
+}
+
 /* Active mode button: bright orange-light background, text must be dark black */
 .right-menu-button.color-orange-light,
 .right-menu-button.state-active {
   background-color: var(--orange-light) !important;
-  color: #05080c !important;
+  color: #000000 !important;
 }
 
 /* Inactive mode button: dark gray-dark background, text must be light gray-white */
@@ -1050,20 +1057,171 @@
 
 /* Fine-grained Contrast Overrides on Bright LcarsBrackets (No Global * Selector) */
 
-/* Home Room Cards inside bright brackets */
-.lcars-bracket.color-cyan-bright .room-card-content strong,
-.lcars-bracket.color-cyan-light .room-card-content strong,
-.lcars-bracket.color-orange-light .room-card-content strong,
-.lcars-bracket.color-cyan-bright .room-card-content span,
-.lcars-bracket.color-cyan-light .room-card-content span,
-.lcars-bracket.color-orange-light .room-card-content span,
-.lcars-bracket.color-cyan-bright .room-card-content em,
-.lcars-bracket.color-cyan-light .room-card-content em,
-.lcars-bracket.color-orange-light .room-card-content em,
-.lcars-bracket.color-cyan-bright .room-ring,
-.lcars-bracket.color-cyan-light .room-ring,
-.lcars-bracket.color-orange-light .room-ring {
-  color: #05080c !important;
+/* Home Room Cards semantic styles */
+.room-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0;
+  height: 100%;
+}
+
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.room-card-title {
+  font-family: var(--font-lcars);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.room-card-code {
+  font-family: var(--font-lcars);
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.room-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.room-card-dial-container {
+  position: relative;
+  justify-self: center;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-card-sensor-label {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.room-card-sparkline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.room-card-climate {
+  font-size: 0.85rem;
+  font-family: var(--font-lcars);
+}
+
+.room-card-temp {
+  font-weight: bold;
+}
+
+.room-card-climate-divider {
+  margin: 0 4px;
+}
+
+.room-card-humidity {
+  font-weight: bold;
+}
+
+.room-card-sparkline-svg {
+  background: var(--panel);
+  border: 1px solid var(--gray-dark);
+}
+
+.room-card-sparkline-label {
+  font-size: 0.6rem;
+  font-family: var(--font-lcars);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.room-card-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Surface specific typography and color contrast overrides */
+.room-card-content[data-surface="dark"] {
+  color: var(--gray-lighter);
+}
+.room-card-content[data-surface="dark"] .room-card-title {
+  color: var(--gray-white);
+}
+.room-card-content[data-surface="dark"] .room-card-sensor-label {
+  color: var(--gray-light);
+}
+.room-card-content[data-surface="dark"] .room-card-sparkline-label {
+  color: var(--gray-light);
+}
+.room-card-content[data-surface="dark"] .room-card-climate {
+  color: var(--gray-white);
+}
+.room-card-content[data-surface="dark"] .room-card-temp {
+  color: var(--orange-light);
+}
+.room-card-content[data-surface="dark"] .room-card-climate-divider {
+  color: var(--gray);
+}
+.room-card-content[data-surface="dark"] .room-card-humidity {
+  color: var(--cyan-light);
+}
+
+.room-card-content[data-surface="bright"] {
+  color: #05080c;
+}
+.room-card-content[data-surface="bright"] .room-card-title {
+  color: #05080c;
+}
+.room-card-content[data-surface="bright"] .room-card-sensor-label {
+  color: #05080c;
+}
+.room-card-content[data-surface="bright"] .room-card-sparkline-label {
+  color: #05080c;
+}
+.room-card-content[data-surface="bright"] .room-card-climate {
+  color: #05080c;
+}
+.room-card-content[data-surface="bright"] .room-card-temp {
+  color: #8c2a00;
+}
+.room-card-content[data-surface="bright"] .room-card-climate-divider {
+  color: #05080c;
+}
+.room-card-content[data-surface="bright"] .room-card-humidity {
+  color: #004d61;
+}
+
+/* Left elbow development code watermark */
+.elbow-dev-code {
+  position: absolute;
+  left: 92px;
+  top: 48px;
+  color: var(--orange-light);
+  font-family: var(--font-lcars);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 /* Energy core Primary Induction (EnergyView Left) inside bright orange bracket */
