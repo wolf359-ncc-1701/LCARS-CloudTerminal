@@ -42,6 +42,7 @@ V0.75 is a corrective polish pass based on the user's screenshots. Do not add ma
 4. Missing/cut top-left LCARS elbow corner.
 5. Top-right title ellipsis and lingering `COMMAND` wording.
 6. Right rail menu size and alignment inconsistency.
+7. Right rail labels disappearing or becoming unreadable.
 
 ## Required Fixes
 
@@ -175,6 +176,27 @@ Implementation hints:
 - Use `font-size: clamp(...)` only if needed, not viewport-wide scaling.
 - Consider `text-align: right` for rail labels if it better matches LCARS.
 
+### 7. Fix Right Rail Text Visibility Regression
+
+Problem:
+
+- In the latest user screenshot, the right rail blocks still render, but labels disappear or become unreadable.
+- This is a blocker. A visible colored block with invisible text is a failed state.
+
+Required:
+
+- Right rail menu labels must always remain visible.
+- Quick action labels must always remain visible.
+- Do not rely on accidental inherited foreground color for these controls.
+- Review contrast, class-specific color rules, overflow behavior, and broad descendant selectors.
+
+Implementation hints:
+
+- Give `.right-menu-button` and `.quick-action-button` explicit foreground color rules for each relevant color class.
+- Avoid broad selectors such as bright-panel wildcard descendant rules that can leak into nested dark panels.
+- Check for `overflow: hidden`, `text-overflow`, `white-space`, or other clipping rules that can hide labels.
+- Verify both inactive and active states on the right rail.
+
 ## Constraints
 
 Allowed files:
@@ -215,6 +237,8 @@ Then verify:
 - No desktop title ellipsis.
 - No user-facing `COMMAND MODULE`.
 - Right rail menu item sizes remain stable across modes.
+- Right rail labels remain visible in both inactive and active states.
+- Quick action labels remain visible and readable.
 - Home and Energy labels are readable.
 - Energy diagram communicates power distribution.
 - Event logs no longer wrap into unreadable vertical word stacks.

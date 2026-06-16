@@ -787,6 +787,7 @@
 .right-stack {
   display: grid;
   gap: 10px;
+  grid-auto-rows: 38px;
 }
 
 .stack-button {
@@ -961,9 +962,29 @@
   font-family: var(--font-lcars);
   font-size: 0.82rem;
   font-weight: bold;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   transition: background-color var(--fast) ease, color var(--fast) ease;
+  min-width: 0;
+  overflow: visible !important;
+  white-space: nowrap;
+}
+
+/* Active mode button: bright orange-light background, text must be dark black */
+.right-menu-button.color-orange-light {
+  background-color: var(--orange-light) !important;
+  color: #05080c !important;
+}
+
+/* Inactive mode button: dark gray-dark background, text must be light gray-white */
+.right-menu-button.color-gray-dark {
+  background-color: var(--gray-dark) !important;
+  color: var(--gray-white) !important;
+}
+
+.right-menu-button:hover:not(.state-active) {
+  background-color: var(--gray) !important;
+  color: var(--gray-white) !important;
 }
 
 .quick-action-button {
@@ -971,8 +992,8 @@
   align-items: center !important;
   justify-content: flex-end !important;
   padding: 0 16px !important;
-  height: 36px !important;
-  min-height: 36px !important;
+  height: 38px !important; /* Unified height to 38px to match right menu items */
+  min-height: 38px !important;
   width: 100% !important;
   border-radius: 0 !important;
   font-family: var(--font-lcars);
@@ -981,41 +1002,88 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   transition: background-color var(--fast) ease, color var(--fast) ease;
+  min-width: 0;
+  overflow: visible !important;
+  white-space: nowrap;
 }
 
-/* Universal Contrast Polish for Bright Brackets */
-.lcars-bracket.color-cyan-bright *,
-.lcars-bracket.color-cyan-light *,
-.lcars-bracket.color-cyan *,
-.lcars-bracket.color-orange *,
-.lcars-bracket.color-orange-light * {
-  color: #000000 !important;
+/* RED ALERT button: dark orange-dark background, text must be light white */
+.quick-action-button.color-orange-dark {
+  background-color: var(--orange-dark) !important;
+  color: var(--gray-white) !important;
 }
 
-/* Preserve color styles inside SVGs */
-.lcars-bracket.color-cyan-bright svg *,
-.lcars-bracket.color-cyan-light svg *,
-.lcars-bracket.color-cyan svg *,
-.lcars-bracket.color-orange svg *,
-.lcars-bracket.color-orange-light svg * {
-  color: initial !important;
+/* RESUME NORMAL button: bright cyan background, text must be dark black */
+.quick-action-button.color-cyan {
+  background-color: var(--cyan) !important;
+  color: #05080c !important;
 }
 
-/* Restore progress bar background and fill styles */
-.lcars-bracket.color-cyan-bright .meter-fill-h,
-.lcars-bracket.color-cyan-light .meter-fill-h,
-.lcars-bracket.color-cyan .meter-fill-h,
-.lcars-bracket.color-orange .meter-fill-h,
-.lcars-bracket.color-orange-light .meter-fill-h,
-.lcars-bracket.color-cyan-bright .meter-fill-v,
-.lcars-bracket.color-cyan-light .meter-fill-v,
-.lcars-bracket.color-cyan .meter-fill-v,
-.lcars-bracket.color-orange .meter-fill-v,
-.lcars-bracket.color-orange-light .meter-fill-v {
-  color: initial !important;
+/* CINEMA MODE button: bright orange-light background, text must be dark black */
+.quick-action-button.color-orange-light {
+  background-color: var(--orange-light) !important;
+  color: #05080c !important;
 }
 
-/* LcarsActionButton overrides: Active texts are set explicitly by props styling */
+.quick-action-button:hover {
+  filter: brightness(1.2) saturate(1.1);
+}
+
+/* Fine-grained Contrast Overrides on Bright LcarsBrackets (No Global * Selector) */
+
+/* Home Room Cards inside bright brackets */
+.lcars-bracket.color-cyan-bright .room-card-content strong,
+.lcars-bracket.color-cyan-light .room-card-content strong,
+.lcars-bracket.color-orange-light .room-card-content strong,
+.lcars-bracket.color-cyan-bright .room-card-content span,
+.lcars-bracket.color-cyan-light .room-card-content span,
+.lcars-bracket.color-orange-light .room-card-content span,
+.lcars-bracket.color-cyan-bright .room-card-content em,
+.lcars-bracket.color-cyan-light .room-card-content em,
+.lcars-bracket.color-orange-light .room-card-content em,
+.lcars-bracket.color-cyan-bright .room-ring,
+.lcars-bracket.color-cyan-light .room-ring,
+.lcars-bracket.color-orange-light .room-ring {
+  color: #05080c !important;
+}
+
+/* Energy core Primary Induction (EnergyView Left) inside bright orange bracket */
+.lcars-bracket.color-orange .type-micro-code,
+.lcars-bracket.color-orange .type-micro-code span,
+.lcars-bracket.color-orange .meter-label-h,
+.lcars-bracket.color-orange .meter-value-h {
+  color: #05080c !important;
+}
+
+/* Energy core Distributive Injectors (EnergyView Right) inside bright cyan bracket */
+.lcars-bracket.color-cyan .energy-board,
+.lcars-bracket.color-cyan .energy-board span,
+.lcars-bracket.color-cyan .energy-board strong,
+.lcars-bracket.color-cyan .energy-board em {
+  color: #05080c !important;
+}
+
+/* Precise Parameter Row Contrast overrides */
+.lcars-parameter-row .lcars-param-label.color-gray-dark {
+  color: var(--gray-white) !important;
+  background-color: var(--gray-dark) !important;
+}
+
+.lcars-parameter-row .lcars-param-value.color-cyan-bright {
+  color: #05080c !important;
+  background-color: var(--cyan-bright) !important;
+}
+
+.lcars-parameter-row .lcars-param-value.color-cyan-dark {
+  color: var(--gray-white) !important;
+  background-color: var(--cyan-dark) !important;
+}
+
+.lcars-parameter-row .lcars-param-value.color-orange {
+  color: #05080c !important;
+  background-color: var(--orange) !important;
+}
+
 .lcars-action-button-element * {
   color: inherit !important;
 }
