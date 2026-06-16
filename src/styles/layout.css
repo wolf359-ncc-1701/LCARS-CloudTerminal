@@ -662,7 +662,7 @@
 
 .event-log article {
   display: grid;
-  grid-template-columns: 64px 210px 1fr;
+  grid-template-columns: 60px 148px 1fr;
   gap: 14px;
   align-items: center;
   min-height: 62px;
@@ -885,3 +885,138 @@
   color: #000;
   background: var(--cyan-bright);
 }
+
+/* V0.75 Visual Polish CSS Rules */
+
+/* Compact Event Log for Narrow Side Panels */
+.event-log.compact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.event-log.compact article {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  min-height: auto;
+  padding: 8px 12px;
+  background: rgba(30, 34, 41, 0.78);
+  border-left: 6px solid var(--cyan);
+  border-radius: 0 4px 4px 0;
+}
+
+.event-log.compact article[data-tone="warning"] {
+  border-color: var(--orange-light);
+}
+
+.event-log.compact article[data-tone="danger"] {
+  border-color: var(--orange-dark);
+}
+
+.event-log.compact .log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px dashed var(--gray-dark);
+  padding-bottom: 3px;
+}
+
+.event-log.compact time {
+  color: var(--cyan-bright);
+  font-family: var(--font-lcars);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.event-log.compact strong {
+  color: var(--gray-white);
+  font-family: var(--font-lcars);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.event-log.compact .log-detail {
+  color: var(--gray-lighter);
+  font-family: Antonio, "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  margin-top: 2px;
+  word-break: break-word;
+}
+
+/* Right Rail Menu & Quick Action Button Constraints */
+.right-menu-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 16px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  width: 100% !important;
+  border-radius: 0 !important;
+  font-family: var(--font-lcars);
+  font-size: 0.82rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background-color var(--fast) ease, color var(--fast) ease;
+}
+
+.quick-action-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  width: 100% !important;
+  border-radius: 0 !important;
+  font-family: var(--font-lcars);
+  font-size: 0.76rem;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: background-color var(--fast) ease, color var(--fast) ease;
+}
+
+/* Universal Contrast Polish for Bright Brackets */
+.lcars-bracket.color-cyan-bright *,
+.lcars-bracket.color-cyan-light *,
+.lcars-bracket.color-cyan *,
+.lcars-bracket.color-orange *,
+.lcars-bracket.color-orange-light * {
+  color: #000000 !important;
+}
+
+/* Preserve color styles inside SVGs */
+.lcars-bracket.color-cyan-bright svg *,
+.lcars-bracket.color-cyan-light svg *,
+.lcars-bracket.color-cyan svg *,
+.lcars-bracket.color-orange svg *,
+.lcars-bracket.color-orange-light svg * {
+  color: initial !important;
+}
+
+/* Restore progress bar background and fill styles */
+.lcars-bracket.color-cyan-bright .meter-fill-h,
+.lcars-bracket.color-cyan-light .meter-fill-h,
+.lcars-bracket.color-cyan .meter-fill-h,
+.lcars-bracket.color-orange .meter-fill-h,
+.lcars-bracket.color-orange-light .meter-fill-h,
+.lcars-bracket.color-cyan-bright .meter-fill-v,
+.lcars-bracket.color-cyan-light .meter-fill-v,
+.lcars-bracket.color-cyan .meter-fill-v,
+.lcars-bracket.color-orange .meter-fill-v,
+.lcars-bracket.color-orange-light .meter-fill-v {
+  color: initial !important;
+}
+
+/* LcarsActionButton overrides: Active texts are set explicitly by props styling */
+.lcars-action-button-element * {
+  color: inherit !important;
+}
+

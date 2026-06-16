@@ -1,6 +1,5 @@
 import React from "react";
 import type { AlertLevel, EventLogItem } from "../../types";
-import { MemoryView } from "./MemoryView";
 import { LcarsActionButton, LcarsParameterRow, LcarsMediaFrame, useLcars } from "../lcars";
 
 interface CommandViewProps {
@@ -164,8 +163,16 @@ export const CommandView: React.FC<CommandViewProps> = ({
       {/* Right Column: Console Log Frame & Parameters */}
       <LcarsMediaFrame title="SYSTEM ACTIONS TELEMETRY LOG" color="cyan" style={{ minWidth: 0 }}>
         <div style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between", gap: "12px" }}>
-          <div style={{ flex: 1, minHeight: 0 }}>
-            <MemoryView events={events.slice(0, 5)} />
+          <div className="event-log compact" style={{ flex: 1, overflowY: "auto" }}>
+            {events.slice(0, 5).map((event) => (
+              <article key={event.id} data-tone={event.tone}>
+                <div className="log-header">
+                  <time className="type-numeric">{event.time}</time>
+                  <strong className="type-module-label">{event.label}</strong>
+                </div>
+                <span className="type-body-log log-detail">{event.detail}</span>
+              </article>
+            ))}
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>

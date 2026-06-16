@@ -158,3 +158,26 @@ Implementation target:
 - Wire user-provided audio through the existing audio setting.
 - Expand animation primitives based on the PPT videos.
 
+## 2026-06-16 - V0.75 Screenshot Regression Task
+
+Prepared a local-only corrective polish task based on user screenshots from the V0.7 implementation.
+
+Included:
+
+- Added `docs/v0.75-screenshot-regression-analysis.md`.
+- Added `docs/ai-tasks/TASK-004-v075-visual-regression-polish.md`.
+- Added `docs/gemini-prompts/v075-visual-polish.md`.
+
+Implementation target:
+
+- Fix inconsistent log typography and wrapping.
+- Replace the unclear Energy core with an original energy bus diagram.
+- Improve contrast on cyan/orange/gray panels.
+- Repair the top-left LCARS elbow.
+- Remove desktop title ellipsis and lingering command wording.
+- Stabilize right rail menu item sizing.
+
+GitHub status:
+
+- Local-only task preparation. Do not push until the user asks.
+

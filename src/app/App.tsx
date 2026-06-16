@@ -29,6 +29,14 @@ import {
   CommandView,
 } from "../components/dashboard";
 
+const modeTitleMap: Record<Mode, string> = {
+  bridge: "LCARS CLOUD",
+  home: "HOME",
+  energy: "ENERGY",
+  memory: "MEMORY",
+  command: "ACTIONS",
+};
+
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   hour: "2-digit",
   minute: "2-digit",
@@ -181,7 +189,7 @@ function AppContent() {
           </div>
           <LcarsStatusDots count={18} color="cyan-light" />
           <div className="safe-title-zone type-display-title">
-            {mode === "bridge" ? "LCARS CLOUD TERMINAL" : `${mode.toUpperCase()} MODULE`}
+            {modeTitleMap[mode]}
           </div>
         </header>
 
@@ -264,7 +272,7 @@ function AppContent() {
               color={mode === item.id ? "orange-light" : "gray-dark"}
               active={mode === item.id}
               onClick={() => setModeWithAudio(item.id)}
-              style={{ minHeight: "36px", width: "100%", borderRadius: 0 }}
+              className="right-menu-button"
             >
               {item.label}
             </LcarsElement>
@@ -279,7 +287,7 @@ function AppContent() {
               beep("alert");
             }}
             beepType="none"
-            style={{ minHeight: "34px", width: "100%", borderRadius: 0 }}
+            className="quick-action-button"
           >
             RED ALERT
           </LcarsElement>
@@ -290,7 +298,7 @@ function AppContent() {
               beep("confirm");
             }}
             beepType="none"
-            style={{ minHeight: "34px", width: "100%", borderRadius: 0 }}
+            className="quick-action-button"
           >
             RESUME NORMAL
           </LcarsElement>
@@ -301,7 +309,7 @@ function AppContent() {
               beep("action");
             }}
             beepType="none"
-            style={{ minHeight: "34px", width: "100%", borderRadius: 0 }}
+            className="quick-action-button"
           >
             CINEMA MODE
           </LcarsElement>

@@ -254,6 +254,31 @@
   animation: action-confirm-flash 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Energy Bus SVG Animation Pulses */
+@keyframes bus-flow-pulse {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+.bus-flow-pulse {
+  animation: bus-flow-pulse 1.6s linear infinite;
+}
+
+@keyframes branch-pulse-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+.branch-pulse {
+  animation: branch-pulse-flow 1.5s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

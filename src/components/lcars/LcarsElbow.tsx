@@ -1,4 +1,4 @@
-import type React from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 
 interface LcarsElbowProps {
   direction?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
@@ -15,7 +15,7 @@ interface LcarsElbowProps {
 export const LcarsElbow: React.FC<LcarsElbowProps> = ({
   direction = "top-left",
   color = "gray",
-  width = 120,
+  width: initialWidth = 120,
   height = 80,
   railWidth = 34,
   barHeight = 30,
@@ -23,6 +23,23 @@ export const LcarsElbow: React.FC<LcarsElbowProps> = ({
   className = "",
   children,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(initialWidth);
+
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const measuredWidth = entry.contentRect.width;
+        if (measuredWidth > 0) {
+          setWidth(measuredWidth);
+        }
+      }
+    });
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   // Generate SVG Path based on parameters
   const getPath = () => {
     const w = width;
@@ -47,9 +64,18 @@ export const LcarsElbow: React.FC<LcarsElbowProps> = ({
   const classes = [`lcars-elbow-container`, `elbow-${direction}`, className].join(" ");
 
   return (
-    <div className={classes} style={{ position: "relative", width, height }}>
+    <div
+      ref={containerRef}
+      className={classes}
+      style={{
+        position: "relative",
+        width: "100%",
+        maxWidth: initialWidth,
+        height,
+      }}
+    >
       <svg
-        width={width}
+        width="100%"
         height={height}
         viewBox={`0 0 ${width} ${height}`}
         style={{ display: "block" }}

@@ -18,9 +18,9 @@ export const MemoryView: React.FC<MemoryViewProps> = ({ events }) => {
           <div className="event-log" style={{ flex: 1, overflowY: "auto", paddingRight: "8px" }}>
             {events.map((event) => (
               <article key={event.id} data-tone={event.tone} style={{ padding: "8px 12px" }}>
-                <time style={{ fontFamily: "var(--font-lcars)", fontWeight: "bold" }}>{event.time}</time>
-                <strong style={{ textTransform: "uppercase" }}>{event.label}</strong>
-                <span>{event.detail}</span>
+                <time className="type-numeric">{event.time}</time>
+                <strong className="type-module-label">{event.label}</strong>
+                <span className="type-body-log">{event.detail}</span>
               </article>
             ))}
           </div>
