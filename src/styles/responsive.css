@@ -112,7 +112,9 @@
     min-height: 280px;
   }
 
-  .energy-view {
+  .energy-view,
+  .memory-view,
+  .command-view {
     grid-template-columns: 1fr;
   }
 

@@ -3,6 +3,7 @@
   src: url("../assets/fonts/microgramma-d-extended-bold.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -37,14 +38,6 @@
   --fast: 160ms;
   --med: 420ms;
   --slow: 1.6s;
-}
-
-@font-face {
-  font-family: "LCARS Microgramma";
-  src: url("../assets/fonts/microgramma-d-extended-bold.otf") format("opentype");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
 }
 
 * {

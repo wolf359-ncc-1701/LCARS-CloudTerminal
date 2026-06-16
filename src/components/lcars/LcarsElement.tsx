@@ -8,7 +8,7 @@ interface LcarsElementProps {
   onClick?: (e: React.MouseEvent) => void;
   className?: string;
   style?: React.CSSProperties;
-  beepType?: "soft" | "confirm" | "alert";
+  beepType?: "soft" | "confirm" | "alert" | "none";
   children?: React.ReactNode;
 }
 
@@ -26,7 +26,9 @@ export const LcarsElement: React.FC<LcarsElementProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
     if (disabled) return;
-    beep(beepType);
+    if (beepType !== "none") {
+      beep(beepType);
+    }
     if (onClick) {
       onClick(e);
     }

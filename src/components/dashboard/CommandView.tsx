@@ -24,7 +24,7 @@ export const CommandView: React.FC<CommandViewProps> = ({
   ];
 
   return (
-    <div className="view command-view panel-enter" style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "28px", height: "100%", position: "relative" }}>
+    <div className="view command-view panel-enter">
       {/* Decorative coordinate cross */}
       <LcarsFrame.Cross x="6px" y="6px" size={10} color="gray-light" />
 
@@ -32,7 +32,7 @@ export const CommandView: React.FC<CommandViewProps> = ({
       <div style={{ display: "flex", flexDirection: "column", gap: "18px", minHeight: 0 }}>
         <LcarsBracket title="MOCK TERMINAL INTERFACE / VOICE ROUTING" color="orange">
           <div style={{ padding: "4px 0" }}>
-            <label className="command-line" style={{ display: "grid", gridTemplateColumns: "160px 1fr auto", gap: "12px", alignItems: "center" }}>
+            <label className="command-line">
               <span style={{ color: "var(--orange-light)", textTransform: "uppercase", fontSize: "0.82rem", fontWeight: "bold", fontFamily: "var(--font-lcars)" }}>
                 MOCK CONSOLE
               </span>
@@ -59,7 +59,7 @@ export const CommandView: React.FC<CommandViewProps> = ({
               <LcarsElement
                 color="cyan-bright"
                 onClick={runCommand}
-                beepType="confirm"
+                beepType="none"
                 style={{
                   height: "44px",
                   padding: "0 22px",

@@ -9,7 +9,7 @@ export const EnergyView: React.FC<EnergyViewProps> = ({ telemetry }) => {
   const loads = ["LIGHTING", "CLIMATE", "MEDIA", "STANDBY", "AUX"];
 
   return (
-    <div className="view energy-view panel-enter" style={{ display: "grid", gridTemplateColumns: "minmax(240px, 0.9fr) minmax(360px, 1.1fr)", gap: "28px", height: "100%", position: "relative" }}>
+    <div className="view energy-view panel-enter">
       {/* Decorative coordinate cross */}
       <LcarsFrame.Cross x="4px" y="4px" size={10} color="gray-light" />
       

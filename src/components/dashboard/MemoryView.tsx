@@ -8,7 +8,7 @@ interface MemoryViewProps {
 
 export const MemoryView: React.FC<MemoryViewProps> = ({ events }) => {
   return (
-    <div className="view panel-enter" style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "28px", height: "100%", position: "relative" }}>
+    <div className="view memory-view panel-enter">
       {/* Decorative coordinate mark */}
       <LcarsFrame.Cross x="6px" y="6px" size={10} color="gray-light" />
 
