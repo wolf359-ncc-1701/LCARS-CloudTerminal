@@ -61,7 +61,7 @@
 }
 
 .primary-elbow {
-  width: 300px !important;
+  width: 350px !important;
   max-width: none !important;
   z-index: 5;
 }
@@ -157,7 +157,8 @@
   display: grid;
   grid-template-rows: 96px 52px minmax(0, 1fr) 118px;
   min-width: 0;
-  padding-left: 16px;
+  --stage-left-clearance: 44px;
+  padding-left: var(--stage-left-clearance);
 }
 
 .top-rail {

@@ -311,4 +311,19 @@ Verification:
 - Visual inspection confirms clean vertical spacing and proper elbow visual connection.
 - Local commit: `fix(ui): restore V0.77 main stage left clearance`.
 
+## 2026-06-16 - V0.77 Main Stage Left Clearance Increase
+
+Addressed review comments regarding display-window round border proximity to the left rail by establishing a generous, visible clearance space on desktop viewports.
+
+Included:
+- **Clearance Padding**: Defined `--stage-left-clearance: 44px` on `.main-stage` in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) and applied it as `padding-left`. Combined with the `14px` grid column gap, this creates a total visible vertical separation of `58px` between the left rail (246px wide) and the display window's left border on desktop screens, giving a spacious black breathing channel.
+- **Elbow Extension**: Updated `.primary-elbow` width in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) from `300px !important` to `350px !important` to extend its horizontal bar, bridging the wider gap and preserving the seamless visual connection to the top rail of the main stage (which starts at 304px).
+- **Typography and Core Widths**: Maintained stable `--rail: 246px` and all left-rail children styling without modifications. Watermark text `DEV V.0.77` remains aligned in the gray elbow material.
+
+Verification:
+- `npm run build` compiles with no errors.
+- Visual check confirms stable layout metrics, no overlaps, and a clean vertical channel separating the left rail controls from the display stage.
+- Local commit: `fix(ui): increase V0.77 main stage left clearance`.
+
+
 
