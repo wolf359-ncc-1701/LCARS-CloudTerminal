@@ -219,6 +219,23 @@
   color: #000;
 }
 
+/* Color-contrast text rules */
+.lcars-element.color-gray-dark,
+.lcars-element.color-cyan-dark,
+.lcars-element.color-orange-dark,
+.lcars-element.color-gray {
+  color: var(--gray-white) !important;
+}
+
+.lcars-element.color-cyan,
+.lcars-element.color-cyan-light,
+.lcars-element.color-cyan-bright,
+.lcars-element.color-orange,
+.lcars-element.color-orange-light,
+.lcars-element.color-success {
+  color: var(--text-on-cyan) !important;
+}
+
 .lcars-element.element-clickable {
   cursor: pointer;
   transition:

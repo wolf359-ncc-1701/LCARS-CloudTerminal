@@ -8,7 +8,7 @@ interface LcarsContextProps {
   setAudioEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   visual: VisualMode;
   setVisual: React.Dispatch<React.SetStateAction<VisualMode>>;
-  beep: (variant?: "soft" | "confirm" | "alert") => void;
+  beep: (variant?: "soft" | "confirm" | "alert" | "action" | "transition" | "archive") => void;
 }
 
 const LcarsContext = createContext<LcarsContextProps | undefined>(undefined);

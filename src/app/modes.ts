@@ -11,5 +11,5 @@ export const MODES: ModeConfig[] = [
   { id: "home", label: "Habitat", code: "HAB-22" },
   { id: "energy", label: "Power", code: "EPS-47" },
   { id: "memory", label: "Memory", code: "MEM-09" },
-  { id: "command", label: "Command", code: "CMD-11" },
+  { id: "command", label: "Actions", code: "ACT-11" },
 ];

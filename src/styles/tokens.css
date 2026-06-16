@@ -38,6 +38,44 @@
   --fast: 160ms;
   --med: 420ms;
   --slow: 1.6s;
+  --text-on-cyan: #05080c;
+  --text-on-orange: #070302;
+  --text-muted: var(--gray-lighter);
+  --panel-border: var(--gray-dark);
+  --safe-title-max: calc(100% - 300px);
+}
+
+/* Typography Role Classes */
+.type-display-title {
+  font-family: var(--font-lcars);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.type-module-label {
+  font-family: var(--font-lcars);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.type-numeric {
+  font-family: var(--font-lcars);
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.type-micro-code {
+  font-family: var(--font-lcars);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+}
+
+.type-body-log {
+  font-family: Antonio, "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.35;
 }
 
 * {

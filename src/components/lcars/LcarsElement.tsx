@@ -8,7 +8,7 @@ interface LcarsElementProps {
   onClick?: (e: React.MouseEvent) => void;
   className?: string;
   style?: React.CSSProperties;
-  beepType?: "soft" | "confirm" | "alert" | "none";
+  beepType?: "soft" | "confirm" | "alert" | "action" | "transition" | "archive" | "none";
   children?: React.ReactNode;
 }
 

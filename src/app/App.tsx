@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState, useEffect } from "react";
 import type React from "react";
 
-import { commandHints, devices, initialEvents, rooms, scenes } from "../data/mock";
+import { devices, initialEvents, rooms, scenes } from "../data/mock";
 import { useAutoMode } from "../hooks/useAutoMode";
 import { useMockTelemetry } from "../hooks/useMockTelemetry";
 import type { AlertLevel, EventLogItem, Mode } from "../types";
@@ -52,7 +52,7 @@ function AppContent() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [events, setEvents] = useState<EventLogItem[]>(initialEvents);
-  const [command, setCommand] = useState("");
+  const [autoModeEnabled, setAutoModeEnabled] = useState(true);
 
   const telemetry = useMockTelemetry(34);
 
@@ -72,7 +72,7 @@ function AppContent() {
   );
 
   // Handle auto cycling of modes
-  const autoActive = useAutoMode(true, (nextMode) => {
+  const autoActive = useAutoMode(autoModeEnabled, (nextMode) => {
     setMode(nextMode);
     syncModeToUrl(nextMode);
   });
@@ -103,33 +103,17 @@ function AppContent() {
   };
 
   const executeScene = (sceneId: string) => {
+    if (sceneId === "living_lights") {
+      pushEvent("success", "LIVING LIGHTS", "Living Deck lights set to 100% intensity.");
+      return;
+    }
+    if (sceneId === "all_lights_off") {
+      pushEvent("warning", "ALL LIGHTS OFF", "Power bus shut down for all light arrays.");
+      return;
+    }
     const scene = scenes.find((item) => item.id === sceneId);
     if (!scene) return;
     pushEvent("success", `SCENE ${scene.name.toUpperCase()}`, `${scene.code} accepted by local mock core.`);
-  };
-
-  const runCommand = () => {
-    const normalized = command.trim().toLowerCase();
-    if (!normalized) return;
-
-    if (normalized.includes("red alert")) {
-      setAlert("red");
-      beep("alert");
-      pushEvent("danger", "RED ALERT", "Manual command elevated the console alert state.");
-    } else if (normalized.includes("normal") || normalized.includes("resume")) {
-      setAlert("normal");
-      beep("confirm");
-      pushEvent("success", "STATUS NORMAL", "Alert state returned to nominal operation.");
-    } else if (normalized.includes("cinema")) {
-      executeScene("cinema");
-    } else if (normalized.includes("sleep")) {
-      executeScene("sleep");
-    } else {
-      beep("soft");
-      pushEvent("info", "COMMAND PARSED", `"${command}" routed to V0.5 mock interpreter.`);
-    }
-
-    setCommand("");
   };
 
   return (
@@ -196,7 +180,7 @@ function AppContent() {
             <LcarsBar color="gray-dark" style={{ height: "100%" }} />
           </div>
           <LcarsStatusDots count={18} color="cyan-light" />
-          <div className="mission-title">
+          <div className="safe-title-zone type-display-title">
             {mode === "bridge" ? "LCARS CLOUD TERMINAL" : `${mode.toUpperCase()} MODULE`}
           </div>
         </header>
@@ -208,19 +192,11 @@ function AppContent() {
               color={mode === item.id ? "cyan-bright" : "gray-dark"}
               active={mode === item.id}
               onClick={() => setModeWithAudio(item.id)}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr auto",
-                alignItems: "center",
-                padding: "0 12px",
-                minHeight: "44px",
-                width: "100%",
-                textAlign: "left",
-                borderRadius: 0,
-              }}
+              className="mode-tab"
+              beepType="transition"
             >
-              <strong>{item.label}</strong>
-              <span style={{ opacity: 0.75, fontSize: "0.8rem" }}>{item.code}</span>
+              <span className="tab-label">{item.label}</span>
+              <span className="tab-code">{item.code}</span>
             </LcarsElement>
           ))}
         </nav>
@@ -243,10 +219,12 @@ function AppContent() {
           {mode === "memory" && <MemoryView events={events} />}
           {mode === "command" && (
             <CommandView
-              command={command}
-              setCommand={setCommand}
-              runCommand={runCommand}
               events={events}
+              alert={alert}
+              setAlert={setAlert}
+              autoModeEnabled={autoModeEnabled}
+              setAutoModeEnabled={setAutoModeEnabled}
+              executeScene={executeScene}
             />
           )}
         </section>
@@ -293,21 +271,40 @@ function AppContent() {
           ))}
         </div>
         <div className="command-hints">
-          <h2>COMMAND HINTS</h2>
-          {commandHints.map((hint) => (
-            <LcarsElement
-              key={hint}
-              color="cyan-dark"
-              onClick={() => {
-                setCommand(hint);
-                setMode("command");
-                syncModeToUrl("command");
-              }}
-              style={{ minHeight: "34px", width: "100%", borderRadius: 0, color: "var(--gray-white)" }}
-            >
-              {hint}
-            </LcarsElement>
-          ))}
+          <h2 className="type-module-label">QUICK ACTIONS</h2>
+          <LcarsElement
+            color="orange-dark"
+            onClick={() => {
+              setAlert("red");
+              beep("alert");
+            }}
+            beepType="none"
+            style={{ minHeight: "34px", width: "100%", borderRadius: 0 }}
+          >
+            RED ALERT
+          </LcarsElement>
+          <LcarsElement
+            color="cyan"
+            onClick={() => {
+              setAlert("normal");
+              beep("confirm");
+            }}
+            beepType="none"
+            style={{ minHeight: "34px", width: "100%", borderRadius: 0 }}
+          >
+            RESUME NORMAL
+          </LcarsElement>
+          <LcarsElement
+            color="orange-light"
+            onClick={() => {
+              executeScene("cinema");
+              beep("action");
+            }}
+            beepType="none"
+            style={{ minHeight: "34px", width: "100%", borderRadius: 0 }}
+          >
+            CINEMA MODE
+          </LcarsElement>
         </div>
       </aside>
 

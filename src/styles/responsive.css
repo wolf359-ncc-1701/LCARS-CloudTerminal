@@ -78,9 +78,11 @@
     grid-template-columns: 1fr;
   }
 
-  .mission-title {
+  .safe-title-zone {
     grid-column: auto;
     text-align: left;
+    max-width: 100%;
+    white-space: normal;
   }
 
   .mode-strip {

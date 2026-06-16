@@ -9,3 +9,9 @@ export { LcarsOverlay } from "./LcarsOverlay";
 export { LcarsProvider, useLcars } from "./LcarsContext";
 export { LcarsShell } from "./LcarsShell";
 export { LcarsFrame } from "./LcarsFrame";
+export { LcarsCapsule } from "./LcarsCapsule";
+export { LcarsSegmentStack } from "./LcarsSegmentStack";
+export { LcarsParameterRow } from "./LcarsParameterRow";
+export { LcarsActionButton } from "./LcarsActionButton";
+export { LcarsMediaFrame } from "./LcarsMediaFrame";
+
