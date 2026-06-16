@@ -32,7 +32,7 @@ export const BridgeView: React.FC<BridgeViewProps> = ({
   return (
     <div className="view bridge-view panel-enter">
       {/* Hero Header Readout */}
-      <div className="hero-readout-container" style={{ gridColumn: "1 / 4", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <div className="hero-readout-container">
         <LcarsReadout
           label="LOCAL SYSTEM BRIDGE"
           value={currentTime}
@@ -93,8 +93,7 @@ export const BridgeView: React.FC<BridgeViewProps> = ({
         </div>
       </div>
 
-      {/* Bottom Row: Local Scene Control Strip */}
-      <div className="scene-control-section" style={{ gridColumn: "1 / 4", marginTop: "8px" }}>
+      <div className="scene-control-section">
         <LcarsBracket title="INTEGRATED SCENE OVERLAY CONTROLS" color="gray-light">
           <div className="scene-grid" style={{ paddingTop: "8px" }}>
             {scenes.map((scene) => (

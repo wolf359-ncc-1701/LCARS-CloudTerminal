@@ -65,9 +65,8 @@ function AppContent() {
     (nextMode: Mode) => {
       setMode(nextMode);
       syncModeToUrl(nextMode);
-      beep("soft");
     },
-    [beep, syncModeToUrl],
+    [syncModeToUrl],
   );
 
   // Handle auto cycling of modes
@@ -104,7 +103,6 @@ function AppContent() {
   const executeScene = (sceneId: string) => {
     const scene = scenes.find((item) => item.id === sceneId);
     if (!scene) return;
-    beep("confirm");
     pushEvent("success", `SCENE ${scene.name.toUpperCase()}`, `${scene.code} accepted by local mock core.`);
   };
 
@@ -180,7 +178,6 @@ function AppContent() {
             active={alert === "red"}
             onClick={() => {
               setAlert((current) => (current === "red" ? "normal" : "red"));
-              beep("alert");
             }}
             beepType="alert"
           >
@@ -312,57 +309,85 @@ function AppContent() {
       {/* Settings Overlay dialog */}
       {settingsOpen && (
         <LcarsOverlay title="Settings Panel" onClose={() => setSettingsOpen(false)}>
-          <button
-            type="button"
-            className="toggle-row"
-            data-active={audioEnabled}
-            onClick={() => {
-              setAudioEnabled((value) => !value);
-              beep("soft");
+          <LcarsElement
+            active={audioEnabled}
+            color={audioEnabled ? "cyan-bright" : "gray-dark"}
+            onClick={() => setAudioEnabled((value) => !value)}
+            beepType="soft"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              minHeight: "52px",
+              padding: "0 18px",
+              width: "100%",
+              borderRadius: "4px",
+              color: audioEnabled ? "#000" : "var(--gray-white)"
             }}
           >
             <span>Audio Core synthesize beeps</span>
             <strong>{audioEnabled ? "ON" : "OFF"}</strong>
-          </button>
+          </LcarsElement>
           
-          <button
-            type="button"
-            className="toggle-row"
-            data-active={visual === "soft-glow"}
-            onClick={() => {
-              setVisual((value) => (value === "soft-glow" ? "default" : "soft-glow"));
-              beep("soft");
+          <LcarsElement
+            active={visual === "soft-glow"}
+            color={visual === "soft-glow" ? "cyan-bright" : "gray-dark"}
+            onClick={() => setVisual((value) => (value === "soft-glow" ? "default" : "soft-glow"))}
+            beepType="soft"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              minHeight: "52px",
+              padding: "0 18px",
+              width: "100%",
+              borderRadius: "4px",
+              color: visual === "soft-glow" ? "#000" : "var(--gray-white)"
             }}
           >
             <span>Atmospheric Soft Glow shader</span>
             <strong>{visual === "soft-glow" ? "ON" : "OFF"}</strong>
-          </button>
+          </LcarsElement>
 
-          <button
-            type="button"
-            className="toggle-row"
-            data-active={visual === "grayscale"}
-            onClick={() => {
-              setVisual((value) => (value === "grayscale" ? "default" : "grayscale"));
-              beep("soft");
+          <LcarsElement
+            active={visual === "grayscale"}
+            color={visual === "grayscale" ? "cyan-bright" : "gray-dark"}
+            onClick={() => setVisual((value) => (value === "grayscale" ? "default" : "grayscale"))}
+            beepType="soft"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              minHeight: "52px",
+              padding: "0 18px",
+              width: "100%",
+              borderRadius: "4px",
+              color: visual === "grayscale" ? "#000" : "var(--gray-white)"
             }}
           >
             <span>Console Grayscale monochromatic filters</span>
             <strong>{visual === "grayscale" ? "ON" : "OFF"}</strong>
-          </button>
+          </LcarsElement>
 
-          <button
-            type="button"
-            className="toggle-row"
-            data-active={visual === "dim"}
-            onClick={() => {
-              setVisual((value) => (value === "dim" ? "default" : "dim"));
-              beep("soft");
+          <LcarsElement
+            active={visual === "dim"}
+            color={visual === "dim" ? "cyan-bright" : "gray-dark"}
+            onClick={() => setVisual((value) => (value === "dim" ? "default" : "dim"))}
+            beepType="soft"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              minHeight: "52px",
+              padding: "0 18px",
+              width: "100%",
+              borderRadius: "4px",
+              color: visual === "dim" ? "#000" : "var(--gray-white)"
             }}
           >
             <span>Night-mode Dimmer filters</span>
             <strong>{visual === "dim" ? "ON" : "OFF"}</strong>
-          </button>
+          </LcarsElement>
         </LcarsOverlay>
       )}
 

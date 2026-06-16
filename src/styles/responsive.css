@@ -25,6 +25,8 @@
     grid-template-rows: auto auto auto auto;
   }
 
+  .hero-readout-container,
+  .scene-control-section,
   .hero-readout,
   .system-diagram,
   .scene-grid {
