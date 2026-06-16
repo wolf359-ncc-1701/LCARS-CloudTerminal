@@ -57,6 +57,11 @@
     grid-template-rows: auto auto auto;
   }
 
+  .primary-elbow {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
   .rail-crook,
   .vertical-meter {
     display: none;

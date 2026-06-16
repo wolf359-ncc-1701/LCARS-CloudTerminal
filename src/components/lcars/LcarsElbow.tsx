@@ -48,15 +48,18 @@ export const LcarsElbow: React.FC<LcarsElbowProps> = ({
     const bh = barHeight;
     const r = outerRadius;
 
+    const rxInner = Math.max(0, r - rw);
+    const ryInner = Math.max(0, r - bh);
+
     switch (direction) {
       case "top-left":
-        return `M 0,${h} L 0,${r} A ${r},${r} 0 0 1 ${r},0 L ${w},0 L ${w},${bh} L ${rw},${bh} L ${rw},${h} Z`;
+        return `M 0,${h} L 0,${r} A ${r},${r} 0 0 1 ${r},0 L ${w},0 L ${w},${bh} L ${r},${bh} A ${rxInner},${ryInner} 0 0 0 ${rw},${r} L ${rw},${h} Z`;
       case "top-right":
-        return `M 0,0 L ${w - r},0 A ${r},${r} 0 0 1 ${w},${r} L ${w},${h} L ${w - rw},${h} L ${w - rw},${bh} L 0,${bh} Z`;
+        return `M 0,0 L ${w - r},0 A ${r},${r} 0 0 1 ${w},${r} L ${w},${h} L ${w - rw},${h} L ${w - rw},${r} A ${rxInner},${ryInner} 0 0 0 ${w - r},${bh} L 0,${bh} Z`;
       case "bottom-left":
-        return `M ${rw},0 L ${rw},${h - bh} L ${w},${h - bh} L ${w},${h} L ${r},${h} A ${r},${r} 0 0 1 0,${h - r} L 0,0 Z`;
+        return `M ${rw},0 L ${rw},${h - r} A ${rxInner},${ryInner} 0 0 0 ${r},${h - bh} L ${w},${h - bh} L ${w},${h} L ${r},${h} A ${r},${r} 0 0 1 0,${h - r} L 0,0 Z`;
       case "bottom-right":
-        return `M 0,${h - bh} L ${w - rw},${h - bh} L ${w - rw},0 L ${w},0 L ${w},${h - r} A ${r},${r} 0 0 1 ${w - r},${h} L 0,${h} Z`;
+        return `M 0,${h - bh} L ${w - r},${h - bh} A ${rxInner},${ryInner} 0 0 0 ${w - rw},${h - r} L ${w - rw},0 L ${w},0 L ${w},${h - r} A ${r},${r} 0 0 1 ${w - r},${h} L 0,${h} Z`;
     }
   };
 

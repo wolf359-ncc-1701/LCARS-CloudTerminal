@@ -137,6 +137,7 @@ function AppContent() {
           railWidth={34}
           barHeight={34}
           outerRadius={72}
+          className="primary-elbow"
         />
         
         <div className="brand-block">

@@ -60,6 +60,12 @@
   min-width: 0;
 }
 
+.primary-elbow {
+  width: calc(100% + var(--gap)) !important;
+  max-width: none !important;
+  z-index: 5;
+}
+
 .rail-crook {
   position: relative;
   border: 34px solid var(--gray);

@@ -199,3 +199,37 @@ Verification:
 - No esbuild css minifier errors/warnings.
 - Visual inspection confirms stable button heights, no text clipping, and high contrast visibility for all text elements.
 
+## 2026-06-16 - V0.76 Left Elbow Structure Task
+
+Prepared a narrow local-only task after the user's screenshot showed the top-left LCARS elbow still reading as broken.
+
+Included:
+
+- Added `docs/ai-tasks/TASK-005-v076-left-elbow-structure.md`.
+- Added `docs/gemini-prompts/v076-left-elbow.md`.
+
+Implementation target:
+
+- Rebuild the top-left LCARS elbow as a continuous structural corner.
+- Ensure the left vertical rail and top horizontal rail visually connect.
+- Keep the inner black cavity deliberate rather than looking like a missing chunk.
+- Preserve V0.75 fixes for title overflow and right rail label visibility.
+
+GitHub status:
+
+- Local-only task preparation. Do not push until the user asks.
+
+## 2026-06-16 - V0.76 Left Elbow Structure Implementation
+
+Successfully resolved the top-left LCARS elbow visual gap and pinching defects.
+
+Included:
+- **Smooth Inner Elbow Curve**: Replaced the sharp 90-degree inner corner inside [LcarsElbow.tsx](file:///C:/Users/user/Documents/LCARS/src/components/lcars/LcarsElbow.tsx) with a smooth arc curve of radius `outerRadius - thickness` (i.e. `r - rw` / `r - bh`). This preserves uniform thickness around the curve, avoiding visual pinching at the diagonal.
+- **Top Rail Column Connection**: Added `className="primary-elbow"` to the `LcarsElbow` component in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) and defined styling rules in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) to set its width to `calc(100% + var(--gap)) !important`. This allows the top horizontal bar of the elbow to overflow into the column gap, bridging the 14px space and connecting seamlessly to the `.top-bar` of the main stage without shifting the rest of the left rail.
+- **Responsive Mobile Fallback**: Added a reset rule in [responsive.css](file:///C:/Users/user/Documents/LCARS/src/styles/responsive.css) under `@media (max-width: 760px)` to keep `.primary-elbow` width at `100% !important` when layout is stacked, avoiding any horizontal overflow on mobile viewports.
+
+Verification:
+- `npm run build` completed successfully.
+- No TypeScript compiler errors.
+- Visual check confirms continuous curves and seamless layout transitions.
+
