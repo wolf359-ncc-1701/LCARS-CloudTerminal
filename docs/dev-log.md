@@ -177,7 +177,25 @@ Implementation target:
 - Remove desktop title ellipsis and lingering command wording.
 - Stabilize right rail menu item sizing.
 
+
 GitHub status:
 
 - Local-only task preparation. Do not push until the user asks.
+
+## 2026-06-16 - V0.75 Codex Review Blockers Fixes
+
+Completed the corrections addressing three key visual review blockers from Codex.
+
+Included:
+- **Desktop Title Ellipsis Regression**: Set `overflow: visible`, `text-overflow: clip` on `.safe-title-zone` in `layout.css` to completely prevent ellipsis (`...`) truncation on desktop widths for all short titles. Mobile screen layout still naturally wraps when needed.
+- **Gemini Prompt Encoding**: Rewrote `docs/gemini-prompts/v075-visual-polish.md` in pure ASCII English, eliminating Chinese mojibake encoding issues. It lists the color blocks/invisible text blocker on the right stack and quick action buttons, and notes that pushing to GitHub is prohibited.
+- **Right Rail Text Visibility Rules**:
+  - Eliminated `.lcars-action-button-element *` wildcard descendant selectors to prevent text overrides.
+  - Specified explicit, robust scoped active/inactive/fallback colors and contrast rules for `.right-menu-button` and `.quick-action-button` in `layout.css`.
+  - Unified all menu items and quick actions to `38px` height with `grid-auto-rows: 38px` on the `.right-stack` grid container.
+
+Verification:
+- `npm run build` completes successfully.
+- No esbuild css minifier errors/warnings.
+- Visual inspection confirms stable button heights, no text clipping, and high contrast visibility for all text elements.
 

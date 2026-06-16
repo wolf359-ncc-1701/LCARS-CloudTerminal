@@ -212,8 +212,8 @@
   max-width: 100%;
   min-width: 0;
   justify-self: end;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
   white-space: nowrap;
 }
 
@@ -971,13 +971,15 @@
 }
 
 /* Active mode button: bright orange-light background, text must be dark black */
-.right-menu-button.color-orange-light {
+.right-menu-button.color-orange-light,
+.right-menu-button.state-active {
   background-color: var(--orange-light) !important;
   color: #05080c !important;
 }
 
 /* Inactive mode button: dark gray-dark background, text must be light gray-white */
-.right-menu-button.color-gray-dark {
+.right-menu-button.color-gray-dark,
+.right-menu-button:not(.state-active) {
   background-color: var(--gray-dark) !important;
   color: var(--gray-white) !important;
 }
@@ -1022,6 +1024,17 @@
 /* CINEMA MODE button: bright orange-light background, text must be dark black */
 .quick-action-button.color-orange-light {
   background-color: var(--orange-light) !important;
+  color: #05080c !important;
+}
+
+/* Explicit fallback rules for quick action buttons to guarantee visibility */
+.quick-action-button.color-gray-dark {
+  background-color: var(--gray-dark) !important;
+  color: var(--gray-white) !important;
+}
+
+.quick-action-button.color-cyan-bright {
+  background-color: var(--cyan-bright) !important;
   color: #05080c !important;
 }
 
@@ -1084,7 +1097,4 @@
   background-color: var(--orange) !important;
 }
 
-.lcars-action-button-element * {
-  color: inherit !important;
-}
 
