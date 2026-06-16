@@ -49,3 +49,19 @@ Purpose:
 - Codex remains responsible for architecture, product direction, and acceptance criteria.
 - A frontend agent can focus on React/CSS implementation.
 - The brief prevents drift into copyrighted asset cloning or generic dashboard design.
+
+## 2026-06-16 - Multi-Agent Workflow And V0.5 Task
+
+Added coordination documents so Codex/GPT and Gemini/Antigravity can collaborate through Git rather than chat copy/paste.
+
+Included:
+
+- `docs/ai-workflow.md`
+- `docs/component-architecture.md`
+- `docs/ai-tasks/TASK-001-v05-frontend-redesign.md`
+
+The immediate recommended workflow is:
+
+- Codex defines architecture and task specs.
+- Gemini implements on `ai/gemini-v05-redesign`.
+- Codex reviews the diff before merge/push to `main`.

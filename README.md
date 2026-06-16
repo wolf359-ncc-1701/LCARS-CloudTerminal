@@ -12,6 +12,8 @@ Existing documents:
 
 - `docs/dev-log.md` - chronological development notes.
 - `docs/frontend-agent-brief.md` - instructions for frontend-focused agents.
+- `docs/ai-workflow.md` - Git/branch/task-file workflow for multiple AI clients.
+- `docs/component-architecture.md` - target frontend component architecture.
 - `docs/v0-plan.md` - V0 product and implementation plan.
 - `docs/titan-ds-style-analysis.md` - style and motion-language analysis based on user-provided references.
 - `docs/architecture.md` - target system architecture.
