@@ -208,7 +208,9 @@
   font-size: clamp(1.1rem, 1.8vw, 1.8rem);
   text-align: right;
   text-transform: uppercase;
-  max-width: var(--safe-title-max);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   justify-self: end;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -252,12 +254,12 @@
   border-bottom-right-radius: 22px !important;
 }
 
-.mode-tab[data-active="true"] {
+.mode-tab.state-active {
   background-color: var(--cyan-bright) !important;
   color: #000 !important;
 }
 
-.mode-tab:hover:not([data-active="true"]) {
+.mode-tab:hover:not(.state-active) {
   background-color: var(--gray) !important;
   color: var(--gray-white) !important;
 }

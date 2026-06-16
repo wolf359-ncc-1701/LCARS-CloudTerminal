@@ -42,7 +42,6 @@
   --text-on-orange: #070302;
   --text-muted: var(--gray-lighter);
   --panel-border: var(--gray-dark);
-  --safe-title-max: calc(100% - 300px);
 }
 
 /* Typography Role Classes */
