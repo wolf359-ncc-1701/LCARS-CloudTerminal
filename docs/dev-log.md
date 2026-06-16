@@ -100,3 +100,21 @@ Verification:
 - No TypeScript compiler errors.
 - Visuals verified against 390px, 768px, and 1440px layouts.
 
+## 2026-06-16 - V0.6 Titan DS Redesign Brief
+
+Prepared the next frontend implementation pass for a higher-density Titan DS inspired interface.
+
+Included:
+
+- Added the user-provided Microgramma-style font at `src/assets/fonts/microgramma-d-extended-bold.otf`.
+- Registered `"LCARS Microgramma"` in `src/styles/tokens.css`.
+- Added `ASSETS.md` to track committed non-code assets and licensing notes.
+- Added `docs/ai-tasks/TASK-002-v06-titan-ds-visual-redesign.md` for Gemini's V0.6 frontend implementation pass.
+- Added `docs/gemini-prompts/v06-titan-redesign.md` as the Chinese handoff prompt for Antigravity/Gemini.
+
+Implementation target:
+
+- Preserve the existing React/CSS architecture.
+- Push the visual language toward a dense Titan DS style operation console.
+- Rebuild the shell rails, left controls, right module stack, bottom telemetry, and main display with original CSS/SVG primitives.
+

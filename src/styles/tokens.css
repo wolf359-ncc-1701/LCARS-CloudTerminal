@@ -1,6 +1,6 @@
 :root {
   color-scheme: dark;
-  font-family: Antonio, "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  font-family: "LCARS Microgramma", Antonio, "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   --black: #000;
@@ -29,6 +29,14 @@
   --fast: 160ms;
   --med: 420ms;
   --slow: 1.6s;
+}
+
+@font-face {
+  font-family: "LCARS Microgramma";
+  src: url("../assets/fonts/microgramma-d-extended-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
 }
 
 * {
