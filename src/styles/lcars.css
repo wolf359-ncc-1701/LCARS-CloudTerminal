@@ -467,3 +467,58 @@
   gap: 14px;
   padding: 22px;
 }
+
+/* ==========================================================================
+   V0.6 LCARS Microgramma Font Application List
+   ========================================================================== */
+.lcars-element,
+.lcars-bar-label,
+.lcars-bracket-title,
+.lcars-bracket-footer-text,
+.meter-label-h,
+.meter-value-h,
+.meter-label,
+.meter-value-v,
+.readout-label,
+.readout-value,
+.readout-sub-label,
+.lcars-overlay-panel header h2,
+.hero-readout strong,
+.hero-readout span,
+.hero-readout em,
+.hero-readout-container span,
+.hero-readout-container strong,
+.hero-readout-container em,
+.mission-title,
+.module-title,
+.rail-numbers span,
+.brand-block span,
+.right-stack button,
+.command-hints h2,
+.command-hints button,
+.room-card-content header strong,
+.room-ring,
+.meter strong,
+.meter em,
+.telemetry-row span,
+.telemetry-row em,
+.tick-bar-label,
+.room-temp-humidity {
+  font-family: var(--font-lcars);
+}
+
+/* LcarsFrame Decorative Styles */
+.lcars-cross {
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.lcars-ruler {
+  pointer-events: none;
+}
+
+.lcars-tick-bar {
+  user-select: none;
+  pointer-events: none;
+}
+

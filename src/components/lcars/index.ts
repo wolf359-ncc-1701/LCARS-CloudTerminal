@@ -7,3 +7,5 @@ export { LcarsStatusDots } from "./LcarsStatusDots";
 export { LcarsReadout } from "./LcarsReadout";
 export { LcarsOverlay } from "./LcarsOverlay";
 export { LcarsProvider, useLcars } from "./LcarsContext";
+export { LcarsShell } from "./LcarsShell";
+export { LcarsFrame } from "./LcarsFrame";

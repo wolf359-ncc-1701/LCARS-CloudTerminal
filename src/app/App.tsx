@@ -18,6 +18,8 @@ import {
   LcarsOverlay,
   LcarsProvider,
   useLcars,
+  LcarsShell,
+  LcarsFrame,
 } from "../components/lcars";
 import {
   BridgeView,
@@ -131,8 +133,7 @@ function AppContent() {
   };
 
   return (
-    <main className="lcars-app" data-mode={mode} data-alert={alert} data-visual={visual}>
-      <div className="ambient-grid" aria-hidden="true" />
+    <LcarsShell mode={mode} alert={alert} visual={visual}>
 
       {/* Left Rail Layout */}
       <aside className="left-rail" aria-label="Primary controls">
@@ -252,6 +253,7 @@ function AppContent() {
 
         {/* Bottom Status Telemetry Footer Bar */}
         <footer className="bottom-telemetry">
+          <LcarsFrame.Ruler ticks={45} color="cyan-dark" style={{ gridColumn: "1 / -1", height: "4px", marginBottom: "8px" }} />
           <LcarsMeter label="SIGMA" value={telemetry[4] ?? 50} color="cyan" />
           <LcarsMeter label="PSI" value={telemetry[7] ?? 30} color="orange" danger={telemetry[7] > 75} />
           <LcarsMeter label="EPS" value={telemetry[14] ?? 60} color="cyan" />
@@ -270,10 +272,13 @@ function AppContent() {
         </footer>
       </section>
 
-      {/* Right Rail Panel Controls */}
       <aside className="right-rail" aria-label="Module controls">
         <LcarsStatusDots count={24} />
         <div className="module-title">SYSTEM INDEX / AL-52169</div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 10px", margin: "4px 0" }}>
+          <LcarsFrame.TickBar count={6} color="orange" />
+          <LcarsFrame.Cross size={8} color="gray" />
+        </div>
         <div className="right-stack">
           {MODES.map((item) => (
             <LcarsElement
@@ -432,7 +437,7 @@ function AppContent() {
           </div>
         </LcarsOverlay>
       )}
-    </main>
+    </LcarsShell>
   );
 }
 

@@ -108,6 +108,29 @@
   animation: panel-enter var(--med) ease both;
 }
 
+@keyframes meter-random {
+  0%, 100% { transform: scaleX(0.98); opacity: 0.95; }
+  20% { transform: scaleX(0.85); opacity: 0.88; }
+  40% { transform: scaleX(0.92); opacity: 0.98; }
+  60% { transform: scaleX(0.78); opacity: 0.82; }
+  80% { transform: scaleX(0.95); opacity: 0.95; }
+}
+
+@keyframes alert-pulse {
+  0%, 100% {
+    border-color: var(--orange-dark);
+    box-shadow: 0 0 8px rgba(231, 68, 42, 0.35);
+  }
+  50% {
+    border-color: var(--orange);
+    box-shadow: 0 0 22px rgba(231, 68, 42, 0.75);
+  }
+}
+
+.alert-pulse-active {
+  animation: alert-pulse 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
