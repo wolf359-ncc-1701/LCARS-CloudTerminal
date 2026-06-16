@@ -132,21 +132,30 @@ function AppContent() {
         <LcarsElbow
           direction="top-left"
           color="gray"
-          width={246}
+          width={300}
           height={148}
-          railWidth={80}
+          railWidth={180}
           barHeight={34}
           outerRadius={120}
+          innerRadius={40}
           className="primary-elbow"
         >
-          <div className="elbow-dev-code">DEV V.0.77</div>
+          <div className="elbow-dev-label-group">
+            <span className="elbow-dev-code">DEV V.0.77</span>
+            <button
+              type="button"
+              className="elbow-icon-dot"
+              onClick={() => setInfoOpen(true)}
+              aria-label="Open info"
+            >
+              i
+            </button>
+            <div className="elbow-deco-square" />
+          </div>
         </LcarsElbow>
         
         <div className="brand-block">
           <span>TITAN.LOCAL</span>
-          <button type="button" className="icon-dot" onClick={() => setInfoOpen(true)} aria-label="Open info">
-            i
-          </button>
         </div>
 
         <div className="rail-numbers">

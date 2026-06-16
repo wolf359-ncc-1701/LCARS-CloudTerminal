@@ -273,8 +273,8 @@ Included:
 - **TITAN.LOCAL Info Panel Sync**: Updated the info modal in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) to describe the V0.77 operations console state, summarizing the grammar taxonomy, V0.75 readability changes, V0.76 left elbow corrections, V0.77 polish fixes, and the Codex/Gemini local-first agent workflow.
 - **Asymmetric Left Elbow & Dev Code**:
   - Refined the top-left corner in [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) using `railWidth={80}` (thicker lower/left body) and `barHeight={34}` (narrower top/right continuation) with a smooth transition using quadratic curves.
-  - Absolute-positioned `DEV V.0.77` text overlay inside the black cavity space of the elbow bend, formatted with the LCARS display font and orange-light accent.
+  - Positioned `DEV V.0.77` inside the bottom-left area of the gray elbow material (instead of the black inner cavity) grouped with the `i` info button as a panel identity label, using a low-saturation gray-white color to match the Titan DS reference, keeping the inner black cavity completely clean.
 
 Verification:
 - `npm run build` completed successfully with no errors or warnings.
-- Local commit: `fix(ui): polish V0.77 right rail and habitat cards`.
+- Local commit: `fix(ui): align V0.77 corner dev label with Titan reference`.

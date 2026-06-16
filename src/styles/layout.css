@@ -60,8 +60,13 @@
   min-width: 0;
 }
 
+.left-rail > *:not(.primary-elbow) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .primary-elbow {
-  width: calc(100% + var(--gap)) !important;
+  width: 300px !important;
   max-width: none !important;
   z-index: 5;
 }
@@ -93,7 +98,7 @@
 }
 
 .brand-block span {
-  font-size: 1.34rem;
+  font-size: 1.15rem;
 }
 
 .icon-dot {
@@ -118,6 +123,7 @@
   color: var(--gray-white);
   background: var(--gray);
   font-weight: 800;
+  font-size: 0.95rem;
 }
 
 .rail-numbers span[data-accent="orange"] {
@@ -1212,16 +1218,61 @@
   color: #004d61;
 }
 
-/* Left elbow development code watermark */
-.elbow-dev-code {
+/* Left elbow development code watermark (inside the gray rail material) */
+.elbow-dev-label-group {
   position: absolute;
-  left: 92px;
-  top: 48px;
-  color: var(--orange-light);
+  left: 0;
+  bottom: 12px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px 0 22px;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.elbow-dev-code {
+  color: var(--gray-white) !important;
   font-family: var(--font-lcars);
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
   letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.elbow-icon-dot {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  border: 1px solid var(--gray-white) !important;
+  background: transparent !important;
+  color: var(--gray-white) !important;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-family: var(--font-lcars);
+  font-weight: bold;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color var(--fast) ease, border-color var(--fast) ease, color var(--fast) ease;
+}
+
+.elbow-icon-dot:hover {
+  background: rgba(223, 225, 232, 0.2) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.elbow-deco-square {
+  width: 6px;
+  height: 6px;
+  background: #000000;
+  margin-left: auto;
 }
 
 /* Energy core Primary Induction (EnergyView Left) inside bright orange bracket */
