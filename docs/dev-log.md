@@ -373,3 +373,49 @@ Verification:
 - Visual verify: Left-top elbow curves smoothly and horizontal bar connects to the top bar; watermark dev label is visible inside gray material; bottom rail elements and display window margins remain stable.
 - Local commit: `fix(ui): restore V0.78 left elbow continuity`.
 
+## 2026-06-17 - V0.78 Codex Elbow Regression Repair
+
+Codex reviewed the Gemini V0.78 recovery pass and found that the attempted `position: absolute` plus `.primary-elbow-placeholder` approach restored some horizontal elbow continuity but broke the core layout contract. The visible elbow no longer matched the left-rail grid flow, causing the corner, brand block, number grid, and main display frame to collide visually.
+
+Included:
+- **Removed Placeholder Layout Hack**: Deleted `.primary-elbow-placeholder` from [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx) and removed its CSS rules. The elbow is again the real first row of `.left-rail`.
+- **Returned Elbow to Grid Flow**: Changed `.primary-elbow` back from absolute positioning to `position: relative`, so it participates in the left rail layout normally and keeps `TITAN.LOCAL` plus the number grid anchored below it.
+- **Controlled Visual Extension**: Set `.primary-elbow` to `width: calc(var(--rail) + var(--stage-column-gap) + 20px)` with `max-width: none`. This lets the top elbow draw slightly through the black channel and into the main-stage edge for LCARS continuity, while avoiding the excessive `96px` overlap that made the previous version crush the layout.
+- **Interaction Safety Preserved**: Kept `pointer-events: none` on the elbow shell while `.elbow-dev-label-group` remains clickable, so the visual extension does not block the mode tabs or main-stage controls.
+- **Responsive Cleanup**: Removed placeholder-specific responsive rules and kept the tablet/mobile elbow reset simple: relative positioning and full-width inside the stacked rail.
+
+Verification:
+- `npm run build` completed successfully after the patch.
+
+## 2026-06-17 - V0.78 Codex Rail Width Containment Patch
+
+Screenshot review showed that making `.primary-elbow` itself wider than `var(--rail)` restored the top elbow visually but still allowed the widened grid item to stretch the left-rail internal layout. The result was that `TITAN.LOCAL` and the number grid appeared too wide and crossed the intended 246px rail contract.
+
+Included:
+- **Rail Width Containment**: Fixed `.left-rail` to `width: var(--rail)` with `overflow: visible`, so decorative material can extend outward without changing the size of the left control rail itself.
+- **Elbow Body Contract**: Returned `.primary-elbow` to `width: var(--rail)` and `max-width: var(--rail)`, keeping the real elbow body aligned with the left rail.
+- **Decorative Top Extension**: Added `.primary-elbow::after` as a non-interactive 34px-high top bar extending across `calc(var(--stage-column-gap) + 20px)`. This preserves the LCARS top-corner continuation without allowing the elbow component to resize sibling rail modules.
+- **Rail Children Lock**: Explicitly fixed `.brand-block`, `.rail-numbers`, `.vertical-meter`, and `.rail-actions` to `width: var(--rail)` to prevent future decorative elements from stretching the control column.
+- **Responsive Width Reset**: Added a tablet/mobile reset in [responsive.css](file:///C:/Users/user/Documents/LCARS/src/styles/responsive.css) so the left rail and its children return to `width: 100%` when the layout switches away from the fixed desktop rail.
+
+Verification:
+- `npm run build` completed successfully after the patch.
+
+## 2026-06-17 - V0.78 Elbow Bottom Edge Alignment
+
+User screenshot review showed the elbow's bottom edge (the vertical rail width in the SVG) was visually narrower than the `TITAN.LOCAL` brand block below it. Reference image (Titan.DS) requires them to be flush.
+
+Root cause:
+- `.primary-elbow` container was capped at `var(--rail)` = 246px.
+- `getPath()` in [LcarsElbow.tsx](file:///C:/Users/user/Documents/LCARS/src/components/lcars/LcarsElbow.tsx) has a defensive scaling check: `if (rw + adjustedRi > w)`. With `w=246`, `rw=246`, `ri=40`, the sum `286 > 246` triggered scaling, compressing `rw` from 246 to ~148px.
+- Result: SVG bottom edge was ~148px vs brand block 246px — visually misaligned.
+
+Fix in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css):
+- Widened `.primary-elbow` to `calc(var(--rail) + 40px)` = 286px. This is the minimum width to hold `railWidth + innerRadius` without triggering the scaling guard.
+- SVG bottom edge now renders at full `rw = 246px`, matching the brand block width.
+- Adjusted `::after` pseudo-element offset from `var(--rail)` to `calc(var(--rail) + 40px)` and reduced its width by 40px to keep the total top-bar extension consistent.
+- `overflow: visible` on `.left-rail` ensures the 40px overshoot is not clipped.
+
+Verification:
+- `npm run build` completed successfully.
+- Local commit: `fix(ui): align elbow bottom edge with brand-block width`.

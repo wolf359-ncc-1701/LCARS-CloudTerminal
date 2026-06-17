@@ -70,22 +70,35 @@
   display: grid;
   grid-template-rows: 148px 72px auto 1fr auto;
   gap: 8px;
+  width: var(--rail);
   min-width: 0;
-}
-
-.primary-elbow-placeholder {
-  display: block;
-  height: 148px;
+  overflow: visible;
 }
 
 .primary-elbow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(var(--rail) + 96px) !important;
-  max-width: none !important;
+  position: relative;
+  width: calc(var(--rail) + 40px) !important;
+  max-width: calc(var(--rail) + 40px) !important;
   pointer-events: none;
   z-index: 5;
+}
+
+.primary-elbow::after {
+  position: absolute;
+  top: 0;
+  left: calc(var(--rail) + 40px);
+  width: calc(var(--stage-column-gap) - 20px);
+  height: 34px;
+  content: "";
+  background: var(--gray-dark);
+  pointer-events: none;
+}
+
+.brand-block,
+.rail-numbers,
+.vertical-meter,
+.rail-actions {
+  width: var(--rail);
 }
 
 .rail-crook {
