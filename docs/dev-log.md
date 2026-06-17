@@ -325,5 +325,50 @@ Verification:
 - Visual check confirms stable layout metrics, no overlaps, and a clean vertical channel separating the left rail controls from the display stage.
 - Local commit: `fix(ui): increase V0.77 main stage left clearance`.
 
+## 2026-06-16 - V0.77 Codex Structural Left Clearance Patch
 
+Codex took over the remaining left spacing issue after screenshot review showed the previous padding-only attempt did not visually restore the gap between the left LCARS rail and the main display stage.
+
+Included:
+- **Grid-Level Clearance Contract**: Added `--stage-column-gap` directly on `.lcars-app` and changed the root shell from a single `gap` shorthand to explicit `column-gap` and `row-gap`. The left rail, main stage, and right rail now have a real structural horizontal separation instead of relying on `.main-stage` internal padding.
+- **Removed Fake Stage Offset**: Removed the desktop `.main-stage` `padding-left` clearance rule so the top rail, tabs, display frame, and bottom telemetry all align from the same grid column. This prevents partial shifts where the frame appears corrected but the shell geometry still feels crowded.
+- **Elbow Width Rebalanced**: Changed `.primary-elbow` from a hard `350px` override back to `var(--rail)`. The top-left elbow now remains inside the left rail layout contract instead of acting as a bridge element that can swallow the main stage clearance.
+- **Responsive Reset**: Added an explicit tablet/mobile reset for `.primary-elbow` and restored responsive `column-gap: var(--gap)` so stacked or narrow layouts do not inherit the wide desktop clearance.
+- **Stabilization Pass**: After screenshot review still showed the main display visually crowding the left rail, widened the structural desktop channel to `56px`, returned `.primary-elbow` to the exact rail width (`var(--rail)`), and raised `.left-rail` above `.main-stage` in the paint order. This deliberately removes the fragile bridge-overlap behavior and keeps the left rail, elbow, and stage as clean independent layout zones.
+
+Verification:
+- `npm run build` completed successfully after the patch.
+
+## 2026-06-17 - V0.78 Left Elbow Recovery Handoff
+
+The V0.77 Codex structural patch successfully separated the left rail from the main stage, but screenshot review showed that it overcorrected the top-left LCARS geometry: the `.primary-elbow` was constrained back to `var(--rail)`, which removed the visual horizontal continuation of the elbow and made the top-left corner look cut off.
+
+Decision:
+- Keep the structural boundary improvements from the Codex patch: stable `--rail`, real grid `column-gap`, no fake `.main-stage` padding, and no main-stage overlap into the left rail.
+- Hand off the visual elbow restoration to Gemini as V0.78 with a strict requirement to restore the LCARS corner as a visual layer only, without changing the left rail layout contract.
+
+Gemini task file:
+- `docs/gemini-prompts/v078-elbow-recovery.md`
+
+Key acceptance criteria:
+- The left-top elbow must visually continue toward the top rail again.
+- The lower left rail modules must remain full width and unmasked.
+- `DEV V.0.77` must stay inside the gray elbow material.
+- The display window must not crowd or overlap the left rail.
+- `npm run build` must pass.
+
+## 2026-06-17 - V0.78 Left Elbow Continuity Fix
+
+Successfully restored the visual horizontal continuity of the left-top LCARS elbow without breaking the layout boundary contracts established in V0.77.
+
+Included:
+- **Visual Overlap (No Layout Shifts)**: Updated `.primary-elbow` in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) to `width: calc(var(--rail) + 96px) !important` and `max-width: none !important`. This allows the elbow's top horizontal bar to extend across the `56px` column gap and overlap the main stage's top rail by `40px`, producing a seamless PPT/Titan-style corner visual.
+- **Pass-through Clicks**: Added `pointer-events: none` on `.primary-elbow` in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css) to prevent the visual horizontal bar from blocking clicks on the main stage elements underneath, while preserving `pointer-events: auto` on `.elbow-dev-label-group` so the watermark's info button remains clickable.
+- **Narrow Viewports Safeguard**: Modified `getPath` in [LcarsElbow.tsx](file:///C:/Users/user/Documents/LCARS/src/components/lcars/LcarsElbow.tsx) to automatically scale down the vertical rail width (`rw`) and inner corner radius (`adjustedRi`) when the elbow wrapper's measured width `w` is smaller than the requested `railWidth`. This prevents layout breaking and SVG path distortion on tablet/mobile responsive views.
+- **Main Stage Spacing Preserved**: Retained `--rail: 246px` and structural `--stage-column-gap: 56px` to keep left-rail modules and main display window cleanly separated without collisions.
+
+Verification:
+- `npm run build` completed successfully.
+- Visual verify: Left-top elbow curves smoothly and horizontal bar connects to the top bar; watermark dev label is visible inside gray material; bottom rail elements and display window margins remain stable.
+- Local commit: `fix(ui): restore V0.78 left elbow continuity`.
 

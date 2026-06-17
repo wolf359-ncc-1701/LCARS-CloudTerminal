@@ -1,8 +1,10 @@
 .lcars-app {
   position: relative;
+  --stage-column-gap: 56px;
   display: grid;
   grid-template-columns: var(--rail) minmax(0, 1fr) 278px;
-  gap: var(--gap);
+  column-gap: var(--stage-column-gap);
+  row-gap: var(--gap);
   width: 100vw;
   height: 100vh;
   padding: 24px 28px 22px;
@@ -50,6 +52,17 @@
 .right-rail,
 .main-stage {
   position: relative;
+}
+
+.left-rail {
+  z-index: 3;
+}
+
+.right-rail {
+  z-index: 2;
+}
+
+.main-stage {
   z-index: 1;
 }
 
@@ -61,8 +74,9 @@
 }
 
 .primary-elbow {
-  width: 350px !important;
+  width: calc(var(--rail) + 96px) !important;
   max-width: none !important;
+  pointer-events: none;
   z-index: 5;
 }
 
@@ -157,8 +171,6 @@
   display: grid;
   grid-template-rows: 96px 52px minmax(0, 1fr) 118px;
   min-width: 0;
-  --stage-left-clearance: 44px;
-  padding-left: var(--stage-left-clearance);
 }
 
 .top-rail {

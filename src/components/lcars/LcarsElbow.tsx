@@ -46,21 +46,28 @@ export const LcarsElbow: React.FC<LcarsElbowProps> = ({
   const getPath = () => {
     const w = width;
     const h = height;
-    const rw = railWidth;
     const bh = barHeight;
     const r = outerRadius;
 
-    const ri = innerRadius !== undefined ? innerRadius : Math.max(0, r - rw);
+    const ri = innerRadius !== undefined ? innerRadius : Math.max(0, r - railWidth);
+
+    let rw = railWidth;
+    let adjustedRi = ri;
+    if (rw + adjustedRi > w) {
+      rw = Math.min(railWidth, w * 0.6);
+      adjustedRi = Math.min(ri, w - rw - 10);
+      if (adjustedRi < 0) adjustedRi = 0;
+    }
 
     switch (direction) {
       case "top-left":
-        return `M 0,${h} L 0,${r} A ${r},${r} 0 0 1 ${r},0 L ${w},0 L ${w},${bh} L ${rw + ri},${bh} A ${ri},${ri} 0 0 0 ${rw},${bh + ri} L ${rw},${h} Z`;
+        return `M 0,${h} L 0,${r} A ${r},${r} 0 0 1 ${r},0 L ${w},0 L ${w},${bh} L ${rw + adjustedRi},${bh} A ${adjustedRi},${adjustedRi} 0 0 0 ${rw},${bh + adjustedRi} L ${rw},${h} Z`;
       case "top-right":
-        return `M 0,0 L ${w - r},0 A ${r},${r} 0 0 1 ${w},${r} L ${w},${h} L ${w - rw},${h} L ${w - rw},${bh + ri} A ${ri},${ri} 0 0 0 ${w - rw - ri},${bh} L 0,${bh} Z`;
+        return `M 0,0 L ${w - r},0 A ${r},${r} 0 0 1 ${w},${r} L ${w},${h} L ${w - rw},${h} L ${w - rw},${bh + adjustedRi} A ${adjustedRi},${adjustedRi} 0 0 0 ${w - rw - adjustedRi},${bh} L 0,${bh} Z`;
       case "bottom-left":
-        return `M ${rw},0 L ${rw},${h - bh - ri} A ${ri},${ri} 0 0 0 ${rw + ri},${h - bh} L ${w},${h - bh} L ${w},${h} L ${r},${h} A ${r},${r} 0 0 1 0,${h - r} L 0,0 Z`;
+        return `M ${rw},0 L ${rw},${h - bh - adjustedRi} A ${adjustedRi},${adjustedRi} 0 0 0 ${rw + adjustedRi},${h - bh} L ${w},${h - bh} L ${w},${h} L ${r},${h} A ${r},${r} 0 0 1 0,${h - r} L 0,0 Z`;
       case "bottom-right":
-        return `M 0,${h - bh} L ${w - rw - ri},${h - bh} A ${ri},${ri} 0 0 0 ${w - rw},${h - bh - ri} L ${w - rw},0 L ${w},0 L ${w},${h - r} A ${r},${r} 0 0 1 ${w - r},${h} L 0,${h} Z`;
+        return `M 0,${h - bh} L ${w - rw - adjustedRi},${h - bh} A ${adjustedRi},${adjustedRi} 0 0 0 ${w - rw},${h - bh - adjustedRi} L ${w - rw},0 L ${w},0 L ${w},${h - r} A ${r},${r} 0 0 1 ${w - r},${h} L 0,${h} Z`;
     }
   };
 
