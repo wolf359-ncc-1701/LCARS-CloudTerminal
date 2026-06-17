@@ -20,7 +20,6 @@
 /* Old mappings for compatibility */
 .pill,
 .mode-button,
-.stack-button,
 .scene-grid button,
 .toggle-row,
 .command-line button {
@@ -37,7 +36,6 @@
 
 .pill:hover,
 .mode-button:hover,
-.stack-button:hover,
 .scene-grid button:hover,
 .toggle-row:hover,
 .command-line button:hover {
@@ -46,7 +44,6 @@
 
 .pill:active,
 .mode-button:active,
-.stack-button:active,
 .scene-grid button:active,
 .toggle-row:active,
 .command-line button:active {
@@ -510,13 +507,10 @@
 .hero-readout-container span,
 .hero-readout-container strong,
 .hero-readout-container em,
-.mission-title,
 .module-title,
 .rail-numbers span,
 .brand-block span,
 .right-stack button,
-.command-hints h2,
-.command-hints button,
 .room-card-content header strong,
 .room-ring,
 .meter strong,

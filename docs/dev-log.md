@@ -442,3 +442,43 @@ Verification:
 - `npm run build` completed successfully.
 - Manual resize verifies right rail alignment and vertical meter placement within 768px viewports.
 - Local commit: `fix(ui): contain V0.79 viewport overflow`.
+
+## 2026-06-17 - V0.8 Architecture Cleanup
+
+V0.8 is a structural cleanup pass after the V0.75-V0.79 visual repair cycle. The goal is to reduce repair residue and make the current code easier for Codex, Gemini, Opus, or another future agent to reason about without changing the accepted V0.78/V0.79 layout behavior.
+
+Scope:
+- Preserve the V0.78 top-left elbow contract:
+  - `.primary-elbow` remains in the left-rail grid flow.
+  - Its width stays at `calc(var(--rail) + 40px)` so `LcarsElbow` does not trigger its defensive SVG scaling guard.
+  - `.primary-elbow::after` remains the visual-only continuation bar across the stage gap.
+- Preserve the V0.79 viewport containment contract:
+  - root shell keeps `width: 100vw`, `max-width: 100%`, responsive padding, and compressed row heights.
+  - right rail remains constrained with `min-width: 0` and hidden overflow.
+  - status dots and readouts remain bounded so they do not stretch the shell.
+
+Changes:
+- Removed unused top-level imports and context destructuring from [App.tsx](file:///C:/Users/user/Documents/LCARS/src/app/App.tsx):
+  - removed unused `React` type import,
+  - removed unused `LcarsBracket` and `LcarsReadout` imports from the app shell,
+  - removed unused `beep` destructuring from `useLcars()` in `AppContent`.
+- Removed stale CSS for UI elements that are no longer mounted anywhere in `src`:
+  - `.rail-crook`,
+  - `.stack-button`,
+  - `.command-hints`,
+  - `.quick-action-button`,
+  - `.mission-title` references.
+- Kept live component styles intact:
+  - `.primary-elbow`,
+  - `.right-menu-button`,
+  - `.right-menu-label`,
+  - `.room-card-*`,
+  - current dashboard brackets, meters, readouts, and shell layout.
+
+Reasoning:
+- The removed CSS belonged to older command-hints / Quick Actions / early rail experiments. Keeping it made later agents more likely to copy or patch dead rules instead of the live right rail and left elbow contracts.
+- No component files were deleted in this pass. Reusable exported primitives such as `LcarsBracket`, `LcarsReadout`, `LcarsCapsule`, and `LcarsSegmentStack` are preserved because some are actively used and the exported grammar library is still part of the project API.
+
+Verification:
+- `git diff --check` completed successfully.
+- `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.

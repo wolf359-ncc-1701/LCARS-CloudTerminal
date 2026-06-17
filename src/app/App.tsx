@@ -1,6 +1,4 @@
 import { useCallback, useMemo, useState, useEffect } from "react";
-import type React from "react";
-
 import { devices, initialEvents, rooms, scenes } from "../data/mock";
 import { useAutoMode } from "../hooks/useAutoMode";
 import { useMockTelemetry } from "../hooks/useMockTelemetry";
@@ -11,10 +9,8 @@ import {
   LcarsBar,
   LcarsElement,
   LcarsElbow,
-  LcarsBracket,
   LcarsMeter,
   LcarsStatusDots,
-  LcarsReadout,
   LcarsOverlay,
   LcarsProvider,
   useLcars,
@@ -44,7 +40,7 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 function AppContent() {
-  const { audioEnabled, setAudioEnabled, visual, setVisual, beep } = useLcars();
+  const { audioEnabled, setAudioEnabled, visual, setVisual } = useLcars();
 
   // Load initial mode from URL search param or fallback to "bridge"
   const [mode, setMode] = useState<Mode>(() => {
