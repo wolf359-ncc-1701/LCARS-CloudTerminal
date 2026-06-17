@@ -21,7 +21,14 @@
     align-self: stretch;
   }
 
+  .primary-elbow-placeholder {
+    display: none !important;
+  }
+
   .primary-elbow {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
     width: 100% !important;
     max-width: 100% !important;
   }

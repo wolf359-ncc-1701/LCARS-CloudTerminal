@@ -129,6 +129,7 @@ function AppContent() {
 
       {/* Left Rail Layout */}
       <aside className="left-rail" aria-label="Primary controls">
+        <div className="primary-elbow-placeholder" />
         <LcarsElbow
           direction="top-left"
           color="gray"

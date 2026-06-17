@@ -73,7 +73,15 @@
   min-width: 0;
 }
 
+.primary-elbow-placeholder {
+  display: block;
+  height: 148px;
+}
+
 .primary-elbow {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: calc(var(--rail) + 96px) !important;
   max-width: none !important;
   pointer-events: none;
