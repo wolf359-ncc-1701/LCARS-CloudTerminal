@@ -1,13 +1,14 @@
 .lcars-app {
   position: relative;
-  --stage-column-gap: 56px;
+  --stage-column-gap: clamp(36px, 3.5vw, 48px);
   display: grid;
-  grid-template-columns: var(--rail) minmax(0, 1fr) 278px;
+  grid-template-columns: var(--rail) minmax(0, 1fr) clamp(220px, 15vw, 278px);
   column-gap: var(--stage-column-gap);
   row-gap: var(--gap);
   width: 100vw;
+  max-width: 100%;
   height: 100vh;
-  padding: 24px 28px 22px;
+  padding: 24px clamp(16px, 2vw, 28px) 22px;
   overflow: hidden;
   color: var(--gray-white);
   background: #000;
@@ -148,7 +149,7 @@
 
 .rail-numbers span {
   display: grid;
-  min-height: 83px;
+  min-height: 70px;
   place-items: center;
   color: var(--gray-white);
   background: var(--gray);
@@ -171,6 +172,12 @@
   gap: 28px;
   align-items: end;
   padding: 0 28px 0 10px;
+  min-height: 0;
+  height: 100%;
+}
+
+.vertical-meter .meter-track-v {
+  min-height: 60px;
 }
 
 .vertical-meter span {
@@ -185,12 +192,19 @@
 .rail-actions {
   display: grid;
   gap: 12px;
-  padding-bottom: 18px;
+  padding-bottom: 10px;
+}
+
+.rail-actions button,
+.rail-actions .lcars-element {
+  height: 34px;
+  min-height: 34px;
+  font-size: 0.8rem;
 }
 
 .main-stage {
   display: grid;
-  grid-template-rows: 96px 52px minmax(0, 1fr) 118px;
+  grid-template-rows: 86px 52px minmax(0, 1fr) 96px;
   min-width: 0;
 }
 
@@ -342,14 +356,21 @@
   position: relative;
   z-index: 1;
   height: 100%;
-  padding: 28px;
+  padding: clamp(14px, 2.5vh, 28px);
 }
 
 .bridge-view {
   display: grid;
   grid-template-columns: minmax(180px, 0.72fr) minmax(430px, 1.4fr) minmax(260px, 0.8fr);
   grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: 18px;
+  gap: clamp(10px, 1.8vh, 18px);
+}
+
+.bridge-left-column,
+.bridge-middle-column,
+.bridge-right-column {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .hero-readout-container {
@@ -506,8 +527,8 @@
   align-self: stretch;
   display: grid;
   align-content: center;
-  gap: 12px;
-  padding: 16px;
+  gap: clamp(6px, 1vh, 12px);
+  padding: clamp(8px, 1.2vh, 16px);
   background: rgba(16, 20, 27, 0.74);
   border-left: 8px solid var(--gray);
 }
@@ -517,7 +538,7 @@
   grid-template-columns: 54px 1fr 38px;
   gap: 10px;
   align-items: center;
-  min-height: 28px;
+  min-height: clamp(20px, 2.5vh, 28px);
   color: var(--gray-lighter);
 }
 
@@ -561,6 +582,8 @@
   display: grid;
   align-content: end;
   gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
 }
 
 .bridge-log article {
@@ -594,8 +617,8 @@
   grid-template-columns: auto 1fr;
   gap: 12px;
   align-items: center;
-  min-height: 64px;
-  padding: 0 18px;
+  min-height: clamp(42px, 6vh, 64px);
+  padding: 0 clamp(10px, 1.2vw, 18px);
   background: var(--gray-light);
 }
 
@@ -787,7 +810,7 @@
 }
 
 .footer-blocks span {
-  min-height: 54px;
+  min-height: 44px;
   background: var(--gray);
 }
 
@@ -815,13 +838,18 @@
   display: grid;
   grid-template-rows: auto auto auto 1fr;
   gap: 18px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .module-title {
   color: var(--orange-light);
-  font-size: 1.46rem;
+  font-size: clamp(1rem, 1.8vw, 1.46rem);
   text-align: right;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .right-stack {
@@ -1341,4 +1369,11 @@
   background-color: var(--orange) !important;
 }
 
+/* Responsive Viewport Containment overrides to prevent vertical overflow */
+.bridge-middle-column .lcars-bracket-content > div {
+  min-height: clamp(280px, 42vh, 410px) !important;
+}
 
+.energy-view .lcars-bracket-content > div {
+  min-height: clamp(240px, 35vh, 340px) !important;
+}

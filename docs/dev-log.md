@@ -419,3 +419,26 @@ Fix in [layout.css](file:///C:/Users/user/Documents/LCARS/src/styles/layout.css)
 Verification:
 - `npm run build` completed successfully.
 - Local commit: `fix(ui): align elbow bottom edge with brand-block width`.
+
+## 2026-06-17 - V0.79 Viewport Containment
+
+Addressed viewport overflow regression on desktop where right rail contents and title broke horizontal boundaries, and vertical meter / main-stage footers overflowed vertical screen limits on smaller viewports.
+
+Included:
+- **Responsive Shell Grid (Horizontal Containment)**:
+  - Constrained `.lcars-app` width using `width: 100vw; max-width: 100%;` and responsive paddings `padding: 24px clamp(16px, 2vw, 28px) 22px;`.
+  - Converted grid gaps to `--stage-column-gap: clamp(36px, 3.5vw, 48px)` to gracefully scale space on narrow viewports without breaking top-left elbow continuity.
+  - Set `.right-rail` to `min-width: 0; overflow: hidden;` and set `.module-title` font-size to `clamp(1rem, 1.8vw, 1.46rem)` with `white-space: nowrap; overflow: hidden; text-overflow: clip;` to prevent text expansion from stretching the right column.
+  - Wrapped status indicator dots in `.lcars-status-dots` using `flex-wrap: wrap; max-height: 28px; overflow: hidden;` and added `flex-shrink: 0` to dots to hide overflow without horizontal stretching.
+- **Vertical Height Compression (Vertical Containment)**:
+  - Compressed `.main-stage` rows to `86px 52px minmax(0, 1fr) 96px` (from `96px 52px minmax(0, 1fr) 118px`).
+  - Reduced `.footer-blocks span` min-height to `44px` (from `54px`).
+  - Reduced `.rail-numbers span` min-height to `70px` (from `83px`) and `.rail-actions` padding-bottom to `10px` with fixed button height of `34px`.
+  - Added `min-height: 0; height: 100%;` to `.vertical-meter` and allowed `.meter-track-v` to shrink to `60px` min-height (from `100px`) to prevent left column stretching.
+  - Added responsive container heights `min-height: clamp(...) !important;` for System Diagram and Energy View SVG boards to automatically scale SVGs.
+  - Trimmed padding, gap, and text size in `.lcars-readout` to `clamp(1.4rem, 3.2vh, 2.1rem)` and added log-container height containment in `.bridge-log` (`max-height: 180px; overflow-y: auto;`).
+
+Verification:
+- `npm run build` completed successfully.
+- Manual resize verifies right rail alignment and vertical meter placement within 768px viewports.
+- Local commit: `fix(ui): contain V0.79 viewport overflow`.
