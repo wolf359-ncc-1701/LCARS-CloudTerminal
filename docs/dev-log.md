@@ -520,3 +520,32 @@ Verification:
 - The manual manifest was regenerated from source markdown headings so the frontend tree uses correct UTF-8 Chinese titles instead of PDF-extracted mojibake.
 - `public/library/tng-manual-manifest.json` and `public/library/project-file-manifest.json` parse successfully.
 - `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.
+
+## 2026-06-18 - V0.9 Memory Archive Implementation
+
+Implemented the V0.9 Memory Archive file manager and reader console.
+
+Included:
+- **Memory View Redesign**:
+  - Replaced the hardware diagnostics placeholder layout in `src/components/dashboard/MemoryView.tsx` with a fully interactive file manager and reader.
+  - Defined states (`memorySource`, `openedItemId`, `selectedNodeId`, `activePage`, `memoryQuery`, `selectedPath`, `isFileOpen`) in `src/app/App.tsx` to link Memory actions directly with the right rail buttons.
+- **File Browser Layout**:
+  - Created `MemoryBrowserPanel.tsx` with source groups sidebar, folder directory filters, file/chapter listing grid, and a bottom metadata status strip.
+  - Chapters/files are filterable via search query and left folder tree navigation.
+  - Manual chapters are presented as LCARS grid tiles.
+- **Archive Reader Layout**:
+  - Created `MemoryReaderPanel.tsx` with left outline/directory tree and right viewer.
+  - Manual mode embeds `tng-technical-manual-cn.pdf` in an iframe with page jumps (`#page=N`) synced to tree outline clicks and prev/next page controls.
+  - Workspace mode displays file details, metadata, and simulated preformatted source file preview for text/markdown files (with code fallback), and warnings for binary files.
+  - Tree expansion state is preserved via recursive node rendering.
+- **Right Rail Interactions**:
+  - Conditionally rendered Memory-specific buttons (`MANUAL ARCHIVE`, `PROJECT FILES`, `OPEN INDEX`, `CLOSE READER`, `FILTER RESET`) on the right rail when the terminal is in Memory mode.
+  - Action buttons are fully wired to state and update the browser/reader layouts dynamically.
+- **CSS and Visual primitive integration**:
+  - Added new classes (`.memory-view`, `.memory-archive`, `.memory-toolbar`, `.segmented-control`, `.memory-browser`, `.memory-reader-layout`, `.memory-tree-pane`, `.memory-reader-pane`, `.text-viewer-container`, `.binary-fallback-container`, etc.) to the end of `src/styles/layout.css` to style the file browser and reader as embedded LCARS consoles.
+
+Verification:
+- `npm run build` completed successfully.
+- Verified manual outline page navigation via iframe hash change.
+- Verified project workspace files list and folder filtration.
+- No regressions to elbow geometry, viewport containment, or other tabs.
