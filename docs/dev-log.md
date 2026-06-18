@@ -579,8 +579,18 @@ Frontend correction started:
 - Switched manual reading to the local archive API chapter endpoint.
 - Added an LCARS-native markdown/text reader surface.
 
-Follow-up for Gemini:
-- Continue from `docs/gemini-prompts/v09-memory-reader-correction.md`.
-- Polish Memory's left-side source/tree/action zone.
-- Keep all Memory-specific controls inside Memory view, not in the right rail.
-- Do not restore PDF iframe rendering.
+## 2026-06-18 - V0.9 Memory Archive Refactoring (Correction)
+
+Refactored the Memory module's information architecture and visuals into a unified file manager and reader interface.
+
+Included:
+- **Unified Sidebar & Layout**: Merged the TNG Manual and Workspace Project Files into a single layout under the same Memory Archive. The left sidebar now handles source selection, directory/outline tree navigation, query filters, and action buttons, while the right content area dynamically hosts the file browser list or document reader.
+- **Native LCARS Markdown Reader**: Completely removed PDF iframe/object rendering and browser viewer plugins. Built a stateful Markdown parser and renderer inside `MemoryReaderPanel` supporting headings, paragraphs, warning callouts, list bullets, and graphic fallbacks.
+- **API Page-Based Chapter Mapping**: Connected `activePage` navigation (via `PREV REF` / `NEXT REF`) to automatically map and fetch correct chapter Markdown files from the local read-only archive API (`/api/archive/manuals/tng-technical-manual-cn/chapter?file=...`).
+- **Internal Actions Area**: Kept the right rail strictly dedicated to global mode switcher navigation (`BRIDGE / HABITAT / POWER / MEMORY / ACTIONS`). Moved all Memory actions (`SOURCE`, `OPEN INDEX`, `CLOSE READER`, `FILTER RESET`, `SEARCH`) into the Memory view's left sidebar.
+- **Clean Text Markers**: Verified that no emojis are present in files/folders. Created text badge mappings (`[DIR]`, `MD`, `JSN`, `SRC`, `CSS`, `TXT`, `BIN`) for directory tree nodes to ensure cross-terminal compatibility.
+- **Unused Toolbar Cleanup**: Deleted the obsolete `MemoryToolbar.tsx` component.
+
+Verification:
+- `npm run build` compiled successfully.
+- `npm run api -- --check` verification checks passed successfully.

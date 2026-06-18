@@ -1368,22 +1368,35 @@
   font-size: 0.75rem;
 }
 
-.memory-browser {
+.memory-archive-layout {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: clamp(240px, 20vw, 300px) 1fr;
   gap: 16px;
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  height: 100%;
 }
 
-.memory-source-rail {
+.memory-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: rgba(20, 24, 30, 0.4);
-  padding: 10px 8px;
+  gap: 12px;
+  background: rgba(20, 24, 30, 0.45);
+  padding: 12px 10px;
   border-right: 2px solid var(--gray-dark);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.memory-sidebar.reader-open .memory-source-card {
+  padding: 6px 8px;
+}
+.memory-sidebar.reader-open .memory-source-card h3 {
+  font-size: 0.72rem;
+}
+.memory-sidebar.reader-open .memory-source-card p {
+  display: none;
 }
 
 .memory-source-card {
@@ -1779,3 +1792,73 @@
   margin-top: 0.65em;
   background: var(--orange);
 }
+
+/* Callout warning/info box styles for Markdown reader */
+.lcars-reader-callout {
+  border-left: 5px solid var(--orange);
+  background: rgba(251, 140, 0, 0.08);
+  padding: 12px 16px;
+  margin: 18px 0;
+  border-radius: 2px;
+}
+
+.lcars-reader-callout.warning {
+  border-left-color: var(--orange);
+  background: rgba(251, 140, 0, 0.06);
+}
+
+.lcars-reader-callout .callout-header {
+  font-family: var(--font-lcars);
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--orange-light);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.lcars-reader-callout .callout-body p {
+  margin: 0 0 6px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--gray-white);
+}
+
+.lcars-reader-callout .callout-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Image box fallback styles */
+.lcars-reader-image-box {
+  background: rgba(103, 202, 240, 0.04);
+  border: 1.5px dashed var(--cyan-dark);
+  padding: 20px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan-light);
+  border-radius: 4px;
+}
+
+.lcars-reader-image-box .image-header {
+  font-family: var(--font-lcars);
+  font-size: 0.72rem;
+  font-weight: bold;
+  color: var(--cyan-bright);
+  letter-spacing: 1px;
+}
+
+.lcars-reader-image-box .image-filename {
+  font-family: var(--font-lcars);
+  font-size: 1.1rem;
+  color: var(--gray-white);
+  margin: 8px 0;
+}
+
+.lcars-reader-image-box .image-desc {
+  font-size: 0.65rem;
+  color: var(--gray-light);
+  text-transform: uppercase;
+}
+

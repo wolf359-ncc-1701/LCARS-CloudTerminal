@@ -45,11 +45,26 @@ export const MemoryTree: React.FC<MemoryTreeProps> = ({
             if (hasChildren) onToggleExpand(node.id);
           }}
         >
-          <span
-            className="node-icon toggle-icon"
-            style={{ transform: hasChildren && isExpanded ? "rotate(90deg)" : "none" }}
-          >
-            {hasChildren ? ">" : "MD"}
+          {hasChildren ? (
+            <span
+              className="toggle-arrow"
+              style={{
+                display: "inline-block",
+                transform: isExpanded ? "rotate(90deg)" : "none",
+                marginRight: "4px",
+                transition: "transform 0.15s ease",
+                fontFamily: "var(--font-lcars)",
+                fontSize: "0.75rem",
+                width: "8px"
+              }}
+            >
+              &gt;
+            </span>
+          ) : (
+            <span style={{ display: "inline-block", width: "12px" }} />
+          )}
+          <span className="node-icon" style={{ marginRight: "6px" }}>
+            {hasChildren ? "DIR" : "MD"}
           </span>
           <span className="node-label">{node.title}</span>
           <span className="node-page-badge" style={{ marginLeft: "auto", fontSize: "0.65rem", opacity: 0.6 }}>
@@ -66,7 +81,18 @@ export const MemoryTree: React.FC<MemoryTreeProps> = ({
     const isDir = node.type === "directory";
     const isExpanded = Boolean(expandedNodes[node.id]);
     const isActive = selectedNodeId === node.id;
-    const icon = isDir ? ">" : node.extension === "md" ? "MD" : node.extension === "json" ? "JSN" : "FILE";
+
+    const getBadge = () => {
+      if (isDir) return "DIR";
+      const ext = (node.extension || "").toLowerCase();
+      if (ext === "md") return "MD";
+      if (ext === "json") return "JSN";
+      if (["ts", "tsx", "js", "mjs"].includes(ext)) return "SRC";
+      if (["css", "html"].includes(ext)) return "CSS";
+      return node.readable ? "TXT" : "BIN";
+    };
+
+    const badge = getBadge();
 
     return (
       <div key={node.id} className="tree-node-group">
@@ -82,11 +108,26 @@ export const MemoryTree: React.FC<MemoryTreeProps> = ({
             }
           }}
         >
-          <span
-            className="node-icon toggle-icon"
-            style={{ transform: isDir && isExpanded ? "rotate(90deg)" : "none", marginRight: "6px" }}
-          >
-            {icon}
+          {isDir ? (
+            <span
+              className="toggle-arrow"
+              style={{
+                display: "inline-block",
+                transform: isExpanded ? "rotate(90deg)" : "none",
+                marginRight: "4px",
+                transition: "transform 0.15s ease",
+                fontFamily: "var(--font-lcars)",
+                fontSize: "0.75rem",
+                width: "8px"
+              }}
+            >
+              &gt;
+            </span>
+          ) : (
+            <span style={{ display: "inline-block", width: "12px" }} />
+          )}
+          <span className="node-icon" style={{ marginRight: "6px" }}>
+            {badge}
           </span>
           <span className="node-label" style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             {node.name}
