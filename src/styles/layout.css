@@ -131,7 +131,8 @@
   gap: 8px;
 }
 
-.rail-numbers span {
+.rail-numbers span,
+.rail-numbers button {
   display: grid;
   min-height: 70px;
   place-items: center;
@@ -140,12 +141,42 @@
   font-weight: 800;
 }
 
-.rail-numbers span[data-accent="orange"] {
+.rail-numbers button {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--font-lcars);
+  font-size: 0.82rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    filter var(--fast) ease,
+    transform var(--fast) ease,
+    box-shadow var(--fast) ease;
+}
+
+.rail-numbers button:hover {
+  filter: brightness(1.12);
+  box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.18);
+}
+
+.rail-numbers button:active {
+  transform: translateY(1px);
+}
+
+.rail-memory-controls button[data-active="true"] {
+  box-shadow: inset 0 0 0 3px rgba(103, 202, 240, 0.34);
+}
+
+.rail-numbers span[data-accent="orange"],
+.rail-numbers button[data-accent="orange"] {
   color: #000;
   background: var(--orange-light);
 }
 
-.rail-numbers span[data-accent="cyan"] {
+.rail-numbers span[data-accent="cyan"],
+.rail-numbers button[data-accent="cyan"] {
   color: var(--cyan-bright);
   background: var(--cyan-dark);
 }
@@ -1756,6 +1787,7 @@
   min-height: 100%;
   overflow: visible;
   padding: 26px 34px 34px;
+  --reader-font-scale: 1;
   background:
     linear-gradient(90deg, rgba(103, 202, 240, 0.08), transparent 28%),
     #020508;
@@ -1773,21 +1805,21 @@
 }
 
 .lcars-reader-heading.level-1 {
-  font-size: clamp(1.35rem, 2.2vw, 2.1rem);
+  font-size: calc(clamp(1.35rem, 2.2vw, 2.1rem) * var(--reader-font-scale));
 }
 
 .lcars-reader-heading.level-2,
 .lcars-reader-heading.level-3,
 .lcars-reader-heading.level-4 {
   color: var(--cyan-bright);
-  font-size: 1.02rem;
+  font-size: calc(1.02rem * var(--reader-font-scale));
   margin-top: 24px;
 }
 
 .lcars-reader-paragraph {
   max-width: 76ch;
   margin: 0 0 14px;
-  font-size: 0.95rem;
+  font-size: calc(0.95rem * var(--reader-font-scale));
   color: var(--gray-white);
 }
 
@@ -1797,6 +1829,7 @@
   gap: 10px;
   max-width: 76ch;
   margin: 0 0 10px;
+  font-size: calc(0.95rem * var(--reader-font-scale));
   color: var(--gray-white);
 }
 

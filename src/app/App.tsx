@@ -26,6 +26,17 @@ import {
   CommandView,
 } from "../components/dashboard";
 
+type MemoryActionType =
+  | "openIndex"
+  | "closeReader"
+  | "filterReset"
+  | "back"
+  | "searchFocus"
+  | "fontIncrease"
+  | "fontDecrease"
+  | "manualSource"
+  | "projectSource";
+
 const modeTitleMap: Record<Mode, string> = {
   bridge: "LCARS CLOUD",
   home: "HOME",
@@ -67,7 +78,7 @@ function AppContent() {
   const [memoryQuery, setMemoryQuery] = useState<string>("");
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [isFileOpen, setIsFileOpen] = useState<boolean>(false);
-  const [memoryActionSignal, setMemoryActionSignal] = useState<{ type: "openIndex" | "closeReader" | "filterReset"; tick: number } | null>(null);
+  const [memoryActionSignal, setMemoryActionSignal] = useState<{ type: MemoryActionType; tick: number } | null>(null);
 
   const telemetry = useMockTelemetry(34);
 
@@ -131,9 +142,26 @@ function AppContent() {
     pushEvent("success", `SCENE ${scene.name.toUpperCase()}`, `${scene.code} accepted by local mock core.`);
   };
 
-  const signalMemoryAction = (type: "openIndex" | "closeReader" | "filterReset") => {
+  const signalMemoryAction = (type: MemoryActionType) => {
     setMemoryActionSignal({ type, tick: Date.now() });
   };
+
+  const memoryRailControls: Array<{
+    label: string;
+    action: MemoryActionType;
+    accent: "orange" | "cyan" | "gray";
+    active?: boolean;
+  }> = [
+    { label: "OPEN", action: "openIndex", accent: "orange", active: openedItemId !== null },
+    { label: "CLOSE", action: "closeReader", accent: "gray", active: openedItemId !== null },
+    { label: "BACK", action: "back", accent: "gray", active: openedItemId !== null },
+    { label: "FIND", action: "searchFocus", accent: "cyan", active: memoryQuery.length > 0 },
+    { label: "ZOOM+", action: "fontIncrease", accent: "gray" },
+    { label: "ZOOM-", action: "fontDecrease", accent: "orange" },
+    { label: "MANUAL", action: "manualSource", accent: "cyan", active: memorySource === "manual" },
+    { label: "WORK", action: "projectSource", accent: "gray", active: memorySource === "project" },
+    { label: "RESET", action: "filterReset", accent: "gray", active: memoryQuery.length > 0 },
+  ];
 
   return (
     <LcarsShell mode={mode} alert={alert} visual={visual}>
@@ -169,12 +197,24 @@ function AppContent() {
           <span>TITAN.LOCAL</span>
         </div>
 
-        <div className="rail-numbers">
-          {["44-600", "10-667", "82-464", "47-957", "50-409", "19-274", "66-766", "28-605", "83-260"].map((label, index) => (
-            <span key={label} data-accent={index % 5 === 0 ? "orange" : index % 3 === 0 ? "cyan" : "gray"}>
-              {label}
-            </span>
-          ))}
+        <div className={`rail-numbers ${mode === "memory" ? "rail-memory-controls" : ""}`}>
+          {mode === "memory"
+            ? memoryRailControls.map((control) => (
+                <button
+                  key={control.action}
+                  type="button"
+                  data-accent={control.accent}
+                  data-active={control.active ? "true" : undefined}
+                  onClick={() => signalMemoryAction(control.action)}
+                >
+                  {control.label}
+                </button>
+              ))
+            : ["44-600", "10-667", "82-464", "47-957", "50-409", "19-274", "66-766", "28-605", "83-260"].map((label, index) => (
+                <span key={label} data-accent={index % 5 === 0 ? "orange" : index % 3 === 0 ? "cyan" : "gray"}>
+                  {label}
+                </span>
+              ))}
         </div>
 
         <div className="vertical-meter">
@@ -182,40 +222,26 @@ function AppContent() {
           <LcarsMeter direction="vertical" value={telemetry[9] ?? 40} showValue={false} color="orange" />
         </div>
 
-        <div className="rail-actions">
-          {mode === "memory" ? (
-            <>
-              <LcarsElement color="cyan-light" onClick={() => signalMemoryAction("openIndex")} beepType="confirm">
-                Open Index
-              </LcarsElement>
-              <LcarsElement color="gray" active={openedItemId !== null} onClick={() => signalMemoryAction("closeReader")} beepType="soft">
-                Close Reader
-              </LcarsElement>
-              <LcarsElement color="orange-dark" active={memoryQuery.length > 0} onClick={() => signalMemoryAction("filterReset")} beepType="transition">
-                Filter Reset
-              </LcarsElement>
-            </>
-          ) : (
-            <>
-              <LcarsElement color="cyan-light" onClick={() => setSettingsOpen(true)} beepType="confirm">
-                Settings
-              </LcarsElement>
-              <LcarsElement color="gray" active={autoActive} beepType="soft">
-                Auto Mode
-              </LcarsElement>
-              <LcarsElement
-                color="orange-dark"
-                active={alert === "red"}
-                onClick={() => {
-                  setAlert((current) => (current === "red" ? "normal" : "red"));
-                }}
-                beepType="alert"
-              >
-                Red Alert
-              </LcarsElement>
-            </>
-          )}
-        </div>
+        {mode !== "memory" && (
+          <div className="rail-actions">
+            <LcarsElement color="cyan-light" onClick={() => setSettingsOpen(true)} beepType="confirm">
+              Settings
+            </LcarsElement>
+            <LcarsElement color="gray" active={autoActive} beepType="soft">
+              Auto Mode
+            </LcarsElement>
+            <LcarsElement
+              color="orange-dark"
+              active={alert === "red"}
+              onClick={() => {
+                setAlert((current) => (current === "red" ? "normal" : "red"));
+              }}
+              beepType="alert"
+            >
+              Red Alert
+            </LcarsElement>
+          </div>
+        )}
       </aside>
 
       {/* Main Content Stage */}

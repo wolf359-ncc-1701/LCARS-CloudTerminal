@@ -17,6 +17,7 @@ interface MemoryReaderPanelProps {
   setSelectedPath: (path: string | null) => void;
   isFileOpen: boolean;
   setIsFileOpen: (open: boolean) => void;
+  readerFontScale: number;
 }
 
 interface ReaderDocument {
@@ -191,6 +192,7 @@ export const MemoryReaderPanel: React.FC<MemoryReaderPanelProps> = ({
   selectedPath,
   setSelectedPath,
   isFileOpen,
+  readerFontScale,
 }) => {
   const [readerDocument, setReaderDocument] = useState<ReaderDocument | null>(null);
   const [readerError, setReaderError] = useState<string | null>(null);
@@ -323,6 +325,7 @@ export const MemoryReaderPanel: React.FC<MemoryReaderPanelProps> = ({
       <div
         className="memory-reader-content"
         ref={readerScrollRef}
+        style={{ "--reader-font-scale": readerFontScale } as React.CSSProperties}
         onWheel={(event) => {
           event.preventDefault();
           event.stopPropagation();

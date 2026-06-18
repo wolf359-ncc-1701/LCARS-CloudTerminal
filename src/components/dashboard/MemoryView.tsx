@@ -16,7 +16,19 @@ interface MemoryViewProps {
   setSelectedPath: (path: string | null) => void;
   isFileOpen: boolean;
   setIsFileOpen: (open: boolean) => void;
-  actionSignal: { type: "openIndex" | "closeReader" | "filterReset"; tick: number } | null;
+  actionSignal: {
+    type:
+      | "openIndex"
+      | "closeReader"
+      | "filterReset"
+      | "back"
+      | "searchFocus"
+      | "fontIncrease"
+      | "fontDecrease"
+      | "manualSource"
+      | "projectSource";
+    tick: number;
+  } | null;
 }
 
 export const MemoryView: React.FC<MemoryViewProps> = (props) => {

@@ -624,3 +624,28 @@ Verification:
 - The manual chapter endpoint returns readable Markdown.
 - The manual asset endpoint returns local image bytes for `1.1.1.jpg`.
 - `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.
+
+## 2026-06-18 - V0.851 Memory Rail Controls
+
+Moved Memory archive operations into the left LCARS tile matrix.
+
+Included:
+- **DEV Baseline**:
+  - Updated the synchronized baseline to `DEV V.0.851`.
+  - Added `TASK-009-v0851-memory-rail-controls.md` as the current implementation contract.
+- **Left Rail Control Matrix**:
+  - In Memory mode, the numbered rail matrix now becomes operational controls:
+    - `OPEN`, `CLOSE`, `BACK`, `FIND`, `ZOOM+`, `ZOOM-`, `MANUAL`, `WORK`, `RESET`.
+  - Non-Memory modes still render the original numeric LCARS tile matrix.
+- **Bottom Action Removal**:
+  - Removed the lower Memory-only `OPEN INDEX / CLOSE READER / FILTER RESET` stack from the bottom of the left rail.
+  - Non-Memory modes still keep `SETTINGS / AUTO MODE / RED ALERT` in the lower rail.
+- **Archive Control Wiring**:
+  - Added Memory action signals for source switching, search focus, reader close/back, and font scale changes.
+  - `FIND` focuses the archive search field directly.
+  - `ZOOM+` and `ZOOM-` adjust only LCARS reader document typography through a scoped CSS variable.
+
+Verification:
+- `npm run sync:dev` completed successfully.
+- `npm run api -- --check` completed successfully.
+- `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.

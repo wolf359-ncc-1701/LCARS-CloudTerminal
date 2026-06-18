@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { MemoryBrowserPanel } from "./MemoryBrowserPanel";
 import { MemoryReaderPanel } from "./MemoryReaderPanel";
 import { MemoryTree } from "./MemoryTree";
@@ -20,7 +20,19 @@ interface MemoryArchiveViewProps {
   setSelectedPath: (path: string | null) => void;
   isFileOpen: boolean;
   setIsFileOpen: (open: boolean) => void;
-  actionSignal: { type: "openIndex" | "closeReader" | "filterReset"; tick: number } | null;
+  actionSignal: {
+    type:
+      | "openIndex"
+      | "closeReader"
+      | "filterReset"
+      | "back"
+      | "searchFocus"
+      | "fontIncrease"
+      | "fontDecrease"
+      | "manualSource"
+      | "projectSource";
+    tick: number;
+  } | null;
 }
 
 type ManualTreeNode = ManualChapter & { children?: ManualTreeNode[] };
@@ -65,6 +77,8 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
   const [projectTree, setProjectTree] = useState<FileNode[]>([]);
   const [expandedNodes, setExpandedNodes] = useState<Record<string, boolean>>({});
   const [selectedFolderFilter, setSelectedFolderFilter] = useState<string | null>(null);
+  const [readerFontScale, setReaderFontScale] = useState(1);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   // Fetch static or API data on mount
   useEffect(() => {
@@ -157,6 +171,43 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
     if (actionSignal.type === "filterReset") {
       setQuery("");
       setSelectedFolderFilter(null);
+      return;
+    }
+
+    if (actionSignal.type === "back") {
+      if (openedItemId !== null) {
+        handleCloseReader();
+      } else {
+        setSelectedNodeId(null);
+        setSelectedPath(null);
+        setSelectedFolderFilter(null);
+      }
+      return;
+    }
+
+    if (actionSignal.type === "searchFocus") {
+      searchInputRef.current?.focus();
+      searchInputRef.current?.select();
+      return;
+    }
+
+    if (actionSignal.type === "fontIncrease") {
+      setReaderFontScale((current) => Math.min(1.35, Number((current + 0.08).toFixed(2))));
+      return;
+    }
+
+    if (actionSignal.type === "fontDecrease") {
+      setReaderFontScale((current) => Math.max(0.82, Number((current - 0.08).toFixed(2))));
+      return;
+    }
+
+    if (actionSignal.type === "manualSource") {
+      handleSourceChange("manual");
+      return;
+    }
+
+    if (actionSignal.type === "projectSource") {
+      handleSourceChange("project");
     }
   }, [actionSignal]);
 
@@ -283,6 +334,7 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
           <div className="search-input-wrapper" style={{ margin: "4px 0 8px 0", width: "100%" }}>
             <span className="search-icon" style={{ fontFamily: "var(--font-lcars)", fontSize: "0.7rem", color: "var(--cyan-light)" }}>FIND</span>
             <input
+              ref={searchInputRef}
               type="text"
               placeholder="FILTER ARCHIVE..."
               value={query}
@@ -411,6 +463,7 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
               setSelectedPath={setSelectedPath}
               isFileOpen={isFileOpen}
               setIsFileOpen={setIsFileOpen}
+              readerFontScale={readerFontScale}
             />
           )}
         </div>
