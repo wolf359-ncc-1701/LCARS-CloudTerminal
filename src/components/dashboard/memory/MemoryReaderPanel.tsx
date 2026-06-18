@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { ManualManifest, ProjectManifest, FileNode, ManualChapter } from "./memoryTypes";
 import { formatBytes } from "./memoryData";
 
@@ -46,6 +46,19 @@ const renderInlineMarkdown = (text: string) => {
     if (!parsed) return null;
     return <p key={idx} dangerouslySetInnerHTML={{ __html: parsed }} />;
   });
+};
+
+const normalizeHeadingText = (value: string) =>
+  value
+    .replace(/<[^>]+>/g, "")
+    .replace(/^[0-9.]+\s+/, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
+const manualImageUrl = (src: string) => {
+  const filename = src.split("/").pop();
+  return filename ? `/api/archive/manuals/tng-technical-manual-cn/assets/${encodeURIComponent(filename)}` : "";
 };
 
 const renderMarkdown = (markdown: string) => {
@@ -104,21 +117,22 @@ const renderMarkdown = (markdown: string) => {
       const level = headingMatch[1].length;
       let title = headingMatch[2];
       title = title.replace(/<[^>]+>/g, "").trim();
+      const headingKey = normalizeHeadingText(title);
       if (level === 1) {
         blocks.push(
-          <h2 key={`h-${i}`} className={`lcars-reader-heading level-${level}`}>
+          <h2 key={`h-${i}`} className={`lcars-reader-heading level-${level}`} data-heading={headingKey}>
             {title}
           </h2>
         );
       } else if (level === 2) {
         blocks.push(
-          <h3 key={`h-${i}`} className={`lcars-reader-heading level-${level}`}>
+          <h3 key={`h-${i}`} className={`lcars-reader-heading level-${level}`} data-heading={headingKey}>
             {title}
           </h3>
         );
       } else {
         blocks.push(
-          <h4 key={`h-${i}`} className={`lcars-reader-heading level-${level}`}>
+          <h4 key={`h-${i}`} className={`lcars-reader-heading level-${level}`} data-heading={headingKey}>
             {title}
           </h4>
         );
@@ -131,12 +145,13 @@ const renderMarkdown = (markdown: string) => {
       const srcMatch = trimmed.match(/src=["']([^"']+)["']/);
       const src = srcMatch ? srcMatch[1] : "";
       const filename = src.split("/").pop() || "GRAPHIC";
+      const url = manualImageUrl(src);
       blocks.push(
-        <div className="lcars-reader-image-box" key={`img-${i}`}>
+        <figure className="lcars-reader-image-box" key={`img-${i}`}>
           <div className="image-header">SYSTEM GRAPHIC REFERENCE</div>
-          <div className="image-filename">{filename.toUpperCase()}</div>
-          <div className="image-desc">[DATABASE OPTICAL TRANSFER MODULE]</div>
-        </div>
+          {url ? <img src={url} alt={filename} loading="lazy" /> : null}
+          <figcaption className="image-filename">{filename.toUpperCase()}</figcaption>
+        </figure>
       );
       continue;
     }
@@ -180,6 +195,7 @@ export const MemoryReaderPanel: React.FC<MemoryReaderPanelProps> = ({
   const [readerDocument, setReaderDocument] = useState<ReaderDocument | null>(null);
   const [readerError, setReaderError] = useState<string | null>(null);
   const [readerBusy, setReaderBusy] = useState(false);
+  const readerScrollRef = useRef<HTMLDivElement | null>(null);
 
   // Helper to map active manual page to the corresponding markdown chapter file
   const getSourceFileForPage = (page: number): string => {
@@ -192,33 +208,9 @@ export const MemoryReaderPanel: React.FC<MemoryReaderPanelProps> = ({
     return eligible[0].sourceFile;
   };
 
-  const manualSourceFile = source === "manual" ? getSourceFileForPage(activePage || 6) : "";
+  const manualSourceFile = source === "manual" ? (selectedPath || getSourceFileForPage(activePage || 6)) : "";
   const activeManualOutlineNode = manualManifest?.outline.find((node) => node.id === selectedNodeId);
   const activeProjectFile = projectManifest?.files.find((file) => file.id === selectedNodeId);
-
-  const handlePrevPage = () => {
-    if (activePage !== null && activePage > 1) {
-      const nextPage = activePage - 1;
-      setActivePage(nextPage);
-      // Sync selected outline node if it changed
-      if (manualManifest) {
-        const fileForPage = getSourceFileForPage(nextPage);
-        setSelectedPath(fileForPage);
-      }
-    }
-  };
-
-  const handleNextPage = () => {
-    if (activePage !== null && manualManifest && activePage < manualManifest.pageCount) {
-      const nextPage = activePage + 1;
-      setActivePage(nextPage);
-      // Sync selected outline node if it changed
-      if (manualManifest) {
-        const fileForPage = getSourceFileForPage(nextPage);
-        setSelectedPath(fileForPage);
-      }
-    }
-  };
 
   useEffect(() => {
     if (source === "manual" && activePage === null) {
@@ -289,6 +281,29 @@ export const MemoryReaderPanel: React.FC<MemoryReaderPanelProps> = ({
     };
   }, [source, manualSourceFile, selectedPath, activeManualOutlineNode]);
 
+  useEffect(() => {
+    if (source !== "manual" || !activeManualOutlineNode || !readerDocument || !readerScrollRef.current) return;
+
+    const expected = normalizeHeadingText(activeManualOutlineNode.title);
+    const headings = Array.from(readerScrollRef.current.querySelectorAll<HTMLElement>(".lcars-reader-heading"));
+    const target = headings.find((heading) => {
+      const value = heading.dataset.heading || normalizeHeadingText(heading.textContent || "");
+      return value === expected || value.includes(expected) || expected.includes(value);
+    });
+
+    if (target) {
+      const container = readerScrollRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const nextTop = targetRect.top - containerRect.top + container.scrollTop - 18;
+
+      container.scrollTo({
+        top: Math.max(0, nextTop),
+        behavior: "smooth",
+      });
+    }
+  }, [source, selectedNodeId, activeManualOutlineNode, readerDocument]);
+
   return (
     <div className="memory-reader-pane" style={{ height: "100%", margin: 0 }}>
       <header className="memory-reader-header">
@@ -299,26 +314,21 @@ export const MemoryReaderPanel: React.FC<MemoryReaderPanelProps> = ({
         </div>
 
         <div className="reader-controls">
-          {source === "manual" && (
-            <>
-              <button type="button" className="reader-control-btn" onClick={handlePrevPage} disabled={activePage === 1}>
-                PREV REF
-              </button>
-              <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-lcars)", color: "var(--cyan)" }}>
-                PAGE REF {activePage} / {manualManifest?.pageCount || 168}
-              </span>
-              <button type="button" className="reader-control-btn" onClick={handleNextPage} disabled={activePage === manualManifest?.pageCount}>
-                NEXT REF
-              </button>
-            </>
-          )}
           <button type="button" className="reader-control-btn" onClick={onCloseReader} style={{ background: "var(--orange)", color: "#000", fontWeight: "bold" }}>
             CLOSE
           </button>
         </div>
       </header>
 
-      <div className="memory-reader-content">
+      <div
+        className="memory-reader-content"
+        ref={readerScrollRef}
+        onWheel={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          event.currentTarget.scrollTop += event.deltaY;
+        }}
+      >
         {readerBusy ? (
           <div className="binary-fallback-container">
             <div style={{ fontFamily: "var(--font-lcars)", fontWeight: "bold", fontSize: "1rem" }}>

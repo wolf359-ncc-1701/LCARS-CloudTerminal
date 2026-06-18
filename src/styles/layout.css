@@ -190,6 +190,9 @@
   display: grid;
   grid-template-rows: 86px 52px minmax(0, 1fr) 96px;
   min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .top-rail {
@@ -318,6 +321,7 @@
 .display-window {
   position: relative;
   min-height: 0;
+  height: 100%;
   overflow: hidden;
   border: 7px solid var(--gray);
   border-top-width: 18px;
@@ -325,6 +329,11 @@
   background:
     radial-gradient(circle at 50% 45%, rgba(42, 113, 147, 0.22), transparent 45%),
     #000;
+}
+
+.display-window > *:not(.scan-line) {
+  min-height: 0;
+  height: 100%;
 }
 
 .scan-line {
@@ -1287,6 +1296,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-height: 100%;
   min-height: 0;
   overflow: hidden;
 }
@@ -1374,6 +1384,7 @@
   gap: 16px;
   flex: 1;
   min-height: 0;
+  max-height: 100%;
   overflow: hidden;
   height: 100%;
 }
@@ -1386,6 +1397,7 @@
   padding: 12px 10px;
   border-right: 2px solid var(--gray-dark);
   min-height: 0;
+  max-height: 100%;
   overflow: hidden;
 }
 
@@ -1650,6 +1662,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  max-height: 100%;
   background: #000;
   border: 3px solid var(--gray-dark);
   border-radius: 4px;
@@ -1705,7 +1718,8 @@
 .memory-reader-content {
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   position: relative;
   background: #000;
 }
@@ -1739,8 +1753,8 @@
 }
 
 .lcars-document-reader {
-  height: 100%;
-  overflow-y: auto;
+  min-height: 100%;
+  overflow: visible;
   padding: 26px 34px 34px;
   background:
     linear-gradient(90deg, rgba(103, 202, 240, 0.08), transparent 28%),
@@ -1831,7 +1845,7 @@
 .lcars-reader-image-box {
   background: rgba(103, 202, 240, 0.04);
   border: 1.5px dashed var(--cyan-dark);
-  padding: 20px;
+  padding: 14px;
   margin: 16px 0;
   display: flex;
   flex-direction: column;
@@ -1839,6 +1853,15 @@
   justify-content: center;
   color: var(--cyan-light);
   border-radius: 4px;
+}
+
+.lcars-reader-image-box img {
+  display: block;
+  max-width: min(100%, 620px);
+  max-height: 360px;
+  object-fit: contain;
+  border: 2px solid rgba(103, 202, 240, 0.28);
+  background: #000;
 }
 
 .lcars-reader-image-box .image-header {

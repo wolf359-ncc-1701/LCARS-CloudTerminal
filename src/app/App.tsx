@@ -3,6 +3,7 @@ import { devices, initialEvents, rooms, scenes } from "../data/mock";
 import { useAutoMode } from "../hooks/useAutoMode";
 import { useMockTelemetry } from "../hooks/useMockTelemetry";
 import type { AlertLevel, EventLogItem, Mode } from "../types";
+import { DEV_CODENAME, DEV_LABEL, DEV_VERSION } from "./devVersion";
 
 import { MODES } from "./modes";
 import {
@@ -66,6 +67,7 @@ function AppContent() {
   const [memoryQuery, setMemoryQuery] = useState<string>("");
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [isFileOpen, setIsFileOpen] = useState<boolean>(false);
+  const [memoryActionSignal, setMemoryActionSignal] = useState<{ type: "openIndex" | "closeReader" | "filterReset"; tick: number } | null>(null);
 
   const telemetry = useMockTelemetry(34);
 
@@ -129,6 +131,10 @@ function AppContent() {
     pushEvent("success", `SCENE ${scene.name.toUpperCase()}`, `${scene.code} accepted by local mock core.`);
   };
 
+  const signalMemoryAction = (type: "openIndex" | "closeReader" | "filterReset") => {
+    setMemoryActionSignal({ type, tick: Date.now() });
+  };
+
   return (
     <LcarsShell mode={mode} alert={alert} visual={visual}>
 
@@ -146,7 +152,7 @@ function AppContent() {
           className="primary-elbow"
         >
           <div className="elbow-dev-label-group">
-            <span className="elbow-dev-code">DEV V.0.77</span>
+            <span className="elbow-dev-code">{DEV_LABEL}</span>
             <button
               type="button"
               className="elbow-icon-dot"
@@ -177,22 +183,38 @@ function AppContent() {
         </div>
 
         <div className="rail-actions">
-          <LcarsElement color="cyan-light" onClick={() => setSettingsOpen(true)} beepType="confirm">
-            Settings
-          </LcarsElement>
-          <LcarsElement color="gray" active={autoActive} beepType="soft">
-            Auto Mode
-          </LcarsElement>
-          <LcarsElement
-            color="orange-dark"
-            active={alert === "red"}
-            onClick={() => {
-              setAlert((current) => (current === "red" ? "normal" : "red"));
-            }}
-            beepType="alert"
-          >
-            Red Alert
-          </LcarsElement>
+          {mode === "memory" ? (
+            <>
+              <LcarsElement color="cyan-light" onClick={() => signalMemoryAction("openIndex")} beepType="confirm">
+                Open Index
+              </LcarsElement>
+              <LcarsElement color="gray" active={openedItemId !== null} onClick={() => signalMemoryAction("closeReader")} beepType="soft">
+                Close Reader
+              </LcarsElement>
+              <LcarsElement color="orange-dark" active={memoryQuery.length > 0} onClick={() => signalMemoryAction("filterReset")} beepType="transition">
+                Filter Reset
+              </LcarsElement>
+            </>
+          ) : (
+            <>
+              <LcarsElement color="cyan-light" onClick={() => setSettingsOpen(true)} beepType="confirm">
+                Settings
+              </LcarsElement>
+              <LcarsElement color="gray" active={autoActive} beepType="soft">
+                Auto Mode
+              </LcarsElement>
+              <LcarsElement
+                color="orange-dark"
+                active={alert === "red"}
+                onClick={() => {
+                  setAlert((current) => (current === "red" ? "normal" : "red"));
+                }}
+                beepType="alert"
+              >
+                Red Alert
+              </LcarsElement>
+            </>
+          )}
         </div>
       </aside>
 
@@ -257,6 +279,7 @@ function AppContent() {
               setSelectedPath={setSelectedPath}
               isFileOpen={isFileOpen}
               setIsFileOpen={setIsFileOpen}
+              actionSignal={memoryActionSignal}
             />
           )}
           {mode === "command" && (
@@ -404,7 +427,7 @@ function AppContent() {
         <LcarsOverlay title="TITAN.LOCAL SYSTEM INFO" onClose={() => setInfoOpen(false)}>
           <div style={{ color: "var(--gray-white)", fontSize: "0.95rem", display: "flex", flexDirection: "column", gap: "12px" }}>
             <p style={{ margin: 0, color: "var(--cyan-bright)", fontWeight: "bold" }}>
-              V0.77 LCARS Cloud Terminal Development Console
+              V{DEV_VERSION} LCARS Cloud Terminal Development Console
             </p>
             <p style={{ margin: 0 }}>
               System console running active telemetry and environmental controls, polished according to standard LCARS specifications.
@@ -421,7 +444,7 @@ function AppContent() {
                 <strong style={{ color: "var(--cyan-bright)" }}>V0.76 Structural Polish:</strong> Reconstructed left elbow curvature to eliminate visual gaps.
               </div>
               <div style={{ borderLeft: "4px solid var(--cyan-bright)", paddingLeft: "10px" }}>
-                <strong style={{ color: "var(--cyan-bright)" }}>V0.77 Right Rail & Habitat:</strong> Quick Actions removed, mode button labels restored, Habitat card contrast and typography optimized.
+                <strong style={{ color: "var(--cyan-bright)" }}>V0.81 {DEV_CODENAME}:</strong> Memory reader scrolling, outline jumping, local image assets, and left rail Memory actions.
               </div>
               <div style={{ borderLeft: "4px solid var(--orange)", paddingLeft: "10px" }}>
                 <strong style={{ color: "var(--orange)" }}>Agent Workflow:</strong> Local-first multi-agent workflow with Codex driving architecture/review and Gemini delivering frontend implementation.

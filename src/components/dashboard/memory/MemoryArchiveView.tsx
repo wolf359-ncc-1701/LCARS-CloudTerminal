@@ -20,6 +20,7 @@ interface MemoryArchiveViewProps {
   setSelectedPath: (path: string | null) => void;
   isFileOpen: boolean;
   setIsFileOpen: (open: boolean) => void;
+  actionSignal: { type: "openIndex" | "closeReader" | "filterReset"; tick: number } | null;
 }
 
 type ManualTreeNode = ManualChapter & { children?: ManualTreeNode[] };
@@ -57,6 +58,7 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
   setSelectedPath,
   isFileOpen,
   setIsFileOpen,
+  actionSignal,
 }) => {
   const [manualManifest, setManualManifest] = useState<ManualManifest | null>(null);
   const [projectManifest, setProjectManifest] = useState<ProjectManifest | null>(null);
@@ -138,6 +140,25 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
       }
     }
   };
+
+  useEffect(() => {
+    if (!actionSignal) return;
+
+    if (actionSignal.type === "openIndex") {
+      handleOpenIndex();
+      return;
+    }
+
+    if (actionSignal.type === "closeReader") {
+      handleCloseReader();
+      return;
+    }
+
+    if (actionSignal.type === "filterReset") {
+      setQuery("");
+      setSelectedFolderFilter(null);
+    }
+  }, [actionSignal]);
 
   const handleOpenFile = (itemId: string, page?: number, path?: string, isFile?: boolean) => {
     setOpenedItemId(itemId);
@@ -357,39 +378,6 @@ export const MemoryArchiveView: React.FC<MemoryArchiveViewProps> = ({
                 )}
               </>
             )}
-          </div>
-
-          {/* Memory Internal Control Buttons */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "10px", borderTop: "2px solid var(--gray-dark)", paddingTop: "8px" }}>
-            {isReaderOpen && (
-              <button
-                type="button"
-                className="reader-control-btn"
-                onClick={handleCloseReader}
-                style={{ background: "var(--orange)", color: "#000", fontWeight: "bold", width: "100%", padding: "6px 0", fontFamily: "var(--font-lcars)", border: 0, cursor: "pointer", fontSize: "0.75rem" }}
-              >
-                CLOSE READER
-              </button>
-            )}
-            <button
-              type="button"
-              className="reader-control-btn"
-              onClick={handleOpenIndex}
-              style={{ background: "var(--cyan-dark)", color: "var(--gray-white)", fontWeight: "bold", width: "100%", padding: "6px 0", fontFamily: "var(--font-lcars)", border: 0, cursor: "pointer", fontSize: "0.75rem" }}
-            >
-              OPEN INDEX
-            </button>
-            <button
-              type="button"
-              className="reader-control-btn"
-              onClick={() => {
-                setQuery("");
-                setSelectedFolderFilter(null);
-              }}
-              style={{ background: "var(--gray-dark)", color: "var(--gray-white)", width: "100%", padding: "6px 0", fontFamily: "var(--font-lcars)", border: 0, cursor: "pointer", fontSize: "0.75rem" }}
-            >
-              FILTER RESET
-            </button>
           </div>
 
         </aside>

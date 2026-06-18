@@ -5,6 +5,7 @@ import path from "node:path";
 const PORT = Number(process.env.LCARS_API_PORT || 8787);
 const WORKSPACE_ROOT = path.resolve(process.env.LCARS_WORKSPACE_ROOT || process.cwd());
 const MANUAL_ROOT = path.join(WORKSPACE_ROOT, "external", "stcn-docs", "docs", "docs", "tng-technical-manual");
+const MANUAL_ASSET_ROOT = path.join(WORKSPACE_ROOT, "external", "stcn-docs", "docs", "assets", "img", "TNGTM");
 const MANUAL_MANIFEST = path.join(WORKSPACE_ROOT, "public", "library", "tng-manual-manifest.json");
 
 const EXCLUDED_DIRS = new Set([".git", "node_modules", "dist", "external", "tmp", "output"]);
@@ -43,6 +44,16 @@ function fail(res, status, message) {
   json(res, status, { error: message });
 }
 
+function binary(res, status, bytes, contentType) {
+  res.writeHead(status, {
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "GET, OPTIONS",
+    "content-type": contentType,
+    "cache-control": "public, max-age=3600",
+  });
+  res.end(bytes);
+}
+
 function relativeFor(absPath, root = WORKSPACE_ROOT) {
   const rel = path.relative(root, absPath).replaceAll(path.sep, "/");
   return rel === "" ? "." : rel;
@@ -74,6 +85,23 @@ function safeResolveManual(sourceFile = "") {
   const resolved = path.resolve(MANUAL_ROOT, normalized);
   if (!resolved.startsWith(MANUAL_ROOT + path.sep)) {
     throw new Error("manual_path_outside_root");
+  }
+  return resolved;
+}
+
+function safeResolveManualAsset(assetFile = "") {
+  if (typeof assetFile !== "string") {
+    throw new Error("invalid_asset_file");
+  }
+
+  const normalized = assetFile.replaceAll("\\", "/").replace(/^\/+/, "").replace(/^assets\/img\/TNGTM\//, "");
+  if (!/\.(png|jpe?g|gif|webp)$/i.test(normalized)) {
+    throw new Error("unsupported_asset_type");
+  }
+
+  const resolved = path.resolve(MANUAL_ASSET_ROOT, normalized);
+  if (!resolved.startsWith(MANUAL_ASSET_ROOT + path.sep)) {
+    throw new Error("asset_path_outside_root");
   }
   return resolved;
 }
@@ -301,6 +329,15 @@ async function route(req, res) {
 
     if (url.pathname === "/api/archive/manuals/tng-technical-manual-cn/chapter") {
       json(res, 200, await readManualChapter(url.searchParams.get("file") || "uss-enterprise-introduction.md"));
+      return;
+    }
+
+    if (url.pathname.startsWith("/api/archive/manuals/tng-technical-manual-cn/assets/")) {
+      const file = decodeURIComponent(url.pathname.replace("/api/archive/manuals/tng-technical-manual-cn/assets/", ""));
+      const abs = safeResolveManualAsset(file);
+      const ext = path.extname(abs).toLowerCase();
+      const type = ext === ".png" ? "image/png" : ext === ".gif" ? "image/gif" : ext === ".webp" ? "image/webp" : "image/jpeg";
+      binary(res, 200, await fs.readFile(abs), type);
       return;
     }
 

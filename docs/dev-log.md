@@ -594,3 +594,33 @@ Included:
 Verification:
 - `npm run build` compiled successfully.
 - `npm run api -- --check` verification checks passed successfully.
+
+## 2026-06-18 - V0.81 Memory Reader Fixes
+
+Stabilized the Memory reader after the V0.9 native archive conversion.
+
+Included:
+- **DEV Baseline Sync**:
+  - Added `config/dev-version.json`, `scripts/sync-dev-version.mjs`, `src/app/devVersion.ts`, and `docs/current-dev.md`.
+  - The corner DEV label and task baseline now come from one synced source instead of hardcoded labels.
+- **Memory Rail Actions**:
+  - In Memory mode, the lower left rail action blocks now become `OPEN INDEX`, `CLOSE READER`, and `FILTER RESET`.
+  - Removed duplicate Memory action controls from the bottom of the Memory directory tree.
+- **Native Reader Cleanup**:
+  - Removed obsolete PDF-style reader controls from the Markdown reader header.
+  - Kept only the local LCARS reader close action.
+- **Reader Scrolling**:
+  - Added wheel handling to the reader content panel so mouse wheel scrolls the LCARS-native reader instead of the outer stage.
+  - Replaced heading `scrollIntoView` with container-local `scrollTo` math. Subsection jumps now move only `.memory-reader-content` and must not drag the whole Memory window upward.
+- **Manual Image Assets**:
+  - Added a read-only archive asset endpoint for TNG manual images.
+  - Markdown image references now render real local manual graphics through the LCARS reader instead of placeholder transfer boxes.
+- **Viewport Containment**:
+  - Tightened Memory layout heights and overflow rules so the archive frame stays inside the browser viewport.
+
+Verification:
+- `npm run sync:dev` completed successfully.
+- `npm run api -- --check` completed successfully.
+- The manual chapter endpoint returns readable Markdown.
+- The manual asset endpoint returns local image bytes for `1.1.1.jpg`.
+- `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.
