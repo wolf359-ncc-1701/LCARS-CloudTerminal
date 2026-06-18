@@ -549,3 +549,38 @@ Verification:
 - Verified manual outline page navigation via iframe hash change.
 - Verified project workspace files list and folder filtration.
 - No regressions to elbow geometry, viewport containment, or other tabs.
+
+## 2026-06-18 - V0.9 Memory Backend And Reader Review
+
+Codex review found that the first Memory Archive implementation proved the basic idea but drifted from the intended system logic.
+
+Review findings:
+- The TNG manual and project files were presented as two peer tabs instead of two source groups inside one Memory Archive file manager.
+- The manual reader embedded the generated PDF with an `iframe`, which exposed the browser/PDF-plugin reading experience instead of a native LCARS document reader.
+- Memory-specific operations were placed in the global right rail, even though Memory archive controls should live in the Memory panel itself, preferably in the left source/tree operation area.
+- Several emoji/symbol markers were fragile across Windows, Codex, and Antigravity text encodings. They were replaced with ASCII LCARS labels such as `[DIR]`, `[FILE]`, `MD`, and `JSN`.
+
+Backend added:
+- `server/lcars-api.mjs`
+- `npm run api`
+- Vite `/api` proxy to `http://127.0.0.1:8787`
+- Read-only endpoints for:
+  - health checks,
+  - project file tree,
+  - project file metadata,
+  - project text reads,
+  - workspace search,
+  - TNG manual list/outline,
+  - TNG manual chapter markdown.
+
+Frontend correction started:
+- Removed Memory-specific buttons from the global right rail; the right rail now stays a stable mode navigator.
+- Removed the PDF iframe reader path.
+- Switched manual reading to the local archive API chapter endpoint.
+- Added an LCARS-native markdown/text reader surface.
+
+Follow-up for Gemini:
+- Continue from `docs/gemini-prompts/v09-memory-reader-correction.md`.
+- Polish Memory's left-side source/tree/action zone.
+- Keep all Memory-specific controls inside Memory view, not in the right rail.
+- Do not restore PDF iframe rendering.

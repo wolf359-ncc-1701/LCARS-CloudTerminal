@@ -1393,6 +1393,11 @@
   cursor: pointer;
   transition: all var(--fast) ease;
   text-transform: uppercase;
+  text-align: left;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  font: inherit;
 }
 
 .memory-source-card:hover {
@@ -1438,6 +1443,9 @@
 .memory-chapter-tile {
   background: var(--panel);
   border-left: 5px solid var(--gray);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
   padding: 10px 12px;
   display: flex;
   flex-direction: column;
@@ -1445,6 +1453,8 @@
   min-height: 74px;
   cursor: pointer;
   transition: background-color var(--fast) ease;
+  text-align: left;
+  font: inherit;
 }
 
 .memory-chapter-tile:hover {
@@ -1507,6 +1517,11 @@
   font-size: 0.72rem;
   color: var(--gray-lighter);
   text-transform: uppercase;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  text-align: left;
+  font: inherit;
 }
 
 .memory-file-row:hover {
@@ -1583,6 +1598,7 @@
 .memory-tree-node {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 4px 6px;
   cursor: pointer;
   font-size: 0.72rem;
@@ -1590,6 +1606,10 @@
   border-radius: 2px;
   transition: all var(--fast) ease;
   user-select: none;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-family: inherit;
 }
 
 .memory-tree-node:hover {
@@ -1607,8 +1627,10 @@
   margin-right: 4px;
   font-size: 0.75rem;
   display: inline-block;
-  width: 12px;
+  width: 24px;
   text-align: center;
+  font-family: var(--font-lcars);
+  transition: transform 0.15s ease;
 }
 
 .memory-reader-pane {
@@ -1675,12 +1697,6 @@
   background: #000;
 }
 
-.pdf-viewer-frame {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
 .text-viewer-container {
   width: 100%;
   height: 100%;
@@ -1707,4 +1723,59 @@
 .binary-fallback-icon {
   font-size: 2.5rem;
   animation: blink-soft 2.5s ease infinite;
+}
+
+.lcars-document-reader {
+  height: 100%;
+  overflow-y: auto;
+  padding: 26px 34px 34px;
+  background:
+    linear-gradient(90deg, rgba(103, 202, 240, 0.08), transparent 28%),
+    #020508;
+  color: var(--gray-white);
+  font-family: var(--font-body);
+  line-height: 1.75;
+}
+
+.lcars-reader-heading {
+  margin: 0 0 16px;
+  font-family: var(--font-lcars);
+  color: var(--orange-light);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.lcars-reader-heading.level-1 {
+  font-size: clamp(1.35rem, 2.2vw, 2.1rem);
+}
+
+.lcars-reader-heading.level-2,
+.lcars-reader-heading.level-3,
+.lcars-reader-heading.level-4 {
+  color: var(--cyan-bright);
+  font-size: 1.02rem;
+  margin-top: 24px;
+}
+
+.lcars-reader-paragraph {
+  max-width: 76ch;
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  color: var(--gray-white);
+}
+
+.lcars-reader-bullet {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  gap: 10px;
+  max-width: 76ch;
+  margin: 0 0 10px;
+  color: var(--gray-white);
+}
+
+.lcars-reader-bullet .bullet-mark {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.65em;
+  background: var(--orange);
 }

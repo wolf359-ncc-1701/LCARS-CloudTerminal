@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "api": "node server/lcars-api.mjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },

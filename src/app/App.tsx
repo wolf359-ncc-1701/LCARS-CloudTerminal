@@ -300,103 +300,17 @@ function AppContent() {
           <LcarsFrame.Cross size={8} color="gray" />
         </div>
         <div className="right-stack">
-          {mode === "memory" ? (
-            <>
-              <LcarsElement
-                color={memorySource === "manual" ? "orange-light" : "gray-dark"}
-                active={memorySource === "manual"}
-                onClick={() => {
-                  setMemorySource("manual");
-                  setOpenedItemId(null);
-                  setSelectedNodeId(null);
-                  setActivePage(null);
-                  setSelectedPath(null);
-                  setIsFileOpen(false);
-                }}
-                className="right-menu-button"
-              >
-                <span className="right-menu-label">MANUAL ARCHIVE</span>
-              </LcarsElement>
-              
-              <LcarsElement
-                color={memorySource === "project" ? "orange-light" : "gray-dark"}
-                active={memorySource === "project"}
-                onClick={() => {
-                  setMemorySource("project");
-                  setOpenedItemId(null);
-                  setSelectedNodeId(null);
-                  setActivePage(null);
-                  setSelectedPath(null);
-                  setIsFileOpen(false);
-                }}
-                className="right-menu-button"
-              >
-                <span className="right-menu-label">PROJECT FILES</span>
-              </LcarsElement>
-              
-              <LcarsElement
-                color="cyan"
-                onClick={() => {
-                  if (memorySource === "manual") {
-                    setOpenedItemId("manual-root");
-                    setSelectedNodeId("db712e73f0db");
-                    setActivePage(6);
-                    setSelectedPath("uss-enterprise-introduction.md");
-                  } else {
-                    setOpenedItemId("8bdfce7b4eba");
-                    setSelectedNodeId("8bdfce7b4eba");
-                    setSelectedPath("ASSETS.md");
-                    setIsFileOpen(true);
-                  }
-                }}
-                className="right-menu-button"
-              >
-                <span className="right-menu-label">OPEN INDEX</span>
-              </LcarsElement>
-              
-              <LcarsElement
-                color="orange"
-                disabled={openedItemId === null}
-                onClick={() => {
-                  setOpenedItemId(null);
-                  setSelectedNodeId(null);
-                  setActivePage(null);
-                  setSelectedPath(null);
-                  setIsFileOpen(false);
-                }}
-                className="right-menu-button"
-              >
-                <span className="right-menu-label">CLOSE READER</span>
-              </LcarsElement>
-              
-              <LcarsElement
-                color="gray"
-                onClick={() => {
-                  setMemoryQuery("");
-                  setOpenedItemId(null);
-                  setSelectedNodeId(null);
-                  setActivePage(null);
-                  setSelectedPath(null);
-                  setIsFileOpen(false);
-                }}
-                className="right-menu-button"
-              >
-                <span className="right-menu-label">FILTER RESET</span>
-              </LcarsElement>
-            </>
-          ) : (
-            MODES.map((item) => (
-              <LcarsElement
-                key={item.id}
-                color={mode === item.id ? "orange-light" : "gray-dark"}
-                active={mode === item.id}
-                onClick={() => setModeWithAudio(item.id)}
-                className="right-menu-button"
-              >
-                <span className="right-menu-label">{item.label.toUpperCase()}</span>
-              </LcarsElement>
-            ))
-          )}
+          {MODES.map((item) => (
+            <LcarsElement
+              key={item.id}
+              color={mode === item.id ? "orange-light" : "gray-dark"}
+              active={mode === item.id}
+              onClick={() => setModeWithAudio(item.id)}
+              className="right-menu-button"
+            >
+              <span className="right-menu-label">{item.label.toUpperCase()}</span>
+            </LcarsElement>
+          ))}
         </div>
       </aside>
 

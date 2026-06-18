@@ -19,40 +19,33 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
   projectManifest,
   query,
   onOpenFile,
-  projectTree,
 }) => {
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const [selectedFolderFilter, setSelectedFolderFilter] = useState<string | null>(null);
 
-  // Filter TNG Chapters
-  const filteredChapters = manualManifest?.chapters.filter(chapter =>
-    chapter.title.toLowerCase().includes(query.toLowerCase()) ||
-    chapter.sourceFile.toLowerCase().includes(query.toLowerCase())
+  const normalizedQuery = query.toLowerCase();
+  const filteredChapters = manualManifest?.chapters.filter((chapter) =>
+    chapter.title.toLowerCase().includes(normalizedQuery) ||
+    chapter.sourceFile.toLowerCase().includes(normalizedQuery)
   ) || [];
 
-  // Filter Project Files
-  const filteredFiles = projectManifest?.files.filter(file => {
-    const matchesQuery = file.name.toLowerCase().includes(query.toLowerCase()) ||
-                         file.path.toLowerCase().includes(query.toLowerCase()) ||
-                         file.extension.toLowerCase().includes(query.toLowerCase());
-    
-    const matchesFolder = selectedFolderFilter 
-      ? file.path.startsWith(selectedFolderFilter)
-      : true;
-      
+  const filteredFiles = projectManifest?.files.filter((file) => {
+    const matchesQuery =
+      file.name.toLowerCase().includes(normalizedQuery) ||
+      file.path.toLowerCase().includes(normalizedQuery) ||
+      file.extension.toLowerCase().includes(normalizedQuery);
+    const matchesFolder = selectedFolderFilter ? file.path.startsWith(selectedFolderFilter) : true;
     return matchesQuery && matchesFolder;
   }) || [];
 
-  const selectedFile = projectManifest?.files.find(f => f.id === selectedFileId);
+  const selectedFile = projectManifest?.files.find((file) => file.id === selectedFileId);
 
-  // Helper to extract folder paths
   const getFoldersList = (files: ProjectFile[]) => {
     const foldersSet = new Set<string>();
-    files.forEach(file => {
+    files.forEach((file) => {
       const parts = file.path.split("/");
       if (parts.length > 1) {
-        // Add progressive paths, e.g. "docs", "docs/ai-tasks"
-        for (let i = 1; i < parts.length; i++) {
+        for (let i = 1; i < parts.length; i += 1) {
           foldersSet.add(parts.slice(0, i).join("/"));
         }
       }
@@ -64,13 +57,13 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
 
   return (
     <div className="memory-browser">
-      {/* Left Sidebar */}
-      <aside className="memory-source-rail" aria-label="Source navigation">
+      <aside className="memory-source-rail" aria-label="Archive navigation">
         <div style={{ fontSize: "0.75rem", color: "var(--orange-light)", fontWeight: "bold", padding: "0 6px 4px 6px", fontFamily: "var(--font-lcars)" }}>
-          ARCHIVE SOURCES
+          ARCHIVE CONTROL
         </div>
-        
-        <div
+
+        <button
+          type="button"
           className={`memory-source-card ${source === "manual" ? "active" : ""}`}
           onClick={() => {
             setSource("manual");
@@ -78,59 +71,60 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
           }}
         >
           <h3>TNG MANUAL</h3>
-          <p>TNG Technical Manual CN</p>
-          <p style={{ fontSize: "0.65rem", opacity: 0.7 }}>168 PAGES / PDF</p>
-        </div>
+          <p>Technical Manual CN</p>
+          <p style={{ fontSize: "0.65rem", opacity: 0.7 }}>CHAPTER SOURCE</p>
+        </button>
 
-        <div
+        <button
+          type="button"
           className={`memory-source-card ${source === "project" ? "active" : ""}`}
-          onClick={() => {
-            setSource("project");
-          }}
+          onClick={() => setSource("project")}
         >
           <h3>WORKSPACE</h3>
-          <p>Local Project Files</p>
+          <p>Local project files</p>
           <p style={{ fontSize: "0.65rem", opacity: 0.7 }}>
             {projectManifest?.files.length || 0} FILES / STATIC
           </p>
-        </div>
+        </button>
 
         {source === "project" && folders.length > 0 && (
           <div style={{ marginTop: "14px" }}>
             <div style={{ fontSize: "0.7rem", color: "var(--cyan)", fontWeight: "bold", padding: "0 6px 4px 6px", fontFamily: "var(--font-lcars)" }}>
-              FOLDERS FILTER
+              FOLDER FILTER
             </div>
-            <div
+            <button
+              type="button"
               className={`memory-tree-node ${selectedFolderFilter === null ? "active" : ""}`}
               style={{ fontSize: "0.72rem", padding: "4px 8px" }}
               onClick={() => setSelectedFolderFilter(null)}
             >
-              📂 [ALL FILES]
-            </div>
+              [ALL] FILES
+            </button>
             <div style={{ maxHeight: "160px", overflowY: "auto", display: "flex", flexDirection: "column" }}>
-              {folders.map(folder => (
-                <div
+              {folders.map((folder) => (
+                <button
+                  type="button"
                   key={folder}
                   className={`memory-tree-node ${selectedFolderFilter === folder ? "active" : ""}`}
                   style={{ fontSize: "0.72rem", padding: "4px 8px", paddingLeft: `${(folder.split("/").length * 8) + 8}px` }}
                   onClick={() => setSelectedFolderFilter(folder)}
                 >
-                  📁 {folder.split("/").pop()}
-                </div>
+                  [DIR] {folder.split("/").pop()}
+                </button>
               ))}
             </div>
           </div>
         )}
       </aside>
 
-      {/* Central Content Area */}
       <div className="memory-grid-container">
         {source === "manual" ? (
           <div className="memory-chapters-grid">
-            {filteredChapters.map((chapter, idx) => {
-              const accentColor = idx % 2 === 0 ? "cyan" : "orange";
+            {filteredChapters.map((chapter, index) => {
+              const accentColor = index % 2 === 0 ? "cyan" : "orange";
               return (
-                <div
+                <button
+                  type="button"
                   key={chapter.id}
                   className="memory-chapter-tile"
                   data-accent={accentColor}
@@ -139,10 +133,10 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
                   <span className="chapter-num">CHAPTER {chapter.title.split(" ")[0]}</span>
                   <span className="chapter-title">{chapter.title.replace(/^[0-9.]+\s+/, "")}</span>
                   <div className="chapter-meta">
-                    <span>PAGE {chapter.page}</span>
+                    <span>PAGE REF {chapter.page}</span>
                     <span style={{ textTransform: "lowercase", opacity: 0.6 }}>{chapter.sourceFile}</span>
                   </div>
-                </div>
+                </button>
               );
             })}
             {filteredChapters.length === 0 && (
@@ -153,40 +147,44 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
           </div>
         ) : (
           <div className="memory-files-list">
-            <div className="memory-file-row-header" style={{
-              display: "grid",
-              gridTemplateColumns: "2.5fr 1fr 1fr 1fr",
-              gap: "10px",
-              padding: "6px 16px",
-              borderBottom: "2px solid var(--gray-dark)",
-              fontSize: "0.72rem",
-              fontWeight: "bold",
-              color: "var(--cyan)",
-              textTransform: "uppercase"
-            }}>
+            <div
+              className="memory-file-row-header"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "2.5fr 1fr 1fr 1fr",
+                gap: "10px",
+                padding: "6px 16px",
+                borderBottom: "2px solid var(--gray-dark)",
+                fontSize: "0.72rem",
+                fontWeight: "bold",
+                color: "var(--cyan)",
+                textTransform: "uppercase",
+              }}
+            >
               <span>File Name / Path</span>
               <span>Role</span>
               <span>Size</span>
               <span>Readable</span>
             </div>
-            
+
             <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "4px" }}>
-              {filteredFiles.map(file => (
-                <div
+              {filteredFiles.map((file) => (
+                <button
+                  type="button"
                   key={file.id}
                   className={`memory-file-row ${selectedFileId === file.id ? "selected" : ""}`}
                   onClick={() => setSelectedFileId(file.id)}
                   onDoubleClick={() => onOpenFile(file.id, undefined, file.path, true)}
                 >
                   <span className="file-name" title={file.path}>
-                    📄 {file.path}
+                    [FILE] {file.path}
                   </span>
                   <span>{file.role}</span>
                   <span>{formatBytes(file.bytes)}</span>
                   <span style={{ color: file.readable ? "var(--success)" : "var(--orange)" }}>
                     {file.readable ? "YES" : "NO"}
                   </span>
-                </div>
+                </button>
               ))}
               {filteredFiles.length === 0 && (
                 <div style={{ textAlign: "center", padding: "40px", color: "var(--orange)" }}>
@@ -197,7 +195,6 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
           </div>
         )}
 
-        {/* Metadata Details Strip */}
         <footer className="memory-metadata-strip">
           <div className="metadata-item">
             SOURCE: <strong>{source === "manual" ? "TNG TECHNICAL MANUAL" : "WORKSPACE MANIFEST"}</strong>
@@ -208,7 +205,7 @@ export const MemoryBrowserPanel: React.FC<MemoryBrowserPanelProps> = ({
           {source === "manual" ? (
             <>
               <div className="metadata-item">
-                TOTAL PAGES: <strong>{manualManifest?.pageCount || 168}</strong>
+                PAGE MAP: <strong>{manualManifest?.pageCount || 168}</strong>
               </div>
               <div className="metadata-item">
                 CHAPTERS: <strong>{manualManifest?.chapters.length || 17}</strong>

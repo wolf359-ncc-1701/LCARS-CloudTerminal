@@ -22,7 +22,7 @@ export const MemoryToolbar: React.FC<MemoryToolbarProps> = ({
   return (
     <div className="memory-toolbar">
       <div className="memory-toolbar-left">
-        <div className="segmented-control">
+        <div className="segmented-control" aria-label="Memory archive source">
           <button
             type="button"
             className={`segmented-btn ${source === "manual" ? "active" : ""}`}
@@ -38,19 +38,7 @@ export const MemoryToolbar: React.FC<MemoryToolbarProps> = ({
             PROJECT FILES
           </button>
         </div>
-      </div>
-      
-      <div className="memory-toolbar-right">
-        <div className="search-input-wrapper">
-          <span className="search-icon">🔍</span>
-          <input
-            type="text"
-            placeholder="FILTER ARCHIVE..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
-        
+
         <button
           type="button"
           className="reader-control-btn"
@@ -59,7 +47,7 @@ export const MemoryToolbar: React.FC<MemoryToolbarProps> = ({
         >
           OPEN INDEX
         </button>
-        
+
         {openedItemId && (
           <button
             type="button"
@@ -70,6 +58,18 @@ export const MemoryToolbar: React.FC<MemoryToolbarProps> = ({
             CLOSE READER
           </button>
         )}
+      </div>
+
+      <div className="memory-toolbar-right">
+        <div className="search-input-wrapper">
+          <span className="search-icon">FIND</span>
+          <input
+            type="text"
+            placeholder="FILTER ARCHIVE..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
       </div>
     </div>
   );
