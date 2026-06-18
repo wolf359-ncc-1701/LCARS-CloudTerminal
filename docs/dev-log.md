@@ -482,3 +482,41 @@ Reasoning:
 Verification:
 - `git diff --check` completed successfully.
 - `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.
+
+## 2026-06-18 - V0.9 Memory Archive Planning And Reference Ingest
+
+Prepared the architecture for turning `memory` mode into a real LCARS archive, file manager, and reader module.
+
+Reference ingest:
+- Cloned `https://github.com/narwhrl/stcn-docs/tree/main` into local ignored workspace `external/stcn-docs`.
+- Identified the TNG technical manual as a VitePress markdown corpus under `external/stcn-docs/docs/docs/tng-technical-manual`.
+- Identified manual image assets under `external/stcn-docs/docs/assets/img/TNGTM`.
+- Generated a local archive PDF from the manual source:
+  - `output/pdf/tng-technical-manual-cn.pdf`
+  - `public/library/tng-technical-manual-cn.pdf`
+- Generated frontend static data manifests:
+  - `public/library/tng-manual-manifest.json`
+  - `public/library/project-file-manifest.json`
+
+Manual facts:
+- TNG manual source has 17 chapter markdown files.
+- Generated PDF has 168 pages.
+- Manual manifest exposes 127 outline entries and page targets.
+- Project file manifest currently exposes 91 project files for the V0.9 frontend prototype.
+
+Architecture documents:
+- Added [v0.9-memory-archive-architecture.md](file:///C:/Users/user/Documents/LCARS/docs/v0.9-memory-archive-architecture.md).
+- Added [TASK-007-v09-memory-archive.md](file:///C:/Users/user/Documents/LCARS/docs/ai-tasks/TASK-007-v09-memory-archive.md).
+- Added [v09-memory-archive.md](file:///C:/Users/user/Documents/LCARS/docs/gemini-prompts/v09-memory-archive.md).
+
+Design decision:
+- V0.9 frontend should use static manifests and the generated PDF only.
+- True arbitrary local file reading/writing is reserved for a V1 local backend API because browsers cannot safely access the whole workspace by themselves.
+- V0.9 is read-only and should prove the LCARS file-manager/reader interaction model first.
+
+Verification:
+- Generated PDF was inspected through `pypdfium2` raster previews of the index and a body-text page.
+- Initial title/font issues were fixed by using ASCII archive labels for the generated PDF shell while keeping Chinese body text intact.
+- The manual manifest was regenerated from source markdown headings so the frontend tree uses correct UTF-8 Chinese titles instead of PDF-extracted mojibake.
+- `public/library/tng-manual-manifest.json` and `public/library/project-file-manifest.json` parse successfully.
+- `npm run build` completed successfully after running outside the sandbox. The sandboxed build still fails with the known esbuild access-denied issue when resolving `vite.config.ts`.

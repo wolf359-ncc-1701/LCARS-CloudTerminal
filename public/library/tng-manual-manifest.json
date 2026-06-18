@@ -1,0 +1,2091 @@
+{
+  "id": "tng-technical-manual-cn",
+  "title": "TNG Technical Manual CN Archive",
+  "sourceRepository": "https://github.com/narwhrl/stcn-docs/tree/main",
+  "sourceRoot": "external/stcn-docs/docs/docs/tng-technical-manual",
+  "pdfUrl": "/library/tng-technical-manual-cn.pdf",
+  "pdfLocalPath": "public/library/tng-technical-manual-cn.pdf",
+  "pageCount": 168,
+  "chapters": [
+    {
+      "id": "db712e73f0db",
+      "title": "1.0 联邦星舰进取号介绍",
+      "level": 0,
+      "sourceFile": "uss-enterprise-introduction.md",
+      "page": 6
+    },
+    {
+      "id": "24557a2cdf8c",
+      "title": "15.0 联邦星舰进取号飞行运作规程",
+      "level": 0,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 20
+    },
+    {
+      "id": "79bf954ecf1c",
+      "title": "2.0 飞船结构",
+      "level": 0,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 25
+    },
+    {
+      "id": "76f09879032f",
+      "title": "4.0 计算机系统",
+      "level": 0,
+      "sourceFile": "computer-systems.md",
+      "page": 36
+    },
+    {
+      "id": "20bed4d2d620",
+      "title": "5.0 曲速推进系统",
+      "level": 0,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 41
+    },
+    {
+      "id": "a2c6b0e76761",
+      "title": "6.0 脉冲推进系统",
+      "level": 0,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 61
+    },
+    {
+      "id": "d0b71191e064",
+      "title": "7.0 公用及辅助系统",
+      "level": 0,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 68
+    },
+    {
+      "id": "48ada3e411d3",
+      "title": "12.0 环控系统",
+      "level": 0,
+      "sourceFile": "environmental-systems.md",
+      "page": 78
+    },
+    {
+      "id": "0c412be02463",
+      "title": "13.0 船员支持系统",
+      "level": 0,
+      "sourceFile": "crew-support-systems.md",
+      "page": 83
+    },
+    {
+      "id": "614a70c2a9be",
+      "title": "11.0 战术系统",
+      "level": 0,
+      "sourceFile": "tactical-systems.md",
+      "page": 94
+    },
+    {
+      "id": "ef9393808baa",
+      "title": "3.0 指挥系统",
+      "level": 0,
+      "sourceFile": "command-systems.md",
+      "page": 111
+    },
+    {
+      "id": "1a567e006ddc",
+      "title": "10.0 科学与遥感系统",
+      "level": 0,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 125
+    },
+    {
+      "id": "0925312bf232",
+      "title": "8.0 通信系统",
+      "level": 0,
+      "sourceFile": "communications.md",
+      "page": 139
+    },
+    {
+      "id": "4c2b26bfb8b7",
+      "title": "9.0 传送系统",
+      "level": 0,
+      "sourceFile": "transporter-system.md",
+      "page": 147
+    },
+    {
+      "id": "a77f57d90d50",
+      "title": "14.0 辅助飞行器系统",
+      "level": 0,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 152
+    },
+    {
+      "id": "b6146e4c8676",
+      "title": "16.0 紧急操作规程",
+      "level": 0,
+      "sourceFile": "emergency-operations.md",
+      "page": 160
+    },
+    {
+      "id": "441a9457e54d",
+      "title": "17.0 结语",
+      "level": 0,
+      "sourceFile": "conclusion.md",
+      "page": 166
+    }
+  ],
+  "outline": [
+    {
+      "id": "db712e73f0db",
+      "title": "1.0 联邦星舰进取号介绍",
+      "level": 0,
+      "sourceFile": "uss-enterprise-introduction.md",
+      "page": 6
+    },
+    {
+      "id": "28eed0a885d9",
+      "title": "1.1 银河级星舰项目的任务目标",
+      "level": 1,
+      "sourceFile": "uss-enterprise-introduction.md",
+      "page": 6
+    },
+    {
+      "id": "0e791df399ff",
+      "title": "1.2 进取号历史 Design Lineage",
+      "level": 1,
+      "sourceFile": "uss-enterprise-introduction.md",
+      "page": 8
+    },
+    {
+      "id": "5a0899cd209f",
+      "title": "1.3 概述 General Overview",
+      "level": 1,
+      "sourceFile": "uss-enterprise-introduction.md",
+      "page": 10
+    },
+    {
+      "id": "3e5bd69762a4",
+      "title": "1.4 建造时间表 Construction Chronology",
+      "level": 1,
+      "sourceFile": "uss-enterprise-introduction.md",
+      "page": 15
+    },
+    {
+      "id": "24557a2cdf8c",
+      "title": "15.0 联邦星舰进取号飞行运作规程",
+      "level": 0,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 20
+    },
+    {
+      "id": "2683eb0a1e3b",
+      "title": "15.1 飞行运作介绍 Introduction to Flight Operations",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 20
+    },
+    {
+      "id": "51243f35d5c7",
+      "title": "15.2 任务类型 Mission Types",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 20
+    },
+    {
+      "id": "4fd67c6b19ef",
+      "title": "15.3 运作模式 Operation Modes",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 20
+    },
+    {
+      "id": "e68726a6f2a4",
+      "title": "15.4 巡航模式 Cruise Mode",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 20
+    },
+    {
+      "id": "60645d03d552",
+      "title": "15.5 黄色警戒模式 Yellow Alert",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 21
+    },
+    {
+      "id": "1cdd85fbb774",
+      "title": "15.6 红色警戒模式 Red Alert",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 21
+    },
+    {
+      "id": "57ce9ee09280",
+      "title": "15.7 外部支持模式 External Support Mode",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 22
+    },
+    {
+      "id": "af1bd44a63c3",
+      "title": "15.8 分离飞行模式 Separated Flight Mode",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 23
+    },
+    {
+      "id": "ca87262fb67b",
+      "title": "15.9 低功耗模式 Reduced Power Mode",
+      "level": 1,
+      "sourceFile": "uss-enterprise-flight-operations.md",
+      "page": 23
+    },
+    {
+      "id": "79bf954ecf1c",
+      "title": "2.0 飞船结构",
+      "level": 0,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 25
+    },
+    {
+      "id": "e30e52353652",
+      "title": "2.1 主龙骨结构 Main Skeletal Structure",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 25
+    },
+    {
+      "id": "803edd2e9e80",
+      "title": "2.2 联邦星舰进取号坐标系 USS Enterprise Coordinate System",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 26
+    },
+    {
+      "id": "e645b957f3d1",
+      "title": "2.3 船壳层 Hull Layers",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 28
+    },
+    {
+      "id": "c20239a50f12",
+      "title": "2.4 结构完整性力场系统 Structural Integrity Field System",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 29
+    },
+    {
+      "id": "e361d810ad4d",
+      "title": "2.5 惯性阻尼系统 Inertial Damping System",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 30
+    },
+    {
+      "id": "9dc8baf2782b",
+      "title": "2.6 SIF/IDF 失效紧急处置程序 Emergency Procedures in SIF/IDF Failure",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 31
+    },
+    {
+      "id": "8dc91b27269c",
+      "title": "2.7 碟部分离系统 Saucer Module Separation Systems",
+      "level": 1,
+      "sourceFile": "spacecraft-structure.md",
+      "page": 31
+    },
+    {
+      "id": "76f09879032f",
+      "title": "4.0 计算机系统",
+      "level": 0,
+      "sourceFile": "computer-systems.md",
+      "page": 36
+    },
+    {
+      "id": "ec53436cf55d",
+      "title": "4.1 计算机系统 Computer System",
+      "level": 1,
+      "sourceFile": "computer-systems.md",
+      "page": 36
+    },
+    {
+      "id": "a35b2cc28c9a",
+      "title": "4.2 个人访问显示设备 Personal Access Display Devices (PADD)",
+      "level": 1,
+      "sourceFile": "computer-systems.md",
+      "page": 38
+    },
+    {
+      "id": "916022c4d1e1",
+      "title": "4.3 等线性光学芯片 Isolinear Optical Chip",
+      "level": 1,
+      "sourceFile": "computer-systems.md",
+      "page": 40
+    },
+    {
+      "id": "20bed4d2d620",
+      "title": "5.0 曲速推进系统",
+      "level": 0,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 41
+    },
+    {
+      "id": "66209b0728ec",
+      "title": "5.1 曲速场理论及应用 Warp Field Theory and Application",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 41
+    },
+    {
+      "id": "befdbbf75e07",
+      "title": "5.2 物质/反物质反应装置 Matter/Antimatter Reaction Assembly",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 44
+    },
+    {
+      "id": "cc5b5951d6ab",
+      "title": "5.3 曲速场引擎舱 Warp Field Nacelles",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 49
+    },
+    {
+      "id": "ca31a88d6f68",
+      "title": "5.4 反物质存储和运输 Antimatter Storage and Transfer",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 52
+    },
+    {
+      "id": "89d77243f821",
+      "title": "5.5 曲速推进系统燃料供应 Warp Propulsion System Fuel Supply",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 54
+    },
+    {
+      "id": "ab4760366419",
+      "title": "5.6 巴萨德冲压采集器补给燃料 Bussard Ramscoop Fuel Replenishment",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 55
+    },
+    {
+      "id": "149b7b9d69c5",
+      "title": "5.7 舰上反物质生产 Onboard Antimatter Generation",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 56
+    },
+    {
+      "id": "c5811111e015",
+      "title": "5.8 轮机运作与安全考虑 Engineering Operations and Safety",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 57
+    },
+    {
+      "id": "a95f06c9d433",
+      "title": "5.9 紧急关车程序 Emergency Shutdown Procedures",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 58
+    },
+    {
+      "id": "5e7ab4e2f4bc",
+      "title": "5.10 灾难性紧急程序 Catastrophic Emergency Procedures",
+      "level": 1,
+      "sourceFile": "warp-propulsion-system.md",
+      "page": 59
+    },
+    {
+      "id": "a2c6b0e76761",
+      "title": "6.0 脉冲推进系统",
+      "level": 0,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 61
+    },
+    {
+      "id": "7b679426c44c",
+      "title": "6.1 脉冲引擎 Impulse Drive",
+      "level": 1,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 61
+    },
+    {
+      "id": "c2e980363f58",
+      "title": "6.2 相对论效应问题 Relativistic Considerations",
+      "level": 1,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 64
+    },
+    {
+      "id": "c8624c1f5370",
+      "title": "6.3 轮机运作与安全考虑 Engineering Operations and Safety",
+      "level": 1,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 65
+    },
+    {
+      "id": "4c912250da28",
+      "title": "6.4 紧急停车程序 Emergency Shutdown Procedures",
+      "level": 1,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 66
+    },
+    {
+      "id": "4d4501f5f3f3",
+      "title": "6.5 灾难性紧急程序 Catastrophic Emergency Procedures",
+      "level": 1,
+      "sourceFile": "impulse-propulsion-system.md",
+      "page": 66
+    },
+    {
+      "id": "d0b71191e064",
+      "title": "7.0 公用及辅助系统",
+      "level": 0,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 68
+    },
+    {
+      "id": "3588adae92f5",
+      "title": "7.1 公用系统 Utilities",
+      "level": 1,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 68
+    },
+    {
+      "id": "5e3766378f87",
+      "title": "7.2 外部连接点 Exterior Connect Hardpoints",
+      "level": 1,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 70
+    },
+    {
+      "id": "a2ea33c8793b",
+      "title": "7.3 反作用控制系统 Reaction Control System / RCS",
+      "level": 1,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 71
+    },
+    {
+      "id": "44c54c17c227",
+      "title": "7.4 航行偏导仪 Navigational Deflector",
+      "level": 1,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 73
+    },
+    {
+      "id": "bf8010bac9ef",
+      "title": "7.5 牵引光束 Tractor Beams",
+      "level": 1,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 75
+    },
+    {
+      "id": "03f22bf1dc9b",
+      "title": "7.6 复制机系统 Replicator Systems",
+      "level": 1,
+      "sourceFile": "utilities-and-auxiliary-systems.md",
+      "page": 76
+    },
+    {
+      "id": "48ada3e411d3",
+      "title": "12.0 环控系统",
+      "level": 0,
+      "sourceFile": "environmental-systems.md",
+      "page": 78
+    },
+    {
+      "id": "3c26d1b5b20f",
+      "title": "12.1 生命保障与环境控制 Life Support and Environmental Control",
+      "level": 1,
+      "sourceFile": "environmental-systems.md",
+      "page": 78
+    },
+    {
+      "id": "43267cc3d395",
+      "title": "12.2 大气系统 Atmospheric System",
+      "level": 1,
+      "sourceFile": "environmental-systems.md",
+      "page": 78
+    },
+    {
+      "id": "5478cb25f22b",
+      "title": "12.3 重力发生器 Gravity Generation",
+      "level": 1,
+      "sourceFile": "environmental-systems.md",
+      "page": 79
+    },
+    {
+      "id": "a2b7dacc663d",
+      "title": "12.4 紧急环境系统 Emergency Environmental Systems",
+      "level": 1,
+      "sourceFile": "environmental-systems.md",
+      "page": 80
+    },
+    {
+      "id": "1f628ecb7b66",
+      "title": "12.5 废物管理 Waste Management",
+      "level": 1,
+      "sourceFile": "environmental-systems.md",
+      "page": 81
+    },
+    {
+      "id": "0c412be02463",
+      "title": "13.0 船员支持系统",
+      "level": 0,
+      "sourceFile": "crew-support-systems.md",
+      "page": 83
+    },
+    {
+      "id": "cf3a746c0ce7",
+      "title": "13.1 船员支持 Crew Support",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 83
+    },
+    {
+      "id": "67d43c6f809b",
+      "title": "13.2 医疗系统 Medical Systems",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 83
+    },
+    {
+      "id": "c6faa4e774e3",
+      "title": "13.3 医用三录仪 Medical Tricorder",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 86
+    },
+    {
+      "id": "b6d3d3798554",
+      "title": "13.4 船员舱室 Crew Quarters Systems",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 87
+    },
+    {
+      "id": "0fc2e4427f96",
+      "title": "13.5 食品复制系统 Food Replication System",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 88
+    },
+    {
+      "id": "ec60bab9f763",
+      "title": "13.6 涡轮电梯人员交通系统 Turbolift Personnel Transport System",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 89
+    },
+    {
+      "id": "50d39e25cffa",
+      "title": "13.7 全息环境模拟器 Holographic Environment Simulators",
+      "level": 1,
+      "sourceFile": "crew-support-systems.md",
+      "page": 91
+    },
+    {
+      "id": "614a70c2a9be",
+      "title": "11.0 战术系统",
+      "level": 0,
+      "sourceFile": "tactical-systems.md",
+      "page": 94
+    },
+    {
+      "id": "fd6da3b15295",
+      "title": "11.1 相位炮 Phaser",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 94
+    },
+    {
+      "id": "9f41a984be1e",
+      "title": "11.2 相位炮操作 Phaser Operations",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 97
+    },
+    {
+      "id": "33e5084a35de",
+      "title": "11.3 光子鱼雷 Photon Torpedoes",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 98
+    },
+    {
+      "id": "7762d7c5e8db",
+      "title": "11.4 光子鱼雷运作规则 Photon Torpedo Operations",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 101
+    },
+    {
+      "id": "01c9fe50508c",
+      "title": "11.5 作战舰桥 BATTLE BRIDGE",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 101
+    },
+    {
+      "id": "7a1f3541a90c",
+      "title": "11.6 战术方针 Tactical Policies",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 103
+    },
+    {
+      "id": "05c066aa002a",
+      "title": "11.7 个人相位枪 Personal Phasers",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 104
+    },
+    {
+      "id": "17c5eb39c10a",
+      "title": "11.8 偏导护盾 Deflector Shields",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 107
+    },
+    {
+      "id": "1177b8bf561d",
+      "title": "11.9 自毁系统 Auto-Destruct Systems",
+      "level": 1,
+      "sourceFile": "tactical-systems.md",
+      "page": 109
+    },
+    {
+      "id": "ef9393808baa",
+      "title": "3.0 指挥系统",
+      "level": 0,
+      "sourceFile": "command-systems.md",
+      "page": 111
+    },
+    {
+      "id": "8f91828e6a39",
+      "title": "3.1 主舰桥 Main Bridge",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 111
+    },
+    {
+      "id": "35ddfe3c4896",
+      "title": "3.2 舰桥运作 Bridge Operations",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 113
+    },
+    {
+      "id": "552e769b0bf1",
+      "title": "3.3 基本控制面板/终端嵌入式操作系统 Basic Control Panel/Terminal OSE",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 113
+    },
+    {
+      "id": "61f5a740a679",
+      "title": "3.4 飞行控制台（舰舵） Flight Control(CONN)",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 114
+    },
+    {
+      "id": "b8832320a152",
+      "title": "3.5 运作管理控制台 Operations Management (OPS)",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 116
+    },
+    {
+      "id": "73e8d5a45d76",
+      "title": "3.6 战术控制台 Tactical",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 117
+    },
+    {
+      "id": "5abf91665a75",
+      "title": "3.7 指挥工作站 Command Stations",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 118
+    },
+    {
+      "id": "c180450a3d1b",
+      "title": "3.8 科学工作站 Science Stations",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 118
+    },
+    {
+      "id": "3fc76bba1b19",
+      "title": "3.10 环境控制台 Environment",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 119
+    },
+    {
+      "id": "8a784f44cf79",
+      "title": "3.11 轮机工作站 Engineering",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 119
+    },
+    {
+      "id": "49fbb94222ee",
+      "title": "3.12 制导和导航 Guidance and Navigation",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 120
+    },
+    {
+      "id": "d2d08b39d4f4",
+      "title": "3.13 系统诊断 System Diagnostics",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 122
+    },
+    {
+      "id": "9ad16033b468",
+      "title": "3.14 作战舰桥 Battle Bridge",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 122
+    },
+    {
+      "id": "c98d2864ce4b",
+      "title": "3.15 主轮机室 Main Engineering",
+      "level": 1,
+      "sourceFile": "command-systems.md",
+      "page": 122
+    },
+    {
+      "id": "1a567e006ddc",
+      "title": "10.0 科学与遥感系统",
+      "level": 0,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 125
+    },
+    {
+      "id": "4254a12f4029",
+      "title": "10.1 传感器系统 Sensor Systems",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 125
+    },
+    {
+      "id": "cb7ac0e7f729",
+      "title": "10.2 远程传感器 Long-Range Sensors",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 125
+    },
+    {
+      "id": "fb388282a2b3",
+      "title": "10.3 导航传感器 Navigational Sensors",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 126
+    },
+    {
+      "id": "0cd3ea463123",
+      "title": "10.4 侧向传感器阵列 Lateral Sensor Arrays",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 127
+    },
+    {
+      "id": "4d8fdcf0730f",
+      "title": "10.5 探测器 Instrumented Probes",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 129
+    },
+    {
+      "id": "cc87ba727880",
+      "title": "10.6 三录仪 Tricorder",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 134
+    },
+    {
+      "id": "61c392e2dbe4",
+      "title": "10.7 科学部门运作 Science Department Ops",
+      "level": 1,
+      "sourceFile": "science-and-remote-sensing-systems.md",
+      "page": 137
+    },
+    {
+      "id": "0925312bf232",
+      "title": "8.0 通信系统",
+      "level": 0,
+      "sourceFile": "communications.md",
+      "page": 139
+    },
+    {
+      "id": "e3fe614d92d4",
+      "title": "8.1 舰内通信 Intraship Communications",
+      "level": 1,
+      "sourceFile": "communications.md",
+      "page": 139
+    },
+    {
+      "id": "72b4d5161c5d",
+      "title": "8.2 个人通信器 Personal Communicator",
+      "level": 1,
+      "sourceFile": "communications.md",
+      "page": 139
+    },
+    {
+      "id": "1ae84acf9a8b",
+      "title": "8.3 舰对地通信 Ship-to-Ground Communications",
+      "level": 1,
+      "sourceFile": "communications.md",
+      "page": 141
+    },
+    {
+      "id": "5897686f0c45",
+      "title": "8.4 舰对舰通信 Ship-to-Ship Communications",
+      "level": 1,
+      "sourceFile": "communications.md",
+      "page": 142
+    },
+    {
+      "id": "3e5af57b4d5c",
+      "title": "8.5 子空间通信网络 Subspace Communications Network",
+      "level": 1,
+      "sourceFile": "communications.md",
+      "page": 143
+    },
+    {
+      "id": "784a50e45bac",
+      "title": "8.6 通用翻译器 Universal Translator",
+      "level": 1,
+      "sourceFile": "communications.md",
+      "page": 145
+    },
+    {
+      "id": "4c2b26bfb8b7",
+      "title": "9.0 传送系统",
+      "level": 0,
+      "sourceFile": "transporter-system.md",
+      "page": 147
+    },
+    {
+      "id": "24c06b045321",
+      "title": "9.1 传送系统介绍 Transporter System Introduction",
+      "level": 1,
+      "sourceFile": "transporter-system.md",
+      "page": 147
+    },
+    {
+      "id": "c8217b656e8e",
+      "title": "9.2 传送系统操作 Transporter Systems Operation",
+      "level": 1,
+      "sourceFile": "transporter-system.md",
+      "page": 147
+    },
+    {
+      "id": "6f45b21f9afc",
+      "title": "9.3 其他传送装置功能 Other Transporter Functions",
+      "level": 1,
+      "sourceFile": "transporter-system.md",
+      "page": 150
+    },
+    {
+      "id": "45dd4cc466a3",
+      "title": "9.4 使用限制 Limitations of Use",
+      "level": 1,
+      "sourceFile": "transporter-system.md",
+      "page": 150
+    },
+    {
+      "id": "17d002a83e98",
+      "title": "9.5 传送疏散 Transporter Evacuation",
+      "level": 1,
+      "sourceFile": "transporter-system.md",
+      "page": 151
+    },
+    {
+      "id": "a77f57d90d50",
+      "title": "14.0 辅助飞行器系统",
+      "level": 0,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 152
+    },
+    {
+      "id": "b7d0ed698c84",
+      "title": "14.1 穿梭机作业 Shuttlecraft Operations",
+      "level": 1,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 152
+    },
+    {
+      "id": "5af344455b35",
+      "title": "14.2 穿梭机库 Shuttlebays",
+      "level": 1,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 152
+    },
+    {
+      "id": "776ca11072ef",
+      "title": "14.3 穿梭机 Shuttlecraft",
+      "level": 1,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 153
+    },
+    {
+      "id": "a771e8860706",
+      "title": "14.4 舱外活动 Extravehicular Activity",
+      "level": 1,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 157
+    },
+    {
+      "id": "03b731480124",
+      "title": "14.5 舰长艇 Captain's Yacht",
+      "level": 1,
+      "sourceFile": "auxiliary-spacecraft-system.md",
+      "page": 158
+    },
+    {
+      "id": "b6146e4c8676",
+      "title": "16.0 紧急操作规程",
+      "level": 0,
+      "sourceFile": "emergency-operations.md",
+      "page": 160
+    },
+    {
+      "id": "816478534620",
+      "title": "16.1 紧急操作规程简介 Introduction to Emergency Operations",
+      "level": 1,
+      "sourceFile": "emergency-operations.md",
+      "page": 160
+    },
+    {
+      "id": "c4fa73bf7b67",
+      "title": "16.2 消防措施 Fire Suppression",
+      "level": 1,
+      "sourceFile": "emergency-operations.md",
+      "page": 160
+    },
+    {
+      "id": "2e0197500987",
+      "title": "16.3 紧急医疗运作 Emergency Medical Operations",
+      "level": 1,
+      "sourceFile": "emergency-operations.md",
+      "page": 161
+    },
+    {
+      "id": "42f9e3378607",
+      "title": "16.4 逃生舱/救生艇 Lifeboat",
+      "level": 1,
+      "sourceFile": "emergency-operations.md",
+      "page": 162
+    },
+    {
+      "id": "4ce2e0554d1c",
+      "title": "16.5 救援与疏散运作规程 Rescue and Evac Operations",
+      "level": 1,
+      "sourceFile": "emergency-operations.md",
+      "page": 163
+    },
+    {
+      "id": "441a9457e54d",
+      "title": "17.0 结语",
+      "level": 0,
+      "sourceFile": "conclusion.md",
+      "page": 166
+    },
+    {
+      "id": "7f0929a94769",
+      "title": "17.1 预期升级计划 Projected Upgrades",
+      "level": 1,
+      "sourceFile": "conclusion.md",
+      "page": 166
+    },
+    {
+      "id": "1ad47ee18f2c",
+      "title": "17.2 未来方向：通往进取号 E 之路 Future Directions: The Road to 1701-E",
+      "level": 1,
+      "sourceFile": "conclusion.md",
+      "page": 166
+    },
+    {
+      "id": "868889c8af0a",
+      "title": "17.3 任务背景 Mission Background",
+      "level": 1,
+      "sourceFile": "conclusion.md",
+      "page": 167
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/uss-enterprise-introduction.md",
+      "name": "uss-enterprise-introduction.md",
+      "title": "1.0\t联邦星舰进取号介绍",
+      "bytes": 37881,
+      "headings": [
+        {
+          "level": 1,
+          "title": "1.0 联邦星舰进取号介绍"
+        },
+        {
+          "level": 2,
+          "title": "1.1 银河级星舰项目的任务目标"
+        },
+        {
+          "level": 3,
+          "title": "推进系统 Propulsion"
+        },
+        {
+          "level": 3,
+          "title": "任务能力 Mission"
+        },
+        {
+          "level": 3,
+          "title": "环境与乘员系统 Environment/Crew"
+        },
+        {
+          "level": 3,
+          "title": "战术系统 Tactical"
+        },
+        {
+          "level": 3,
+          "title": "设计寿命 Design Life"
+        },
+        {
+          "level": 2,
+          "title": "1.2 进取号历史 Design Lineage"
+        },
+        {
+          "level": 2,
+          "title": "1.3 概述 General Overview"
+        },
+        {
+          "level": 3,
+          "title": "总体布局 Physical Arrangement"
+        },
+        {
+          "level": 2,
+          "title": "1.4 建造时间表 Construction Chronology"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/uss-enterprise-flight-operations.md",
+      "name": "uss-enterprise-flight-operations.md",
+      "title": "15.0 联邦星舰进取号飞行运作规程",
+      "bytes": 19157,
+      "headings": [
+        {
+          "level": 1,
+          "title": "15.0 联邦星舰进取号飞行运作规程"
+        },
+        {
+          "level": 2,
+          "title": "15.1 飞行运作介绍 Introduction to Flight Operations"
+        },
+        {
+          "level": 2,
+          "title": "15.2 任务类型 Mission Types"
+        },
+        {
+          "level": 2,
+          "title": "15.3 运作模式 Operation Modes"
+        },
+        {
+          "level": 2,
+          "title": "15.4 巡航模式 Cruise Mode"
+        },
+        {
+          "level": 2,
+          "title": "15.5 黄色警戒模式 Yellow Alert"
+        },
+        {
+          "level": 2,
+          "title": "15.6 红色警戒模式 Red Alert"
+        },
+        {
+          "level": 2,
+          "title": "15.7 外部支持模式 External Support Mode"
+        },
+        {
+          "level": 2,
+          "title": "15.8 分离飞行模式 Separated Flight Mode"
+        },
+        {
+          "level": 2,
+          "title": "15.9 低功耗模式 Reduced Power Mode"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/spacecraft-structure.md",
+      "name": "spacecraft-structure.md",
+      "title": "2.0\t飞船结构",
+      "bytes": 30762,
+      "headings": [
+        {
+          "level": 1,
+          "title": "2.0 飞船结构"
+        },
+        {
+          "level": 2,
+          "title": "2.1 主龙骨结构 Main Skeletal Structure"
+        },
+        {
+          "level": 3,
+          "title": "次级框架结构 Secondary Framework"
+        },
+        {
+          "level": 2,
+          "title": "2.2 联邦星舰进取号坐标系 USS Enterprise Coordinate System"
+        },
+        {
+          "level": 3,
+          "title": "外部坐标系 External Coordinate System"
+        },
+        {
+          "level": 3,
+          "title": "内部坐标系 Internal Coordinate System"
+        },
+        {
+          "level": 2,
+          "title": "2.3 船壳层 Hull Layers"
+        },
+        {
+          "level": 2,
+          "title": "2.4 结构完整性力场系统 Structural Integrity Field System"
+        },
+        {
+          "level": 2,
+          "title": "2.5 惯性阻尼系统 Inertial Damping System"
+        },
+        {
+          "level": 2,
+          "title": "2.6 SIF/IDF 失效紧急处置程序 Emergency Procedures in SIF/IDF Failure"
+        },
+        {
+          "level": 2,
+          "title": "2.7 碟部分离系统 Saucer Module Separation Systems"
+        },
+        {
+          "level": 3,
+          "title": "分离系统操作 Separation System Operation"
+        },
+        {
+          "level": 3,
+          "title": "碟部模块的迫降 Emergency Landing of Saucer Module"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/computer-systems.md",
+      "name": "computer-systems.md",
+      "title": "4.0 计算机系统",
+      "bytes": 11330,
+      "headings": [
+        {
+          "level": 1,
+          "title": "4.0 计算机系统"
+        },
+        {
+          "level": 2,
+          "title": "4.1 计算机系统 Computer System"
+        },
+        {
+          "level": 3,
+          "title": "计算机核心 Computer Core"
+        },
+        {
+          "level": 3,
+          "title": "核心存储 Core Memory"
+        },
+        {
+          "level": 3,
+          "title": "子处理器 Subprocessors"
+        },
+        {
+          "level": 2,
+          "title": "4.2 个人访问显示设备 Personal Access Display Devices (PADD)"
+        },
+        {
+          "level": 2,
+          "title": "4.3 等线性光学芯片 Isolinear Optical Chip"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/warp-propulsion-system.md",
+      "name": "warp-propulsion-system.md",
+      "title": "5.0 曲速推进系统",
+      "bytes": 56749,
+      "headings": [
+        {
+          "level": 1,
+          "title": "5.0 曲速推进系统"
+        },
+        {
+          "level": 2,
+          "title": "5.1 曲速场理论及应用 Warp Field Theory and Application"
+        },
+        {
+          "level": 3,
+          "title": "曲速能量测量 Warp Power Measurement"
+        },
+        {
+          "level": 3,
+          "title": "理论局限 Theoretical Limits"
+        },
+        {
+          "level": 3,
+          "title": "曲速推进系统 Warp Propulsion System"
+        },
+        {
+          "level": 2,
+          "title": "5.2 物质/反物质反应装置 Matter/Antimatter Reaction Assembly"
+        },
+        {
+          "level": 3,
+          "title": "反应物注入器 Reactant Injectors"
+        },
+        {
+          "level": 3,
+          "title": "二锂的作用 The Role of Dilithium"
+        },
+        {
+          "level": 3,
+          "title": "能源传输导管 Power Transfer Conduits"
+        },
+        {
+          "level": 2,
+          "title": "5.3 曲速场引擎舱 Warp Field Nacelles"
+        },
+        {
+          "level": 3,
+          "title": "等离子体喷注系统 Plasma Injection System"
+        },
+        {
+          "level": 3,
+          "title": "曲速场线圈 Warp Field Coils"
+        },
+        {
+          "level": 3,
+          "title": "曲速推进 Warp Propulsion"
+        },
+        {
+          "level": 2,
+          "title": "5.4 反物质存储和运输 Antimatter Storage and Transfer"
+        },
+        {
+          "level": 2,
+          "title": "5.5 曲速推进系统燃料供应 Warp Propulsion System Fuel Supply"
+        },
+        {
+          "level": 2,
+          "title": "5.6 巴萨德冲压采集器补给燃料 Bussard Ramscoop Fuel Replenishment"
+        },
+        {
+          "level": 2,
+          "title": "5.7 舰上反物质生产 Onboard Antimatter Generation"
+        },
+        {
+          "level": 2,
+          "title": "5.8 轮机运作与安全考虑 Engineering Operations and Safety"
+        },
+        {
+          "level": 2,
+          "title": "5.9 紧急关车程序 Emergency Shutdown Procedures"
+        },
+        {
+          "level": 2,
+          "title": "5.10 灾难性紧急程序 Catastrophic Emergency Procedures"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/impulse-propulsion-system.md",
+      "name": "impulse-propulsion-system.md",
+      "title": "6.0 脉冲推进系统",
+      "bytes": 19805,
+      "headings": [
+        {
+          "level": 1,
+          "title": "6.0 脉冲推进系统"
+        },
+        {
+          "level": 2,
+          "title": "6.1 脉冲引擎 Impulse Drive"
+        },
+        {
+          "level": 3,
+          "title": "脉冲推进系统燃料供应 IPS Fuel Supply"
+        },
+        {
+          "level": 3,
+          "title": "脉冲引擎构型 Impulse Engine Configuration"
+        },
+        {
+          "level": 3,
+          "title": "脉冲引擎控制 Impulse Engine Control"
+        },
+        {
+          "level": 2,
+          "title": "6.2 相对论效应问题 Relativistic Considerations"
+        },
+        {
+          "level": 2,
+          "title": "6.3 轮机运作与安全考虑 Engineering Operations and Safety"
+        },
+        {
+          "level": 2,
+          "title": "6.4 紧急停车程序 Emergency Shutdown Procedures"
+        },
+        {
+          "level": 2,
+          "title": "6.5 灾难性紧急程序 Catastrophic Emergency Procedures"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/utilities-and-auxiliary-systems.md",
+      "name": "utilities-and-auxiliary-systems.md",
+      "title": "7.0 公用及辅助系统",
+      "bytes": 26062,
+      "headings": [
+        {
+          "level": 1,
+          "title": "7.0 公用及辅助系统"
+        },
+        {
+          "level": 2,
+          "title": "7.1 公用系统 Utilities"
+        },
+        {
+          "level": 3,
+          "title": "主要公用系统网络 Major Utilities Networks"
+        },
+        {
+          "level": 3,
+          "title": "附加公用系统 Additional Utilities Systems"
+        },
+        {
+          "level": 2,
+          "title": "7.2 外部连接点 Exterior Connect Hardpoints"
+        },
+        {
+          "level": 2,
+          "title": "7.3 反作用控制系统 Reaction Control System / RCS"
+        },
+        {
+          "level": 2,
+          "title": "7.4 航行偏导仪 Navigational Deflector"
+        },
+        {
+          "level": 3,
+          "title": "硬件 Hardware"
+        },
+        {
+          "level": 3,
+          "title": "远程传感器 Long-Range Sensors"
+        },
+        {
+          "level": 3,
+          "title": "运作考虑 Operational Considerations"
+        },
+        {
+          "level": 3,
+          "title": "碟部偏导仪 Saucer Deflector"
+        },
+        {
+          "level": 2,
+          "title": "7.5 牵引光束 Tractor Beams"
+        },
+        {
+          "level": 3,
+          "title": "发射器 Emitters"
+        },
+        {
+          "level": 2,
+          "title": "7.6 复制机系统 Replicator Systems"
+        },
+        {
+          "level": 3,
+          "title": "复制还是仓储 Replication Versus Storage"
+        },
+        {
+          "level": 3,
+          "title": "复制机的局限 Replication Limits"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/environmental-systems.md",
+      "name": "environmental-systems.md",
+      "title": "12.0 环境控制系统",
+      "bytes": 17990,
+      "headings": [
+        {
+          "level": 1,
+          "title": "12.0 环控系统"
+        },
+        {
+          "level": 2,
+          "title": "12.1 生命保障与环境控制 Life Support and Environmental Control"
+        },
+        {
+          "level": 2,
+          "title": "12.2 大气系统 Atmospheric System"
+        },
+        {
+          "level": 2,
+          "title": "12.3 重力发生器 Gravity Generation"
+        },
+        {
+          "level": 2,
+          "title": "12.4 紧急环境系统 Emergency Environmental Systems"
+        },
+        {
+          "level": 3,
+          "title": "应急大气和电力供应 Contingency Atmospheric and Power Supply"
+        },
+        {
+          "level": 3,
+          "title": "紧急避难所 Emergency Shelters"
+        },
+        {
+          "level": 3,
+          "title": "其他情况 Other Scenarios"
+        },
+        {
+          "level": 2,
+          "title": "12.5 废物管理 Waste Management"
+        },
+        {
+          "level": 3,
+          "title": "水和污水回收 Water and Sewage Recycling"
+        },
+        {
+          "level": 3,
+          "title": "固体废物回收 Solid Waste Recycling"
+        },
+        {
+          "level": 3,
+          "title": "物质复制回收 Matter Replication Recycling"
+        },
+        {
+          "level": 3,
+          "title": "有害物质回收 Hazardous Waste Recycling"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/crew-support-systems.md",
+      "name": "crew-support-systems.md",
+      "title": "13.0 船员支持系统",
+      "bytes": 28298,
+      "headings": [
+        {
+          "level": 1,
+          "title": "13.0 船员支持系统"
+        },
+        {
+          "level": 2,
+          "title": "13.1 船员支持 Crew Support"
+        },
+        {
+          "level": 2,
+          "title": "13.2 医疗系统 Medical Systems"
+        },
+        {
+          "level": 3,
+          "title": "设施 Facilities"
+        },
+        {
+          "level": 3,
+          "title": "人员 Staffs"
+        },
+        {
+          "level": 3,
+          "title": "硬件 Hardware"
+        },
+        {
+          "level": 2,
+          "title": "13.3 医用三录仪 Medical Tricorder"
+        },
+        {
+          "level": 2,
+          "title": "13.4 船员舱室 Crew Quarters Systems"
+        },
+        {
+          "level": 2,
+          "title": "13.5 食品复制系统 Food Replication System"
+        },
+        {
+          "level": 2,
+          "title": "13.6 涡轮电梯人员交通系统 Turbolift Personnel Transport System"
+        },
+        {
+          "level": 2,
+          "title": "13.7 全息环境模拟器 Holographic Environment Simulators"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/tactical-systems.md",
+      "name": "tactical-systems.md",
+      "title": "11.0 战术系统",
+      "bytes": 56656,
+      "headings": [
+        {
+          "level": 1,
+          "title": "11.0 战术系统"
+        },
+        {
+          "level": 2,
+          "title": "11.1 相位炮 Phaser"
+        },
+        {
+          "level": 3,
+          "title": "舰基相位炮 Shipboard Phasers"
+        },
+        {
+          "level": 3,
+          "title": "激活程序 Activation Sequence"
+        },
+        {
+          "level": 3,
+          "title": "射束放能 Beam Emission"
+        },
+        {
+          "level": 2,
+          "title": "11.2 相位炮操作 Phaser Operations"
+        },
+        {
+          "level": 3,
+          "title": "使用相位炮进行的太空战机动"
+        },
+        {
+          "level": 2,
+          "title": "11.3 光子鱼雷 Photon Torpedoes"
+        },
+        {
+          "level": 3,
+          "title": "鱼雷构型 Torpedo Configuration"
+        },
+        {
+          "level": 2,
+          "title": "11.4 光子鱼雷运作规则 Photon Torpedo Operations"
+        },
+        {
+          "level": 3,
+          "title": "武器控制 Weapons Control"
+        },
+        {
+          "level": 3,
+          "title": "其他应用 Other Applications"
+        },
+        {
+          "level": 2,
+          "title": "11.5 作战舰桥 BATTLE BRIDGE"
+        },
+        {
+          "level": 3,
+          "title": "设计变更 Design Variations"
+        },
+        {
+          "level": 3,
+          "title": "作战舰桥工作站 Battle Bridge Stations"
+        },
+        {
+          "level": 2,
+          "title": "11.6 战术方针 Tactical Policies"
+        },
+        {
+          "level": 3,
+          "title": "交战规则 Rules of Engagement"
+        },
+        {
+          "level": 2,
+          "title": "11.7 个人相位枪 Personal Phasers"
+        },
+        {
+          "level": 3,
+          "title": "硬件配置和操作 Hardware Arrangement and Operation"
+        },
+        {
+          "level": 3,
+          "title": "可用功率设置和效果 Available Power Settings and Effects"
+        },
+        {
+          "level": 3,
+          "title": "安全注意事项 Safety Considerations"
+        },
+        {
+          "level": 3,
+          "title": "人员培训和操作 Personal Training and Operations"
+        },
+        {
+          "level": 2,
+          "title": "11.8 偏导护盾 Deflector Shields"
+        },
+        {
+          "level": 3,
+          "title": "场发生器 Field Generator"
+        },
+        {
+          "level": 3,
+          "title": "护盾运行频率 Shield Operating Frequencies"
+        },
+        {
+          "level": 2,
+          "title": "11.9 自毁系统 Auto-Destruct Systems"
+        },
+        {
+          "level": 3,
+          "title": "自毁场景 Destruct Scenarios"
+        },
+        {
+          "level": 3,
+          "title": "命令授权 Command Authorization"
+        },
+        {
+          "level": 3,
+          "title": "硬件配置与操作 Hardware Configuration and Operation"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/command-systems.md",
+      "name": "command-systems.md",
+      "title": "3.0 指挥系统",
+      "bytes": 48238,
+      "headings": [
+        {
+          "level": 1,
+          "title": "3.0 指挥系统"
+        },
+        {
+          "level": 2,
+          "title": "3.1 主舰桥 Main Bridge"
+        },
+        {
+          "level": 2,
+          "title": "3.2 舰桥运作 Bridge Operations"
+        },
+        {
+          "level": 3,
+          "title": "不同警戒状态下的舰桥运作 Bridge Operations During Alert Conditions"
+        },
+        {
+          "level": 2,
+          "title": "3.3 基本控制面板/终端嵌入式操作系统 Basic Control Panel/Terminal OSE"
+        },
+        {
+          "level": 3,
+          "title": "控制/显示面板 Control/Display Panels"
+        },
+        {
+          "level": 2,
+          "title": "3.4 飞行控制台（舰舵） Flight Control(CONN)"
+        },
+        {
+          "level": 3,
+          "title": "具体职责 Specific Duties"
+        },
+        {
+          "level": 3,
+          "title": "飞行信息输入 Flight Information Input"
+        },
+        {
+          "level": 2,
+          "title": "3.5 运作管理控制台 Operations Management (OPS)"
+        },
+        {
+          "level": 3,
+          "title": "优先级和资源分配 Priority and Resource Allocation"
+        },
+        {
+          "level": 2,
+          "title": "3.6 战术控制台 Tactical"
+        },
+        {
+          "level": 3,
+          "title": "舰上安保职能 Shipboard Security Functions"
+        },
+        {
+          "level": 3,
+          "title": "星舰防御职能 Starship Defense Functions"
+        },
+        {
+          "level": 2,
+          "title": "3.7 指挥工作站 Command Stations"
+        },
+        {
+          "level": 2,
+          "title": "3.8 科学工作站 Science Stations"
+        },
+        {
+          "level": 3,
+          "title": "科学工作站职能 Science Station Functions"
+        },
+        {
+          "level": 3,
+          "title": "3.9 任务运作控制台 Mission Ops"
+        },
+        {
+          "level": 3,
+          "title": "其他任务运作官职责 Other Mission Ops Duties"
+        },
+        {
+          "level": 2,
+          "title": "3.10 环境控制台 Environment"
+        },
+        {
+          "level": 2,
+          "title": "3.11 轮机工作站 Engineering"
+        },
+        {
+          "level": 2,
+          "title": "3.12 制导和导航 Guidance and Navigation"
+        },
+        {
+          "level": 3,
+          "title": "飞船制导 Spacecraft Guidance"
+        },
+        {
+          "level": 3,
+          "title": "外部传感器 External Sensors"
+        },
+        {
+          "level": 3,
+          "title": "导航 Navigation"
+        },
+        {
+          "level": 3,
+          "title": "银河系 The Milky Way Galaxy"
+        },
+        {
+          "level": 3,
+          "title": "小质量粒子的偏导 Deflection of Low-mass Particles"
+        },
+        {
+          "level": 2,
+          "title": "3.13 系统诊断 System Diagnostics"
+        },
+        {
+          "level": 2,
+          "title": "3.14 作战舰桥 Battle Bridge"
+        },
+        {
+          "level": 2,
+          "title": "3.15 主轮机室 Main Engineering"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/science-and-remote-sensing-systems.md",
+      "name": "science-and-remote-sensing-systems.md",
+      "title": "10.0 科学与遥感系统",
+      "bytes": 32995,
+      "headings": [
+        {
+          "level": 1,
+          "title": "10.0 科学与遥感系统"
+        },
+        {
+          "level": 2,
+          "title": "10.1 传感器系统 Sensor Systems"
+        },
+        {
+          "level": 2,
+          "title": "10.2 远程传感器 Long-Range Sensors"
+        },
+        {
+          "level": 2,
+          "title": "10.3 导航传感器 Navigational Sensors"
+        },
+        {
+          "level": 2,
+          "title": "10.4 侧向传感器阵列 Lateral Sensor Arrays"
+        },
+        {
+          "level": 2,
+          "title": "10.5 探测器 Instrumented Probes"
+        },
+        {
+          "level": 3,
+          "title": "通用探测器 General Use Probes"
+        },
+        {
+          "level": 2,
+          "title": "10.6 三录仪 Tricorder"
+        },
+        {
+          "level": 3,
+          "title": "主要特性 Main Features"
+        },
+        {
+          "level": 3,
+          "title": "控制和指示的一般描述 General Description of Controls and Indicators"
+        },
+        {
+          "level": 2,
+          "title": "10.7 科学部门运作 Science Department Ops"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/communications.md",
+      "name": "communications.md",
+      "title": "8.0 通信系统",
+      "bytes": 25946,
+      "headings": [
+        {
+          "level": 1,
+          "title": "8.0 通信系统"
+        },
+        {
+          "level": 2,
+          "title": "8.1 舰内通信 Intraship Communications"
+        },
+        {
+          "level": 3,
+          "title": "系统配置 System Configuration"
+        },
+        {
+          "level": 3,
+          "title": "操作 Operation"
+        },
+        {
+          "level": 2,
+          "title": "8.2 个人通信器 Personal Communicator"
+        },
+        {
+          "level": 3,
+          "title": "子空间收发器组件 Subspace Transceiver Assembly"
+        },
+        {
+          "level": 3,
+          "title": "通信器控制 Communicator Control"
+        },
+        {
+          "level": 3,
+          "title": "用户 ID 安全 User ID Security"
+        },
+        {
+          "level": 2,
+          "title": "8.3 舰对地通信 Ship-to-Ground Communications"
+        },
+        {
+          "level": 3,
+          "title": "安装硬件 Installed Hardware"
+        },
+        {
+          "level": 3,
+          "title": "应用 Applications"
+        },
+        {
+          "level": 2,
+          "title": "8.4 舰对舰通信 Ship-to-Ship Communications"
+        },
+        {
+          "level": 3,
+          "title": "星站联络 Starbase Contacts"
+        },
+        {
+          "level": 3,
+          "title": "非星际舰队联络 Non-Starfleet Contacts"
+        },
+        {
+          "level": 2,
+          "title": "8.5 子空间通信网络 Subspace Communications Network"
+        },
+        {
+          "level": 2,
+          "title": "8.6 通用翻译器 Universal Translator"
+        },
+        {
+          "level": 3,
+          "title": "推导翻译矩阵 Deriving A Translation Matrix"
+        },
+        {
+          "level": 3,
+          "title": "局限性 Limitations"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/transporter-system.md",
+      "name": "transporter-system.md",
+      "title": "9.0 传送系统",
+      "bytes": 24215,
+      "headings": [
+        {
+          "level": 1,
+          "title": "9.0 传送系统"
+        },
+        {
+          "level": 2,
+          "title": "9.1 传送系统介绍 Transporter System Introduction"
+        },
+        {
+          "level": 2,
+          "title": "9.2 传送系统操作 Transporter Systems Operation"
+        },
+        {
+          "level": 3,
+          "title": "系统组件 System Components"
+        },
+        {
+          "level": 3,
+          "title": "传送装置运作时序 Transporter Operation Timeline"
+        },
+        {
+          "level": 2,
+          "title": "9.3 其他传送装置功能 Other Transporter Functions"
+        },
+        {
+          "level": 2,
+          "title": "9.4 使用限制 Limitations of Use"
+        },
+        {
+          "level": 2,
+          "title": "9.5 传送疏散 Transporter Evacuation"
+        },
+        {
+          "level": 3,
+          "title": "疏散上舰 Evac to Ship"
+        },
+        {
+          "level": 3,
+          "title": "疏散离舰 Evac from Ship"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/auxiliary-spacecraft-system.md",
+      "name": "auxiliary-spacecraft-system.md",
+      "title": "14.0 辅助飞行器系统",
+      "bytes": 18662,
+      "headings": [
+        {
+          "level": 1,
+          "title": "14.0 辅助飞行器系统"
+        },
+        {
+          "level": 2,
+          "title": "14.1 穿梭机作业 Shuttlecraft Operations"
+        },
+        {
+          "level": 2,
+          "title": "14.2 穿梭机库 Shuttlebays"
+        },
+        {
+          "level": 2,
+          "title": "14.3 穿梭机 Shuttlecraft"
+        },
+        {
+          "level": 3,
+          "title": "15 型穿梭舱 Shuttlepod Type 15"
+        },
+        {
+          "level": 3,
+          "title": "15A 型穿梭舱 Shuttlepod Type 15A"
+        },
+        {
+          "level": 3,
+          "title": "16 型穿梭舱 Shuttlepod Type 16"
+        },
+        {
+          "level": 3,
+          "title": "6 型人员穿梭机 Personnel Shuttle Type 6"
+        },
+        {
+          "level": 3,
+          "title": "7 型人员穿梭机 Personnel Shuttle Type 7"
+        },
+        {
+          "level": 3,
+          "title": "9A 型货运穿梭机 Cargo Shuttle Type 9A"
+        },
+        {
+          "level": 3,
+          "title": "斯芬克斯 M1 型工作舱（基本模块+雪橇附件）Sphinx Workpod Type M1"
+        },
+        {
+          "level": 2,
+          "title": "14.4 舱外活动 Extravehicular Activity"
+        },
+        {
+          "level": 2,
+          "title": "14.5 舰长艇 Captain's Yacht"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/emergency-operations.md",
+      "name": "emergency-operations.md",
+      "title": "紧急操作规程",
+      "bytes": 16261,
+      "headings": [
+        {
+          "level": 1,
+          "title": "16.0 紧急操作规程"
+        },
+        {
+          "level": 2,
+          "title": "16.1 紧急操作规程简介 Introduction to Emergency Operations"
+        },
+        {
+          "level": 2,
+          "title": "16.2 消防措施 Fire Suppression"
+        },
+        {
+          "level": 2,
+          "title": "16.3 紧急医疗运作 Emergency Medical Operations"
+        },
+        {
+          "level": 2,
+          "title": "16.4 逃生舱/救生艇 Lifeboat"
+        },
+        {
+          "level": 2,
+          "title": "16.5 救援与疏散运作规程 Rescue and Evac Operations"
+        },
+        {
+          "level": 3,
+          "title": "救援场景 Rescue Scenarios"
+        },
+        {
+          "level": 3,
+          "title": "弃舰场景 Abandon Ship Scenarios"
+        }
+      ]
+    },
+    {
+      "path": "external/stcn-docs/docs/docs/tng-technical-manual/conclusion.md",
+      "name": "conclusion.md",
+      "title": "结语",
+      "bytes": 10450,
+      "headings": [
+        {
+          "level": 1,
+          "title": "17.0 结语"
+        },
+        {
+          "level": 2,
+          "title": "17.1 预期升级计划 Projected Upgrades"
+        },
+        {
+          "level": 2,
+          "title": "17.2 未来方向：通往进取号 E 之路 Future Directions: The Road to 1701-E"
+        },
+        {
+          "level": 2,
+          "title": "17.3 任务背景 Mission Background"
+        }
+      ]
+    }
+  ]
+}

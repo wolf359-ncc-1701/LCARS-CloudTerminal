@@ -28,4 +28,7 @@ Thumbs.db
 local-assets/
 reference-assets/
 screenshots/private/
+external/
+tmp/
+output/
 

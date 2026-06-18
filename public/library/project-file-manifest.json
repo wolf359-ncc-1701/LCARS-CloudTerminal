@@ -1,0 +1,828 @@
+{
+  "id": "lcars-cloudterminal-project-files",
+  "title": "LCARS CloudTerminal Project Files",
+  "mode": "static-manifest-v0.9",
+  "generatedFor": "frontend prototype; replace with backend filesystem API in V1",
+  "root": "C:/Users/user/Documents/LCARS",
+  "files": [
+    {
+      "id": "8bdfce7b4eba",
+      "path": "ASSETS.md",
+      "name": "ASSETS.md",
+      "extension": "md",
+      "bytes": 2285,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "55d2d79912c3",
+      "path": "docs/agent-handoff.md",
+      "name": "agent-handoff.md",
+      "extension": "md",
+      "bytes": 1909,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "2eab8878f20f",
+      "path": "docs/ai-tasks/TASK-001-v05-frontend-redesign.md",
+      "name": "TASK-001-v05-frontend-redesign.md",
+      "extension": "md",
+      "bytes": 4702,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "fc6aa277e404",
+      "path": "docs/ai-tasks/TASK-002-v06-titan-ds-visual-redesign.md",
+      "name": "TASK-002-v06-titan-ds-visual-redesign.md",
+      "extension": "md",
+      "bytes": 7297,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "ad03d46181f2",
+      "path": "docs/ai-tasks/TASK-003-v07-style-system-redesign.md",
+      "name": "TASK-003-v07-style-system-redesign.md",
+      "extension": "md",
+      "bytes": 7345,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "c707a71eb620",
+      "path": "docs/ai-tasks/TASK-004-v075-visual-regression-polish.md",
+      "name": "TASK-004-v075-visual-regression-polish.md",
+      "extension": "md",
+      "bytes": 6606,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "061cd0ff0a8d",
+      "path": "docs/ai-tasks/TASK-005-v076-left-elbow-structure.md",
+      "name": "TASK-005-v076-left-elbow-structure.md",
+      "extension": "md",
+      "bytes": 3244,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "6687385bcf97",
+      "path": "docs/ai-tasks/TASK-006-v077-right-rail-and-habitat-polish.md",
+      "name": "TASK-006-v077-right-rail-and-habitat-polish.md",
+      "extension": "md",
+      "bytes": 7198,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "d871d9a157c5",
+      "path": "docs/ai-workflow.md",
+      "name": "ai-workflow.md",
+      "extension": "md",
+      "bytes": 2955,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "f48b101bb900",
+      "path": "docs/architecture.md",
+      "name": "architecture.md",
+      "extension": "md",
+      "bytes": 2400,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "efd426709019",
+      "path": "docs/component-architecture.md",
+      "name": "component-architecture.md",
+      "extension": "md",
+      "bytes": 2983,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "9688c6266a52",
+      "path": "docs/dev-guide.md",
+      "name": "dev-guide.md",
+      "extension": "md",
+      "bytes": 3062,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "a4a62bb5170a",
+      "path": "docs/dev-log.md",
+      "name": "dev-log.md",
+      "extension": "md",
+      "bytes": 35027,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "5170de602f4e",
+      "path": "docs/frontend-agent-brief.md",
+      "name": "frontend-agent-brief.md",
+      "extension": "md",
+      "bytes": 4418,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "3ecd70652909",
+      "path": "docs/gemini-prompts/v06-titan-redesign.md",
+      "name": "v06-titan-redesign.md",
+      "extension": "md",
+      "bytes": 1839,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "c423520d77b6",
+      "path": "docs/gemini-prompts/v07-style-system.md",
+      "name": "v07-style-system.md",
+      "extension": "md",
+      "bytes": 2359,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "06c8e33fa6e5",
+      "path": "docs/gemini-prompts/v075-review-fix-02.md",
+      "name": "v075-review-fix-02.md",
+      "extension": "md",
+      "bytes": 2497,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "34261dead64e",
+      "path": "docs/gemini-prompts/v075-visual-polish.md",
+      "name": "v075-visual-polish.md",
+      "extension": "md",
+      "bytes": 2400,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "3f07040056ca",
+      "path": "docs/gemini-prompts/v076-left-elbow.md",
+      "name": "v076-left-elbow.md",
+      "extension": "md",
+      "bytes": 1702,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "977c43f2c874",
+      "path": "docs/gemini-prompts/v077-left-rail-regression-fix.md",
+      "name": "v077-left-rail-regression-fix.md",
+      "extension": "md",
+      "bytes": 3221,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "bf2e092dfb5b",
+      "path": "docs/gemini-prompts/v077-right-rail-habitat.md",
+      "name": "v077-right-rail-habitat.md",
+      "extension": "md",
+      "bytes": 3394,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "973b7a9a7720",
+      "path": "docs/gemini-prompts/v078-elbow-recovery.md",
+      "name": "v078-elbow-recovery.md",
+      "extension": "md",
+      "bytes": 4304,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "bf510049add7",
+      "path": "docs/gemini-prompts/v079-viewport-containment.md",
+      "name": "v079-viewport-containment.md",
+      "extension": "md",
+      "bytes": 5773,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "292ac2d56134",
+      "path": "docs/resource-policy.md",
+      "name": "resource-policy.md",
+      "extension": "md",
+      "bytes": 1650,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "7b0cf3836b9c",
+      "path": "docs/roadmap.md",
+      "name": "roadmap.md",
+      "extension": "md",
+      "bytes": 1648,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "f74d3ad3e826",
+      "path": "docs/style-roadmap-v05-v09.md",
+      "name": "style-roadmap-v05-v09.md",
+      "extension": "md",
+      "bytes": 3398,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "a43d53a7ddb2",
+      "path": "docs/titan-ds-style-analysis.md",
+      "name": "titan-ds-style-analysis.md",
+      "extension": "md",
+      "bytes": 5423,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "a00614f43614",
+      "path": "docs/v0-plan.md",
+      "name": "v0-plan.md",
+      "extension": "md",
+      "bytes": 5143,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "7c78574b0b19",
+      "path": "docs/v0.5-lcars-grammar.md",
+      "name": "v0.5-lcars-grammar.md",
+      "extension": "md",
+      "bytes": 2010,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "0a1710a0d232",
+      "path": "docs/v0.7-reference-analysis.md",
+      "name": "v0.7-reference-analysis.md",
+      "extension": "md",
+      "bytes": 8132,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "e1be849dabb8",
+      "path": "docs/v0.75-screenshot-regression-analysis.md",
+      "name": "v0.75-screenshot-regression-analysis.md",
+      "extension": "md",
+      "bytes": 6762,
+      "role": "documentation",
+      "readable": true
+    },
+    {
+      "id": "f6013a00b362",
+      "path": "index.html",
+      "name": "index.html",
+      "extension": "html",
+      "bytes": 356,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "1c6ddd73fbab",
+      "path": "output/pdf/tng-technical-manual-cn.pdf",
+      "name": "tng-technical-manual-cn.pdf",
+      "extension": "pdf",
+      "bytes": 12448484,
+      "role": "config",
+      "readable": false
+    },
+    {
+      "id": "fa288d1472d2",
+      "path": "package-lock.json",
+      "name": "package-lock.json",
+      "extension": "json",
+      "bytes": 59053,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "7030d0b2f71b",
+      "path": "package.json",
+      "name": "package.json",
+      "extension": "json",
+      "bytes": 462,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "a8819bfa4e8d",
+      "path": "public/library/tng-manual-manifest.json",
+      "name": "tng-manual-manifest.json",
+      "extension": "json",
+      "bytes": 51715,
+      "role": "asset",
+      "readable": true
+    },
+    {
+      "id": "9e1e9e8db171",
+      "path": "public/library/tng-technical-manual-cn.pdf",
+      "name": "tng-technical-manual-cn.pdf",
+      "extension": "pdf",
+      "bytes": 12448484,
+      "role": "asset",
+      "readable": false
+    },
+    {
+      "id": "8ec9a00bfd09",
+      "path": "README.md",
+      "name": "README.md",
+      "extension": "md",
+      "bytes": 3260,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "f9f44c96987b",
+      "path": "src/app/App.tsx",
+      "name": "App.tsx",
+      "extension": "tsx",
+      "bytes": 16324,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "aa50ae34a170",
+      "path": "src/app/modes.ts",
+      "name": "modes.ts",
+      "extension": "ts",
+      "bytes": 437,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "835da56f32df",
+      "path": "src/App.tsx",
+      "name": "App.tsx",
+      "extension": "tsx",
+      "bytes": 38,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "2ba8b08c6f5e",
+      "path": "src/assets/audio/accessinglibrarycomputerdata_clean.mp3",
+      "name": "accessinglibrarycomputerdata_clean.mp3",
+      "extension": "mp3",
+      "bytes": 70689,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "137552dc79f7",
+      "path": "src/assets/audio/computerbeep_29.mp3",
+      "name": "computerbeep_29.mp3",
+      "extension": "mp3",
+      "bytes": 35361,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "fda1f91f9564",
+      "path": "src/assets/audio/computerbeep_54.mp3",
+      "name": "computerbeep_54.mp3",
+      "extension": "mp3",
+      "bytes": 16929,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "23c5274df487",
+      "path": "src/assets/audio/computerbeep_73.mp3",
+      "name": "computerbeep_73.mp3",
+      "extension": "mp3",
+      "bytes": 26145,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "e7eddd9be2a9",
+      "path": "src/assets/audio/processing3.mp3",
+      "name": "processing3.mp3",
+      "extension": "mp3",
+      "bytes": 51489,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "a744e5eda20a",
+      "path": "src/assets/audio/scrscroll3.mp3",
+      "name": "scrscroll3.mp3",
+      "extension": "mp3",
+      "bytes": 36129,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "96b55dee6769",
+      "path": "src/assets/fonts/microgramma-d-extended-bold.otf",
+      "name": "microgramma-d-extended-bold.otf",
+      "extension": "otf",
+      "bytes": 33248,
+      "role": "source",
+      "readable": false
+    },
+    {
+      "id": "3414712894e0",
+      "path": "src/components/dashboard/BridgeView.tsx",
+      "name": "BridgeView.tsx",
+      "extension": "tsx",
+      "bytes": 8057,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "8c6eced73a95",
+      "path": "src/components/dashboard/CommandView.tsx",
+      "name": "CommandView.tsx",
+      "extension": "tsx",
+      "bytes": 7112,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "b234a526b6c7",
+      "path": "src/components/dashboard/EnergyView.tsx",
+      "name": "EnergyView.tsx",
+      "extension": "tsx",
+      "bytes": 9887,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "53e797d81876",
+      "path": "src/components/dashboard/EventLog.tsx",
+      "name": "EventLog.tsx",
+      "extension": "tsx",
+      "bytes": 691,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "acc4ac364d45",
+      "path": "src/components/dashboard/HomeView.tsx",
+      "name": "HomeView.tsx",
+      "extension": "tsx",
+      "bytes": 4355,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "b0eb712bf5c9",
+      "path": "src/components/dashboard/index.ts",
+      "name": "index.ts",
+      "extension": "ts",
+      "bytes": 360,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "2d934cb44338",
+      "path": "src/components/dashboard/MemoryView.tsx",
+      "name": "MemoryView.tsx",
+      "extension": "tsx",
+      "bytes": 4063,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "af6cf178b8b3",
+      "path": "src/components/dashboard/SystemDiagram.tsx",
+      "name": "SystemDiagram.tsx",
+      "extension": "tsx",
+      "bytes": 14355,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "462c17c80574",
+      "path": "src/components/dashboard/TelemetryStack.tsx",
+      "name": "TelemetryStack.tsx",
+      "extension": "tsx",
+      "bytes": 769,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "dc4bc27315e3",
+      "path": "src/components/lcars/index.ts",
+      "name": "index.ts",
+      "extension": "ts",
+      "bytes": 799,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "fd3c2a0f2d69",
+      "path": "src/components/lcars/LcarsActionButton.tsx",
+      "name": "LcarsActionButton.tsx",
+      "extension": "tsx",
+      "bytes": 1568,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "5429a04a40c9",
+      "path": "src/components/lcars/LcarsBar.tsx",
+      "name": "LcarsBar.tsx",
+      "extension": "tsx",
+      "bytes": 827,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "5f0808c33f70",
+      "path": "src/components/lcars/LcarsBracket.tsx",
+      "name": "LcarsBracket.tsx",
+      "extension": "tsx",
+      "bytes": 1711,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "50d2554c2ede",
+      "path": "src/components/lcars/LcarsCapsule.tsx",
+      "name": "LcarsCapsule.tsx",
+      "extension": "tsx",
+      "bytes": 950,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "db3988253ae5",
+      "path": "src/components/lcars/LcarsContext.tsx",
+      "name": "LcarsContext.tsx",
+      "extension": "tsx",
+      "bytes": 1297,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "ff63fcd0a2b7",
+      "path": "src/components/lcars/LcarsElbow.tsx",
+      "name": "LcarsElbow.tsx",
+      "extension": "tsx",
+      "bytes": 3401,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "42398ad026ec",
+      "path": "src/components/lcars/LcarsElement.tsx",
+      "name": "LcarsElement.tsx",
+      "extension": "tsx",
+      "bytes": 1460,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "ec2c7f284bb1",
+      "path": "src/components/lcars/LcarsFrame.tsx",
+      "name": "LcarsFrame.tsx",
+      "extension": "tsx",
+      "bytes": 3660,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "1b903de4cbe0",
+      "path": "src/components/lcars/LcarsMediaFrame.tsx",
+      "name": "LcarsMediaFrame.tsx",
+      "extension": "tsx",
+      "bytes": 1607,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "d17ecb41d8d3",
+      "path": "src/components/lcars/LcarsMeter.tsx",
+      "name": "LcarsMeter.tsx",
+      "extension": "tsx",
+      "bytes": 1863,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "304076eb1bd5",
+      "path": "src/components/lcars/LcarsOverlay.tsx",
+      "name": "LcarsOverlay.tsx",
+      "extension": "tsx",
+      "bytes": 1575,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "1942800ddbf7",
+      "path": "src/components/lcars/LcarsParameterRow.tsx",
+      "name": "LcarsParameterRow.tsx",
+      "extension": "tsx",
+      "bytes": 1634,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "a4875620f068",
+      "path": "src/components/lcars/LcarsReadout.tsx",
+      "name": "LcarsReadout.tsx",
+      "extension": "tsx",
+      "bytes": 854,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "c0f888e4b18c",
+      "path": "src/components/lcars/LcarsSegmentStack.tsx",
+      "name": "LcarsSegmentStack.tsx",
+      "extension": "tsx",
+      "bytes": 1195,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "7944ca7c85a9",
+      "path": "src/components/lcars/LcarsShell.tsx",
+      "name": "LcarsShell.tsx",
+      "extension": "tsx",
+      "bytes": 449,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "11c4f6c50345",
+      "path": "src/components/lcars/LcarsStatusDots.tsx",
+      "name": "LcarsStatusDots.tsx",
+      "extension": "tsx",
+      "bytes": 1113,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "a90c2e464ef2",
+      "path": "src/data/mock.ts",
+      "name": "mock.ts",
+      "extension": "ts",
+      "bytes": 2504,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "1ab155c4ca1d",
+      "path": "src/hooks/useAutoMode.ts",
+      "name": "useAutoMode.ts",
+      "extension": "ts",
+      "bytes": 1383,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "ce4a9eed2238",
+      "path": "src/hooks/useMockTelemetry.ts",
+      "name": "useMockTelemetry.ts",
+      "extension": "ts",
+      "bytes": 720,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "f4861c59788e",
+      "path": "src/hooks/usePersistentSettings.ts",
+      "name": "usePersistentSettings.ts",
+      "extension": "ts",
+      "bytes": 821,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "d10dc6bc6b27",
+      "path": "src/hooks/useSynthAudio.ts",
+      "name": "useSynthAudio.ts",
+      "extension": "ts",
+      "bytes": 3222,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "60f616ca7163",
+      "path": "src/main.tsx",
+      "name": "main.tsx",
+      "extension": "tsx",
+      "bytes": 367,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "7a8a954bdde4",
+      "path": "src/styles/animations.css",
+      "name": "animations.css",
+      "extension": "css",
+      "bytes": 5133,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "7b3837fd168b",
+      "path": "src/styles/layout.css",
+      "name": "layout.css",
+      "extension": "css",
+      "bytes": 26626,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "c305e36a7332",
+      "path": "src/styles/lcars.css",
+      "name": "lcars.css",
+      "extension": "css",
+      "bytes": 11703,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "b35d75ab8efb",
+      "path": "src/styles/responsive.css",
+      "name": "responsive.css",
+      "extension": "css",
+      "bytes": 2418,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "3cb252884db9",
+      "path": "src/styles/tokens.css",
+      "name": "tokens.css",
+      "extension": "css",
+      "bytes": 2231,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "cdcae0801e2c",
+      "path": "src/types.ts",
+      "name": "types.ts",
+      "extension": "ts",
+      "bytes": 830,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "4a1606df5328",
+      "path": "src/vite-env.d.ts",
+      "name": "vite-env.d.ts",
+      "extension": "ts",
+      "bytes": 39,
+      "role": "source",
+      "readable": true
+    },
+    {
+      "id": "43dc209d69db",
+      "path": "tsconfig.app.json",
+      "name": "tsconfig.app.json",
+      "extension": "json",
+      "bytes": 579,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "61ebb9fd6e8c",
+      "path": "tsconfig.json",
+      "name": "tsconfig.json",
+      "extension": "json",
+      "bytes": 120,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "cd346bdc6f8e",
+      "path": "tsconfig.node.json",
+      "name": "tsconfig.node.json",
+      "extension": "json",
+      "bytes": 414,
+      "role": "config",
+      "readable": true
+    },
+    {
+      "id": "75ea7f3ea6d8",
+      "path": "vite.config.ts",
+      "name": "vite.config.ts",
+      "extension": "ts",
+      "bytes": 137,
+      "role": "config",
+      "readable": true
+    }
+  ]
+}
